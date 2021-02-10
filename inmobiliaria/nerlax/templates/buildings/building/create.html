@@ -1,0 +1,136 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<form method="post" action="{% url 'nerlax:create-building' %}">
+    {% csrf_token %}
+    <div class="container-title">
+        <h1 class="h3 mb-3">Building</h1>
+    </div>
+    <div class="d-grid gap-2 d-md-block">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'nerlax:building' %}"
+           class="btn btn-outline-secondary">Close</a>
+    </div>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="card">
+
+                <div class="modal-body">
+                    <div class="item">
+                        <p>{{form.name.label}}</p>
+                        {{form.name}}
+                    </div>
+
+                    <div class="item address">
+                        <p>{{ form.address.label}}</p>
+                        <div class="street">
+                            {{ form.address }}
+                            {{ form.address2 }}
+                            {{ form.city }}
+                            {{ form.region }}
+                            {{ form.postal_code }}
+                        </div>
+                    </div>
+                    <div class="item location">
+                        <p>{{ form.unit_qty.label }}</p>
+                        {{ form.unit_qty }}
+                    </div>
+                    <div class="item location">
+                        <p>{{ form.type_resource.label }}</p>
+                        {{ form.type_resource }}
+                    </div>
+                    <div class="item status">
+                        <p>{{ form.amenities.label }}</p>
+                        <div class="status-item">
+                            <label>
+                                {{ form.amenities }}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="nav nav-tabs" id="BuildingTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="supplier-tab"
+                           data-bs-toggle="tab"
+                           href="#supplier" role="tab" aria-controls="supplier"
+                           aria-selected="false">Supplier</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="amenities-tab"
+                           data-bs-toggle="tab"
+                           href="#amenities" role="tab"
+                           aria-controls="amenities"
+                           aria-selected="false">Amenities</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="description-tab"
+                           data-bs-toggle="tab"
+                           href="#description" role="tab"
+                           aria-controls="description"
+                           aria-selected="true">{{ form.description.label }}</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="supplier"
+                         role="tabpanel"
+                         aria-labelledby="supplier-tab">
+                        <br>
+                        <div class="d-grid gap-2 d-md-block">
+                            <a class="btn btn-outline-primary"
+                               href="javascript:addSupplier_form('{% url 'nerlax:list-msupplier' %}')">
+                                Add
+                            </a>
+
+                        </div>
+                        <p>Click to add a new supplier.</p>
+                        {{ form.supplier }}
+                    </div>
+
+                    <div class="tab-pane fade" id="amenities" role="tabpanel"
+                         aria-labelledby="amenities-tab">...
+                    </div>
+                    <div class="tab-pane fade" id="description" role="tabpanel"
+                         aria-labelledby="description-tab">
+                        <br>
+                        {{ form.description }}
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addSupplier" tabindex="-1"
+         aria-labelledby="addSupplierLabel" aria-hidden="true">
+
+    </div>
+</form>
+{% endblock content %}
+
+{% block extrajs %}
+<script type="text/javascript">
+
+$(document).ready(function(){
+  $(".nav-tabs a").click(function(){
+    $(this).tab('show');
+  });
+});
+
+function addSupplier_form(url){
+        $('#addSupplier').load(url, function(){
+            $(this).modal('show');
+        });
+    }
+
+
+
+
+
+</script>
+{% endblock extrajs %}

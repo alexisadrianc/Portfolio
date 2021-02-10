@@ -1,0 +1,39 @@
+{% load static %}
+
+<div class="modal-dialog modal-mg" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title" id="expensesLinesModalLabelEdit">Edit {{ object }}</h2>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <form id="form_edit_data" method="post" action="{% url 'nerlax:update-ce-lines' object.pk %}">
+            {% csrf_token %}
+            <div class="modal-body">
+                <div class="mb-3">
+                    <p class="col-form-label">{{ form.concept.label }}</p>
+                    {{ form.concept }}
+                </div>
+                <div class="mb-3">
+                    <p class="col-form-label">{{ form.amount.label }}</p>
+                    {{ form.amount }}
+                </div>
+                <div class="mb-3">
+                    <p class="col-form-label">{{ form.common_expenses.label }}</p>
+                    <div class="street">
+                        {{ form.common_expenses }}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" onclick="edit_ce_Lines();">Save</button>
+                <button type="button" class="btn btn-outline-secondary"
+                        data-dismiss="modal">Close
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

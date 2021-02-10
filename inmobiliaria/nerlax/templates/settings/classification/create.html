@@ -1,0 +1,43 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<form method="post" action="{% url 'settings:create-classification' %}">
+    {% csrf_token %}
+    <div class="container-title">
+        <h1 class="h3 mb-3">Create property type</h1>
+    </div>
+    <div class="d-grid gap-2 d-md-block">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'settings:classification' %}"
+           class="btn btn-outline-secondary">Close</a>
+    </div>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="card">
+
+                <div class="modal-body">
+                    <div class="item">
+                        <p>{{ form.name.label }}</p>
+                        {{ form.name }}
+                    </div>
+
+                    <div class="item complaint-details">
+                        <p>{{ form.description.label }}</p>
+                        <div class="complaint-details-item">
+                            {{ form.description }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock content %}
+
+{% block extrajs %}
+{% endblock extrajs %}

@@ -1,0 +1,64 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<form method="post" action="{% url 'settings:edit-supplier' object.pk %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container-title">
+        <h1 class="h3 mb-3">Edit {{ object }}</h1>
+    </div>
+    <div class="d-grid gap-2 d-md-block">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'settings:kanban-supplier' %}"
+           class="btn btn-outline-secondary">Close</a>
+    </div>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="card">
+
+                <div class="modal-body">
+                    <div class="image-form">
+                        <p>{{form.logo.label}}</p>
+                        {{ form.logo }}
+                    </div>
+                    <div class="item">
+                        <p>{{form.name.label}}</p>
+                        {{form.name}}
+                    </div>
+                    <div class="item">
+                        <p>{{form.nro_documento.label}}</p>
+                        {{form.nro_documento}}
+                    </div>
+
+                    <div class="item address">
+                        <p>{{ form.address.label}}</p>
+                        <div class="street">
+                            {{ form.address }}
+                            {{ form.address2 }}
+                            {{ form.city }}
+                            {{ form.region }}
+                            {{ form.postal_code }}
+                        </div>
+                    </div>
+                    <div class="item location">
+                        <p>{{ form.mobile.label }}</p>
+                        {{ form.mobile }}
+                    </div>
+                    <div class="item location">
+                        <p>{{ form.email.label }}</p>
+                        {{ form.email }}
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock content %}
+
+{% block extrajs %}
+
+{% endblock extrajs %}

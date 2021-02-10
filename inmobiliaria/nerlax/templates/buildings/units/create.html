@@ -1,0 +1,83 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<form id="create_unit_form" method="post" action="{% url 'nerlax:create-unit' %}">
+    {% csrf_token %}
+    <div class="container-title">
+        <h1 class="h3 mb-3">Apartment</h1>
+    </div>
+    <div class="d-grid gap-2 d-md-block">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'nerlax:unit' %}"
+           class="btn btn-outline-secondary">Close</a>
+    </div>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="card">
+
+                <div class="modal-body">
+                    <div class="item">
+                        <p>{{ form.init_date.label }}</p>
+                        {{ form.init_date }}
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="item">
+                        <p>{{ form.name.label }}</p>
+                        {{ form.name }}
+                    </div>
+                    <div class="item">
+                        <p>{{ form.number.label }}</p>
+                        {{ form.flat }} <span> - </span>
+                        {{ form.number }}
+                    </div>
+                    <div class="item location">
+                        <p>{{ form.meter_qty.label }}</p>
+                        {{ form.meter_qty }}
+                    </div>
+                    <div class="item">
+                        <p>{{ form.building_id.label }}</p>
+                        {{ form.building_id }}
+                    </div>
+                    <div class="item">
+                        <p>{{ form.rent_price.label }}</p>
+                        {{ form.rent_price }}
+                    </div>
+
+                    <div class="item">
+                        <p>{{ form.renovation_date.label }}</p>
+                        {{ form.renovation_date }}
+                    </div>
+                    <div class="item">
+                        <p>{{ form.expiration_date.label }}</p>
+                        {{ form.expiration_date }}
+                    </div>
+                    <div class="item">
+                        <p>{{ form.renter.label }}</p>
+                        <div class="street">
+                            {{ form.renter }}
+                        </div>
+
+                    </div>
+                    <div class="item desired-outcome">
+                        <p>{{ form.description.label }}</p>
+                        <div class="desired-outcome-item">
+                            {{ form.description }}
+                            <small>By signing you declare that all information
+                                you
+                                have entered is truthful and accurate.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock content %}
+
+{% block extrajs %}
+{% endblock extrajs %}
