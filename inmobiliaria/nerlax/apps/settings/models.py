@@ -98,7 +98,7 @@ class Supplier(models.Model):
 class Services(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=150)
-    supplier_ids = models.ManyToManyField(Supplier)
+    supplier = models.ForeignKey(Supplier, blank=True, null=True, on_delete=models.CASCADE)
     state = models.BooleanField(default=True)
     create_to = models.DateTimeField(auto_now_add=True)
     update_to = models.DateTimeField(auto_now=True)

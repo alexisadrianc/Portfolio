@@ -172,3 +172,20 @@ class ClassificationForm(forms.ModelForm):
                     'id': 'description'
                 })
         }
+
+
+class ServicesForm(forms.ModelForm):
+    class Meta:
+        model = Services
+        fields = ['name', 'supplier']
+        labels = {
+            'name': 'Name',
+            'supplier': 'Supplier'
+        }
+        widgets = {
+            'name': forms.TextInput(
+                attrs={
+                    'id': 'name',
+                    'class': 'street street-item',
+                }),
+        }

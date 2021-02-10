@@ -139,7 +139,6 @@ class ListClassification(ListView):
     model = Classification
     context_object_name = 'classification'
     queryset = model.objects.filter(state=True)
-    paginate_by = 10
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
@@ -197,6 +196,71 @@ class DeleteClassifications(DeleteView):
             return response
         else:
             return redirect('settings:classification')
+
+
+# Services types
+class ListServices(ListView):
+    model = Services
+    context_object_name = 'services'
+    queryset = model.objects.filter(state=True)
+
+    def get(self, request, *args, **kwargs):
+        if request.is_ajax():
+            return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
+        else:
+            return redirect('settings:services')
+
+
+class CreateServices(CreateView):
+    model = Services
+    form_class = ServicesForm
+    template_name = 'settings/services/create.html'
+    success_message = 'Success: Services type was created.'
+    success_url = reverse_lazy('settings:services')
+
+
+class UpdateServices(UpdateView):
+    model = Services
+    form_class = ServicesForm
+    success_message = 'Success: Services type was updated.'
+    template_name = 'settings/services/edit.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            form = self.form_class(request.POST)
+            if form.is_valid():
+                form.save()
+                msj = f'{self.model.__name__} edited successful!'
+                error = "There isn't error"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} not edited !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
+        else:
+            return redirect('settings:services')
+
+
+class DeleteServices(DeleteView):
+    model = Services
+    template_name = 'settings/services/delete.html'
+
+    def delete(self, request, *args, **kwargs):
+        if request.is_ajax():
+            object = self.get_object()
+            object.state = False
+            object.save()
+            msj = f'{self.model.__name__} delete successful!'
+            error = "There isn't error"
+            response = JsonResponse({'msj': msj, 'error': error})
+            response.status_code = 201
+            return response
+        else:
+            return redirect('settings:services')
 
 
 class KanbanSupplier(ListView):

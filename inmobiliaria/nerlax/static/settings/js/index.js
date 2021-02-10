@@ -228,3 +228,56 @@ function deleteSupplierForm(url){
         $(this).modal('show');
     });
 }
+
+
+//Supplier
+function list_services(){
+    $.ajax({
+        url: "/settings/list-services/",
+        type: "get",
+        dataType: "json",
+        success: function(response){
+            $('#services_type_table tbody').html("")
+            for (let i = 0; i < response.length; i++){
+                let row = '<tr>';
+                row += '<td>' + response[i]['fields']['name'] + '</td>';
+                row += '<td><a href="/settings/update-services/'+response[i]['pk']+'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>';
+                row += '<a href="#" onclick="deleteServicesForm(\'/settings/delete-services/'+response[i]['pk']+'\');"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a></td>';
+                row += '</tr>';
+                $('#services_type_table tbody').append(row);
+            }
+            $('#services_type_table').DataTable();
+        },
+        error:function(error){
+            console.log(error);
+        }
+    });
+}
+
+$(document).ready(function(){
+    list_services();
+});
+
+function delete_services(pk){
+    $.ajax({
+        data: {
+            csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val()
+        },
+        url: $('#delete_services_form').attr('action'),
+        type: $('#delete_services_form').attr('method'),
+        success: function(response){
+            notificationSuccess(response.msj);
+            list_supplier();
+            $('#supplierModalDelete').modal('hide');
+        },
+        error: function(error){
+            notificationError(error.responseJSON.msj);
+        }
+    });
+}
+
+function deleteServicesForm(url){
+    $('#servicesTypesDelete').load(url, function(){
+        $(this).modal('show');
+    });
+}

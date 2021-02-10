@@ -25,11 +25,17 @@ urlpatterns = [
     path('create-classification/', login_required(CreateClassifications.as_view()), name='create-classification'),
     path('update-classification/<int:pk>', login_required(UpdateClassifications.as_view()), name='edit-classification'),
     path('delete-classification/<int:pk>', login_required(DeleteClassifications.as_view()), name='delete-classification'),
+
+    path('list-services/', login_required(ListServices.as_view()), name='list-services'),
+    path('create-services/', login_required(CreateServices.as_view()), name='create-services'),
+    path('update-services/<int:pk>', login_required(UpdateServices.as_view()), name='edit-services'),
+    path('delete-services/<int:pk>', login_required(DeleteServices.as_view()), name='delete-services'),
 ]
 
 urlpatterns += [
     path('companies/', login_required(TemplateView.as_view(template_name='settings/company.html')), name='companies'),
     path('activity_type/', login_required(TemplateView.as_view(template_name='settings/activity.html')), name='activity-type'),
     path('classification/', login_required(TemplateView.as_view(template_name='settings/classification.html')), name='classification'),
+    path('services/', login_required(TemplateView.as_view(template_name='settings/services.html')), name='services'),
     path('supplier/', login_required(TemplateView.as_view(template_name='settings/supplier/list.html')), name='supplier'),
 ]

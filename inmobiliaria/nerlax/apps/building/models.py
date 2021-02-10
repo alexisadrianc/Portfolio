@@ -107,7 +107,7 @@ class CommonExpenses(models.Model):
 class CommonExpensesLines(models.Model):
     id = models.AutoField(primary_key=True)
     amount = models.IntegerField(default=0)
-    concept = models.CharField(max_length=225)
+    concept = models.ForeignKey(Services, on_delete=models.CASCADE)
     common_expenses = models.ForeignKey(CommonExpenses, on_delete=models.CASCADE)
     state = models.BooleanField(default=True)
     create_to = models.DateTimeField(auto_now_add=True)
