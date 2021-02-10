@@ -71,13 +71,4 @@
 <script src="{% static 'users/js/datatables.js' %}"></script>
 <script src="{% static 'users/js/datatables.min.js' %}"></script>
 <script src="{% static 'settings/js/index.js'%}"></script>
-<script type="text/javascript">
-    var $ = jQuery.noConflict()
-    function delete_classification_form(url){
-        $('#classificationDelete').load(url, function(){
-            $(this).modal('show');
-        });
-    }
-
-</script>
 {% endblock extrajs %}

@@ -10,6 +10,7 @@ from .forms import *
 class ListCompany(ListView):
     model = Company
     context_object_name = 'company'
+    queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
@@ -53,13 +54,26 @@ class UpdateCompany(UpdateView):
 class DeleteCompany(DeleteView):
     model = Company
     template_name = 'settings/company/delete.html'
-    success_url = reverse_lazy('settings:companies')
+
+    def delete(self, request, *args, **kwargs):
+        if request.is_ajax():
+            object = self.get_object()
+            object.state = False
+            object.save()
+            msj = f'{self.model.__name__} delete successful!'
+            error = "There isn't error"
+            response = JsonResponse({'msj': msj, 'error': error})
+            response.status_code = 201
+            return response
+        else:
+            return redirect('settings:companies')
 
 
 # Activity Types
 class ListActivityType(ListView):
     model = ActivityType
     context_object_name = 'activity'
+    queryset = model.objects.filter(state=True)
     paginate_by = 10
 
     def get(self, request, *args, **kwargs):
@@ -105,13 +119,26 @@ class UpdateActivityType(UpdateView):
 class DeleteActivityType(DeleteView):
     model = ActivityType
     template_name = 'settings/activity/delete.html'
-    success_url = reverse_lazy('settings:activity-type')
+
+    def delete(self, request, *args, **kwargs):
+        if request.is_ajax():
+            object = self.get_object()
+            object.state = False
+            object.save()
+            msj = f'{self.model.__name__} delete successful!'
+            error = "There isn't error"
+            response = JsonResponse({'msj': msj, 'error': error})
+            response.status_code = 201
+            return response
+        else:
+            return redirect('settings:activity-type')
 
 
 # Classifications
 class ListClassification(ListView):
     model = Classification
     context_object_name = 'classification'
+    queryset = model.objects.filter(state=True)
     paginate_by = 10
 
     def get(self, request, *args, **kwargs):
@@ -157,19 +184,33 @@ class UpdateClassifications(UpdateView):
 class DeleteClassifications(DeleteView):
     model = Classification
     template_name = 'settings/classification/delete.html'
-    success_url = reverse_lazy('settings:classification')
+
+    def delete(self, request, *args, **kwargs):
+        if request.is_ajax():
+            object = self.get_object()
+            object.state = False
+            object.save()
+            msj = f'{self.model.__name__} delete successful!'
+            error = "There isn't error"
+            response = JsonResponse({'msj': msj, 'error': error})
+            response.status_code = 201
+            return response
+        else:
+            return redirect('settings:classification')
 
 
 class KanbanSupplier(ListView):
     model = Supplier
     template_name = 'settings/supplier.html'
     context_object_name = 'supplier'
+    queryset = model.objects.filter(state=True)
     paginate_by = 24
 
 
 class ListSupplier(ListView):
     model = Supplier
     context_object_name = 'supplier'
+    queryset = model.objects.filter(state=True)
     paginate_by = 10
 
     def get(self, request, *args, **kwargs):
@@ -223,4 +264,16 @@ class UpdateSupplier(UpdateView):
 class DeleteSupplier(DeleteView):
     model = Supplier
     template_name = 'settings/supplier/delete.html'
-    success_url = reverse_lazy('settings:supplier')
+
+    def delete(self, request, *args, **kwargs):
+        if request.is_ajax():
+            object = self.get_object()
+            object.state = False
+            object.save()
+            msj = f'{self.model.__name__} delete successful!'
+            error = "There isn't error"
+            response = JsonResponse({'msj': msj, 'error': error})
+            response.status_code = 201
+            return response
+        else:
+            return redirect('settings:supplier')

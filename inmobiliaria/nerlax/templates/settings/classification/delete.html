@@ -1,4 +1,4 @@
-<form method="post" action="">
+<form id="delete_property_form" method="post" action="{% url 'settings:delete-classification' object.pk %}">
     {% csrf_token %}
     <div class="modal-dialog">
         <div class="modal-content">
@@ -13,7 +13,7 @@
                     {{ object }}</strong>?</p>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-danger" onclick="delete_classification({{ object.pk }});">Delete</button>
                 <button type="button" class="btn btn-secondary"
                         data-dismiss="modal">Close</button>
             </div>

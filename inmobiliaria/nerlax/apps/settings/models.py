@@ -18,6 +18,9 @@ class Company(models.Model):
     city = models.CharField(max_length=100, blank=True, null=True)
     postal_code = models.DecimalField(max_digits=5, decimal_places=0, blank=True, null=True)
     region = models.CharField(max_length=100, blank=True, null=True)
+    state = models.BooleanField(default=True)
+    create_to = models.DateTimeField(auto_now_add=True)
+    update_to = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'Company'
@@ -77,6 +80,7 @@ class Supplier(models.Model):
     email = models.EmailField(blank=True, null=True)
     nro_documento = models.CharField(max_length=15)
     logo = models.ImageField(blank=True, null=True, default="images/logoner.png", upload_to="images/")
+    state = models.BooleanField(default=True)
     create_to = models.DateTimeField(auto_now_add=True)
     update_to = models.DateTimeField(auto_now=True)
     # create_by = models.ForeignKey(Users, blank=True, null=True, related_name='author_post', on_delete=models.CASCADE)
@@ -95,6 +99,7 @@ class Services(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=150)
     supplier_ids = models.ManyToManyField(Supplier)
+    state = models.BooleanField(default=True)
     create_to = models.DateTimeField(auto_now_add=True)
     update_to = models.DateTimeField(auto_now=True)
 

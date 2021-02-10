@@ -19,7 +19,7 @@ urlpatterns = [
     path('list-supplier/', login_required(ListSupplier.as_view()), name='list-supplier'),
     path('create-supplier/', login_required(CreateSupplier.as_view()), name='create-supplier'),
     path('update-supplier/<int:pk>', login_required(UpdateSupplier.as_view()), name='edit-supplier'),
-    path('delete-supplier/<int:pk>', login_required(DeleteActivityType.as_view()), name='delete-supplier'),
+    path('delete-supplier/<int:pk>', login_required(DeleteSupplier.as_view()), name='delete-supplier'),
 
     path('list-classification/', login_required(ListClassification.as_view()), name='list-classification'),
     path('create-classification/', login_required(CreateClassifications.as_view()), name='create-classification'),
