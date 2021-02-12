@@ -1,4 +1,5 @@
 {% extends 'home.html' %}
+{% load static %}
 
 {% block content %}
 <form id="edit_activity_form" method="post" action="{% url 'settings:edit-activity' object.pk %}">
@@ -39,4 +40,7 @@
 {% endblock content %}
 
 {% block extrajs %}
+<script src="{% static 'users/js/datatables.js' %}"></script>
+<script src="{% static 'users/js/datatables.min.js' %}"></script>
+<script src="{% static 'settings/js/index.js'%}"></script>
 {% endblock extrajs %}
