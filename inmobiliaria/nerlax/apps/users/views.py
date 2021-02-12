@@ -102,6 +102,7 @@ class CreateUsers(CreateView):
                     username=form.cleaned_data.get('username'),
                     first_name=form.cleaned_data.get('first_name'),
                     last_name=form.cleaned_data.get('last_name'),
+                    user_type=form.cleaned_data.get('user_type'),
                 )
                 new_user.set_password(form.cleaned_data.get('password'))
                 new_user.save()

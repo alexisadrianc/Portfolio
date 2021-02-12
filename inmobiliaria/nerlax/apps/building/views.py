@@ -95,7 +95,7 @@ class ListUnit(ListView):
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
-            return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
+            return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
         else:
             return redirect('nerlax:unit')
 
@@ -158,7 +158,7 @@ class ListCommonExpenses(ListView):
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
-            return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
+            return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
         else:
             return redirect('nerlax:common-expenses')
 

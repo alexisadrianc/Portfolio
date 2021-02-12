@@ -94,6 +94,9 @@ class Supplier(models.Model):
     def __str__(self):
         return self.name
 
+    def natural_key(self):
+        return (self.name)
+
 
 class Services(models.Model):
     id = models.AutoField(primary_key=True)
@@ -112,4 +115,7 @@ class Services(models.Model):
         ordering = ['create_to']
 
     def __str__(self):
-        return self.name
+       return self.name
+
+    def natural_key(self):
+        return (self.name)

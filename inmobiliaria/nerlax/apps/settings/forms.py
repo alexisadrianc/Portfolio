@@ -175,6 +175,11 @@ class ClassificationForm(forms.ModelForm):
 
 
 class ServicesForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(ServicesForm, self).__init__(*args, **kwargs)
+        self.fields['supplier'].queryset = Supplier.objects.filter(state=True)
+
     class Meta:
         model = Services
         fields = ['name', 'supplier']

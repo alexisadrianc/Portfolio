@@ -8,31 +8,25 @@ from ..settings.models import *
 
 class UserManagerModel(BaseUserManager):
 
-    def create_user(self, email, username, first_name, last_name, password=None):
-        if not email:
-            raise ValueError("The email is required")
+    def _create_user(self, email, username, first_name, last_name, password, is_active, superuser, **extra_fields):
         user = self.model(
             username=username,
-            email=self.normalize_email(email),
+            email=email,
             first_name=first_name,
             last_name=last_name,
-            user_type=1
+            is_active=is_active,
+            superuser=superuser,
+            **extra_fields
         )
         user.set_password(password)
-        user.save()
+        user.save(using=self.db)
         return user
 
-    def create_superuser(self, email, username, first_name, last_name, password):
-        user = self.create_user(
-            email,
-            username=username,
-            first_name=first_name,
-            last_name=last_name,
-            password=password
-        )
-        user.superuser = True
-        user.save()
-        return user
+    def create_user(self, email, username, first_name, last_name, password=None, **extra_fields):
+        return self._create_user(email, username, first_name, last_name, password, False, False, **extra_fields)
+
+    def create_superuser(self, email, username, first_name, last_name, password=None, **extra_fields):
+        return self._create_user(email, username, first_name, last_name, password, True, True, **extra_fields)
 
 
 class UserModel(AbstractBaseUser):
@@ -72,6 +66,9 @@ class UserModel(AbstractBaseUser):
     @property
     def is_activated(self):
         return self.is_active
+
+    def natural_key(self):
+        return f'{self.first_name} {self.last_name}'
 
     # @receiver(post_save, sender=User)
     # def create_user_profile(sender, instance, created, **kwargs):

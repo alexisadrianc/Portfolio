@@ -48,6 +48,9 @@ class Building(models.Model):
     def __str__(self):
         return self.name
 
+    def natural_key(self):
+        return (self.name)
+
 
 class Unit(models.Model):
     id = models.AutoField(primary_key=True)

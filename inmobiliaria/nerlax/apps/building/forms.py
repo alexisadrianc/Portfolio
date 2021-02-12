@@ -3,6 +3,12 @@ from .models import *
 
 
 class buildingForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(buildingForm, self).__init__(*args, **kwargs)
+        self.fields['supplier'].queryset = Supplier.objects.filter(state=True)
+        self.fields['type_resource'].queryset = Classification.objects.filter(state=True)
+
     class Meta:
         model = Building
         fields = ['name', 'address', 'address2', 'city', 'postal_code', 'supplier',
@@ -61,6 +67,13 @@ class buildingForm(forms.ModelForm):
 
 
 class unitForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(unitForm, self).__init__(*args, **kwargs)
+        self.fields['renter'].queryset = UserModel.objects.filter(is_active=True)
+        self.fields['building_id'].queryset = Building.objects.filter(state=True)
+        self.fields['type_resource'].queryset = Classification.objects.filter(state=True)
+
     class Meta:
         model = Unit
         fields = ['number', 'meter_qty', 'flat', 'rent_price', 'renter',
@@ -134,6 +147,11 @@ class unitForm(forms.ModelForm):
 
 
 class commonExpensesForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(commonExpensesForm, self).__init__(*args, **kwargs)
+        self.fields['building'].queryset = Building.objects.filter(state=True)
+
     class Meta:
         model = CommonExpenses
         fields = ['building', 'payment_date', 'total_amount']
@@ -160,6 +178,11 @@ class commonExpensesForm(forms.ModelForm):
 
 
 class commonExpensesLinesForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(commonExpensesLinesForm, self).__init__(*args, **kwargs)
+        self.fields['concept'].queryset = Services.objects.filter(state=True)
+
     class Meta:
         model = CommonExpensesLines
         fields = ['concept', 'amount', 'common_expenses']
