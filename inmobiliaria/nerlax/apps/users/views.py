@@ -7,7 +7,7 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic import *
 from django.contrib.auth import *
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from .forms import *
 from .models import *
 
@@ -60,7 +60,6 @@ class UsersRegister(CreateView):
 class ListUsers(ListView):
     model = UserModel
     context_object_name = 'users'
-    paginate_by = 5
 
     def get_queryset(self):
         if self.request.user.is_active:
@@ -93,6 +92,75 @@ class CreateUsers(CreateView):
     template_name = 'users/create.html'
     form_class = UsersForm
     success_url = reverse_lazy('login:users')
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            form = self.form_class(request.POST)
+            if form.is_valid():
+                new_user = UserModel(
+                    email=form.cleaned_data.get('email'),
+                    username=form.cleaned_data.get('username'),
+                    first_name=form.cleaned_data.get('first_name'),
+                    last_name=form.cleaned_data.get('last_name'),
+                )
+                new_user.set_password(form.cleaned_data.get('password'))
+                new_user.save()
+                msj = f'{self.model.__name__} created successful!'
+                error = "There isn't error"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} not created !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
+        else:
+            return redirect('login:users')
+
+
+class UpdateUsers(UpdateView):
+    model = UserModel
+    form_class = UsersForm
+    template_name = 'users/edit.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            form = self.form_class(request.POST, instance=self.get_object())
+            if form.is_valid():
+                form.save()
+                msj = f'{self.model.__name__} edited successful!'
+                error = "There isn't error"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} not edited !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
+        else:
+            return redirect('login:users')
+
+
+class DeleteUsers(DeleteView):
+    model = UserModel
+    template_name = 'users/delete.html'
+
+    def delete(self, request, *args, **kwargs):
+        if request.is_ajax():
+            object = self.get_object()
+            object.is_active = False
+            object.save()
+            msj = f'{self.model.__name__} delete successful!'
+            error = "There isn't error"
+            response = JsonResponse({'msj': msj, 'error': error})
+            response.status_code = 201
+            return response
+        else:
+            return redirect('login:users')
 
 
 class UpdateProfileUser(TemplateView):

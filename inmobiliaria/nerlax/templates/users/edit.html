@@ -1,13 +1,13 @@
 {% extends 'home.html' %}
 {% load static %}
 {% block content %}
-<form id="create_user_form" method="post" action="{% url 'login:create-users' %}">
+<form id="edit_user_form" method="post" action="{% url 'login:update-users' object.pk %}">
     {% csrf_token %}
     <div class="container-title">
-        <h1 class="h3 mb-3">Create users</h1>
+        <h1 class="h3 mb-3">Edit {{ object }}</h1>
     </div>
     <div class="d-grid gap-2 d-md-block">
-        <button type="button" class="btn btn-primary" onclick="create_users();">Save</button>
+        <button type="button" class="btn btn-primary" onclick="update_users();">Save</button>
         <a href="{% url 'login:users' %}" class="btn btn-outline-secondary">Close</a>
     </div>
     <br/>

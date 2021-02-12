@@ -1,8 +1,6 @@
 {% extends 'home.html' %}
 {% load static %}
 
-
-
 {% block content %}
 <form method="post" action="{% url 'nerlax:create-ce' %}">
     {% csrf_token %}

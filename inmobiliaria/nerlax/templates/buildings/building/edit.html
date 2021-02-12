@@ -78,10 +78,9 @@
                          aria-labelledby="supplier-tab">
                         <br>
                         <div class="d-grid gap-2 d-md-block">
-                            <a class="btn btn-outline-primary"
-                               href="javascript:addSupplier_form('{% url 'nerlax:supplier' %}')">
-                                Add
-                            </a>
+                            <button type="button" class="btn btn-outline-primary"
+                                    onclick="addSupplier_form('{% url 'nerlax:list-msupplier' %}');">Add</button>
+
                         </div>
                         <p>Click to add a new supplier.</p>
                     </div>
@@ -103,8 +102,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="addSupplier" tabindex="-1"
-         aria-labelledby="addSupplierLabel" aria-hidden="true">
+    <div class="modal fade" id="addSupplier" tabindex="-1" aria-labelledby="addSupplierLabel" aria-hidden="true">
 
     </div>
 </form>

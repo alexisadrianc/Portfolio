@@ -74,7 +74,6 @@ class ListActivityType(ListView):
     model = ActivityType
     context_object_name = 'activity'
     queryset = model.objects.filter(state=True)
-    paginate_by = 10
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
@@ -275,7 +274,6 @@ class ListSupplier(ListView):
     model = Supplier
     context_object_name = 'supplier'
     queryset = model.objects.filter(state=True)
-    paginate_by = 10
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():

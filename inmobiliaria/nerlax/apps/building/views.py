@@ -78,9 +78,14 @@ class DeleteBuilding(DeleteView):
 
 class ListSupplier(ListView):
     model = Supplier
-    template_name = 'buildings/building/add_modals.html'
     context_object_name = 'supplier'
-    paginate_by = 10
+    queryset = model.objects.filter(state=True)
+
+    def get(self, request, *args, **kwargs):
+        if request.is_ajax():
+            return HttpResponse(serialize('json', self.queryset), 'application/json')
+        else:
+            return redirect('nerlax:create-building')
 
 
 class ListUnit(ListView):
