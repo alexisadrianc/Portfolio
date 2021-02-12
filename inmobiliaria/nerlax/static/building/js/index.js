@@ -24,17 +24,18 @@ function list_building(){
     });
 }
 
-function edit_building(){
+function update_building(){
 //    activate_button();
     $.ajax({
         data: $('#edit_building_form').serialize(),
         url: $('#edit_building_form').attr('action'),
         type: $('#edit_building_form').attr('method'),
         success: function(response){
+            notificationSuccess(response.msj);
             list_building();
         },
         error: function(error){
-            console.log(error)
+            notificationError(error.responseJSON.msj);
         }
     });
 }
@@ -179,6 +180,21 @@ $(document).ready(function(){
     list_common_expenses();
 });
 
+function update_ce(){
+    $.ajax({
+        data: $('#edit_ce_form').serialize(),
+        url: $('#edit_ce_form').attr('action'),
+        type: $('#edit_ce_form').attr('method'),
+        success: function(response){
+            notificationSuccess(response.msj);
+            list_common_expenses();
+        },
+        error: function(error){
+            notificationError(error.responseJSON.msj);
+        }
+    });
+}
+
 function delete_common_expenses(pk){
     $.ajax({
         data: {
@@ -240,12 +256,6 @@ function list_common_expenses_lines(){
 
 $(document).ready(function(){
     list_common_expenses_lines();
-});
-
-$(document).ready(function(){
-    $(".nav-tabs a").click(function(){
-        $(this).tab('show');
-    });
 });
 
 function addExpensesLinesForm(url){

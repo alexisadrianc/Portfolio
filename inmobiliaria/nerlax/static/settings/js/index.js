@@ -28,6 +28,21 @@ $(document).ready(function(){
     list_company();
 });
 
+function update_company(){
+    $.ajax({
+        data: $('#edit_company_form').serialize(),
+        url: $('#edit_company_form').attr('action'),
+        type: $('#edit_company_form').attr('method'),
+        success: function(response){
+            notificationSuccess(response.msj);
+            list_company();
+        },
+        error: function(error){
+            notificationError(error.responseJSON.msj);
+        }
+    });
+}
+
 function delete_company(pk){
     $.ajax({
         data: {
@@ -150,6 +165,22 @@ $(document).ready(function(){
     list_classification();
 });
 
+function update_classification(){
+//    activate_button();
+    $.ajax({
+        data: $('#edit_classification_form').serialize(),
+        url: $('#edit_classification_form').attr('action'),
+        type: $('#edit_classification_form').attr('method'),
+        success: function(response){
+            notificationSuccess(response.msj);
+            list_classification();
+        },
+        error: function(error){
+            notificationError(error.responseJSON.msj);
+        }
+    });
+}
+
 function delete_classification(pk){
     $.ajax({
         data: {
@@ -205,6 +236,22 @@ $(document).ready(function(){
     list_supplier();
 });
 
+function update_supplier(){
+//    activate_button();
+    $.ajax({
+        data: $('#edit_supplier_form').serialize(),
+        url: $('#edit_supplier_form').attr('action'),
+        type: $('#edit_supplier_form').attr('method'),
+        success: function(response){
+            notificationSuccess(response.msj);
+            list_supplier();
+        },
+        error: function(error){
+            notificationError(error.responseJSON.msj);
+        }
+    });
+}
+
 function delete_supplier(pk){
     $.ajax({
         data: {
@@ -258,6 +305,21 @@ $(document).ready(function(){
     list_services();
 });
 
+function update_services(){
+    $.ajax({
+        data: $('#edit_services_form').serialize(),
+        url: $('#edit_services_form').attr('action'),
+        type: $('#edit_services_form').attr('method'),
+        success: function(response){
+            notificationSuccess(response.msj);
+            list_services();
+        },
+        error: function(error){
+            notificationError(error.responseJSON.msj);
+        }
+    });
+}
+
 function delete_services(pk){
     $.ajax({
         data: {
@@ -267,7 +329,7 @@ function delete_services(pk){
         type: $('#delete_services_form').attr('method'),
         success: function(response){
             notificationSuccess(response.msj);
-            list_supplier();
+            list_services();
             $('#supplierModalDelete').modal('hide');
         },
         error: function(error){

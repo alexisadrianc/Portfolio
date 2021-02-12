@@ -33,7 +33,7 @@ class UpdateCompany(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST)
+            form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
                 msj = f'{self.model.__name__} edited successful!'
@@ -98,7 +98,7 @@ class UpdateActivityType(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST)
+            form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
                 msj = f'{self.model.__name__} edited successful!'
@@ -162,7 +162,7 @@ class UpdateClassifications(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST)
+            form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
                 msj = f'{self.model.__name__} edited successful!'
@@ -227,7 +227,7 @@ class UpdateServices(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST)
+            form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
                 msj = f'{self.model.__name__} edited successful!'
@@ -307,7 +307,7 @@ class UpdateSupplier(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST)
+            form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
                 msj = f'{self.model.__name__} edited successful!'

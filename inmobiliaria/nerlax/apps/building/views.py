@@ -40,7 +40,7 @@ class UpdateBuilding(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST)
+            form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
                 msj = f'{self.model.__name__} edited successful!'
@@ -110,7 +110,7 @@ class UpdateUnit(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST)
+            form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
                 msj = f'{self.model.__name__} edited successful!'
@@ -173,7 +173,7 @@ class UpdateCommonExpenses(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST)
+            form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
                 msj = f'{self.model.__name__} edited successful!'
@@ -258,7 +258,7 @@ class UpdateCommonExpensesLines(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST)
+            form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
                 msj = f'{self.model.__name__} edited successful!'
