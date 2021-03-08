@@ -24,6 +24,10 @@ function list_building(){
     });
 }
 
+$(document).ready(function(){
+    list_building();
+});
+
 function update_building(){
 //    activate_button();
     $.ajax({
@@ -66,7 +70,7 @@ function open_modal_building(url){
 
 function list_supplier_building(){
     $.ajax({
-       url: "/settings/list-supplier/",
+       url: "/nerlax/list_msupplier/",
         type: "get",
         dataType: "json",
         success: function(response){
@@ -99,10 +103,6 @@ function addSupplier_form(url){
     });
 }
 
-$(document).ready(function(){
-    list_building();
-});
-
 //Unit
 var $ = jQuery.noConflict()
 function list_unit(){
@@ -130,6 +130,21 @@ function list_unit(){
        error: function(error){
             console.log(error);
        }
+    });
+}
+
+function create_unit(){
+    $.ajax({
+        data: $('#create_unit_form').serialize(),
+        url: $('#create_unit_form').attr('action'),
+        type: $('#create_unit_form').attr('method'),
+        success: function(response){
+            notificationSuccess(response.msj);
+            list_unit();
+        },
+        error: function(error){
+            notificationError(error.responseJSON.msj);
+        }
     });
 }
 
@@ -249,110 +264,110 @@ function open_modal_form(url){
 }
 
 //common expenses lines
-function list_common_expenses_lines(){
-    $.ajax({
-       url: "/nerlax/list_ce_lines/",
-       type: "get",
-       dataType: "json",
-       success: function(response){
-            if ($.fn.DataTable.isDataTable('#ce_lines_table')){
-                ($('#ce_lines_table').DataTable().destroy());
-            }
-            $('#ce_lines_table tbody').html("")
-            for (let i = 0; i < response.length; i++){
-                let row = '<tr>';
-                row += '<td>' + response[i]['fields']['concept'] + '</td>';
-                row += '<td style="text-align: center">' + response[i]['fields']['amount'] + '</td>';
-                row += '<td><a href="#" onclick="editExpensesLinesForm(\'/nerlax/update_ce_lines/'+response[i]['pk']+'\');"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>';
-                row += '<a href="#" onclick="deleteExpensesLinesForm(\'/nerlax/delete_ce_lines/'+response[i]['pk']+'\');"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a></td>';
-                row += '</tr>';
-                $('#ce_lines_table tbody').append(row);
-            }
-            $('#ce_lines_table').DataTable({
-                dom: 'Brtip',
-                buttons:
-                {
-                    name: 'primary',
-                    buttons: []
-                }
-            });
-       },
-       error: function(error){
-            console.log(error);
-       }
-    });
-}
-
-$(document).ready(function(){
-    list_common_expenses_lines();
-});
-
-function addExpensesLinesForm(url){
-    $('#expensesLinesModal').load(url, function(){
-        $(this).modal('show');
-    });
-}
-
-function editExpensesLinesForm(url){
-    $('#expensesLinesModalEdit').load(url, function(){
-        $(this).modal('show');
-    });
-}
-
-function deleteExpensesLinesForm(url){
-    $('#expensesLinesModalDelete').load(url, function(){
-        $(this).modal('show');
-    });
-}
-
-function add_ce_Lines(){
-//    activate_button();
-    $.ajax({
-        data: $('#form_create_data').serialize(),
-        url: $('#form_create_data').attr('action'),
-        type: $('#form_create_data').attr('method'),
-        success: function(response){
-            notificationSuccess(response.msj);
-            list_common_expenses_lines();
-            $('#expensesLinesModal').modal('hide');
-        },
-        error: function(error){
-            notificationError(error.responseJSON.msj);
-        }
-    });
-}
-
-function edit_ce_Lines(){
-//    activate_button();
-    $.ajax({
-        data: $('#form_edit_data').serialize(),
-        url: $('#form_edit_data').attr('action'),
-        type: $('#form_edit_data').attr('method'),
-        success: function(response){
-            notificationSuccess(response.msj);
-            list_common_expenses_lines();
-            $('#expensesLinesModalEdit').modal('hide');
-        },
-        error: function(error){
-            notificationError(error.responseJSON.msj);
-        }
-    });
-}
-
-function delete_ce_lines(pk){
-    $.ajax({
-        data: {
-            csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val()
-        },
-        url: $('#delete_ce_lines_form').attr('action'),
-        type: $('#delete_ce_lines_form').attr('method'),
-        success: function(response){
-            notificationSuccess(response.msj);
-            list_unit();
-            $('#expensesLinesModalDelete').modal('hide');
-        },
-        error: function(error){
-            notificationError(error.responseJSON.msj);
-        }
-    });
-}
+//function list_common_expenses_lines(){
+//    $.ajax({
+//       url: "/nerlax/list_ce_lines/",
+//       type: "get",
+//       dataType: "json",
+//       success: function(response){
+//            if ($.fn.DataTable.isDataTable('#ce_lines_table')){
+//                ($('#ce_lines_table').DataTable().destroy());
+//            }
+//            $('#ce_lines_table tbody').html("")
+//            for (let i = 0; i < response.length; i++){
+//                let row = '<tr>';
+//                row += '<td>' + response[i]['fields']['concept'] + '</td>';
+////                row += '<td style="text-align: center">' + response[i]['fields']['amount'] + '</td>';
+//                row += '<td><a href="#" onclick="editExpensesLinesForm(\'/nerlax/update_ce_lines/'+response[i]['pk']+'\');"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>';
+//                row += '<a href="#" onclick="deleteExpensesLinesForm(\'/nerlax/delete_ce_lines/'+response[i]['pk']+'\');"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a></td>';
+//                row += '</tr>';
+//                $('#ce_lines_table tbody').append(row);
+//            }
+//            $('#ce_lines_table').DataTable({
+//                dom: 'Brtip',
+//                buttons:
+//                {
+//                    name: 'primary',
+//                    buttons: []
+//                }
+//            });
+//       },
+//       error: function(error){
+//            console.log(error);
+//       }
+//    });
+//}
+//
+//$(document).ready(function(){
+//    list_common_expenses_lines();
+//});
+//
+//function addExpensesLinesForm(url){
+//    $('#expensesLinesModal').load(url, function(){
+//        $(this).modal('show');
+//    });
+//}
+//
+//function editExpensesLinesForm(url){
+//    $('#expensesLinesModalEdit').load(url, function(){
+//        $(this).modal('show');
+//    });
+//}
+//
+//function deleteExpensesLinesForm(url){
+//    $('#expensesLinesModalDelete').load(url, function(){
+//        $(this).modal('show');
+//    });
+//}
+//
+//function add_ce_Lines(){
+////    activate_button();
+//    $.ajax({
+//        data: $('#form_create_data').serialize(),
+//        url: $('#form_create_data').attr('action'),
+//        type: $('#form_create_data').attr('method'),
+//        success: function(response){
+//            notificationSuccess(response.msj);
+//            list_common_expenses_lines();
+//            $('#expensesLinesModal').modal('hide');
+//        },
+//        error: function(error){
+//            console.log(error);
+//        }
+//    });
+//}
+//
+//function edit_ce_Lines(){
+////    activate_button();
+//    $.ajax({
+//        data: $('#form_edit_data').serialize(),
+//        url: $('#form_edit_data').attr('action'),
+//        type: $('#form_edit_data').attr('method'),
+//        success: function(response){
+//            notificationSuccess(response.msj);
+//            list_common_expenses_lines();
+//            $('#expensesLinesModalEdit').modal('hide');
+//        },
+//        error: function(error){
+//            notificationError(error.responseJSON.msj);
+//        }
+//    });
+//}
+//
+//function delete_ce_lines(pk){
+//    $.ajax({
+//        data: {
+//            csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val()
+//        },
+//        url: $('#delete_ce_lines_form').attr('action'),
+//        type: $('#delete_ce_lines_form').attr('method'),
+//        success: function(response){
+//            notificationSuccess(response.msj);
+//            list_unit();
+//            $('#expensesLinesModalDelete').modal('hide');
+//        },
+//        error: function(error){
+//            notificationError(error.responseJSON.msj);
+//        }
+//    });
+//}

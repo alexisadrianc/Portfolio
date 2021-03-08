@@ -168,34 +168,20 @@ class commonExpensesForm(forms.ModelForm):
                     'class': 'street street-item',
                     'id': 'payment_date'
                 }),
-            'total_amount': forms.NumberInput(
-                attrs={
-                    'class': 'street street-item',
-                    'id': 'total_amount'
-                }
-            )
         }
 
 
-class commonExpensesLinesForm(forms.ModelForm):
-
-    def __init__(self, *args, **kwargs):
-        super(commonExpensesLinesForm, self).__init__(*args, **kwargs)
-        self.fields['concept'].queryset = Services.objects.filter(state=True)
-
-    class Meta:
-        model = CommonExpensesLines
-        fields = ['concept', 'amount', 'common_expenses']
-        labels = {
-            'concept': 'Concept',
-            'common_expenses': 'Concept expenses',
-            'amount': 'Amount',
-        }
-        widgets = {
-            'amount': forms.NumberInput(
-                attrs={
-                    'class': 'form-control',
-                    'id': 'amount'
-                }
-            )
-        }
+# class commonExpensesLinesForm(forms.ModelForm):
+#
+#     def __init__(self, *args, **kwargs):
+#         super(commonExpensesLinesForm, self).__init__(*args, **kwargs)
+#         self.fields['concept'].queryset = Services.objects.filter(state=True)
+#
+#     class Meta:
+#         model = CommonExpensesLines
+#         fields = ['concept', 'amount', 'common_expenses']
+#         labels = {
+#             'concept': 'Concept',
+#             'common_expenses': 'Concept expenses',
+#             'amount': 'Amount',
+#         }

@@ -290,12 +290,35 @@ class CreateSupplier(CreateView):
     success_url = reverse_lazy('settings:kanban-supplier')
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(self.success_url)
+        if request.is_ajax():
+            form = self.form_class(data=request.POST, files=request.FILES)
+            if form.is_valid():
+                new_supplier = Supplier(
+                    name=form.cleaned_data.get('name'),
+                    address=form.cleaned_data.get('address'),
+                    address2=form.cleaned_data.get('address2'),
+                    city=form.cleaned_data.get('city'),
+                    postal_code=form.cleaned_data.get('postal_code'),
+                    region=form.cleaned_data.get('region'),
+                    mobile=form.cleaned_data.get('mobile'),
+                    email=form.cleaned_data.get('email'),
+                    nro_documento=form.cleaned_data.get('nro_documento'),
+                    logo=form.cleaned_data.get('logo'),
+                )
+                new_supplier.save()
+                msj = f'{self.model.__name__} created successful!'
+                error = "There isn't error"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} not created !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
         else:
-            return render(request, self.template_name, {'form': form})
+            return redirect('settings:supplier')
 
 
 class UpdateSupplier(UpdateView):
@@ -305,7 +328,7 @@ class UpdateSupplier(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST, instance=self.get_object())
+            form = self.form_class(data=request.POST, files=request.FILES, instance=self.get_object())
             if form.is_valid():
                 form.save()
                 msj = f'{self.model.__name__} edited successful!'

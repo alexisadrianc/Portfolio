@@ -236,12 +236,35 @@ $(document).ready(function(){
     list_supplier();
 });
 
+function create_supplier(){
+    var data = new FormData($('#create_supplier_form').get(0));
+    $.ajax({
+        data: data,
+        url: $('#create_supplier_form').attr('action'),
+        type: $('#create_supplier_form').attr('method'),
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response){
+            notificationSuccess(response.msj);
+            list_supplier();
+        },
+        error: function(error){
+            notificationError(error.responseJSON.msj);
+        }
+    });
+}
+
 function update_supplier(){
 //    activate_button();
+    var data = new FormData($('#edit_supplier_form').get(0));
     $.ajax({
-        data: $('#edit_supplier_form').serialize(),
+        data: data,
         url: $('#edit_supplier_form').attr('action'),
         type: $('#edit_supplier_form').attr('method'),
+        cache: false,
+        contentType: false,
+        processData: false,
         success: function(response){
             notificationSuccess(response.msj);
             list_supplier();
@@ -277,7 +300,7 @@ function deleteSupplierForm(url){
 }
 
 
-//Supplier
+//Services
 function list_services(){
     $.ajax({
         url: "/settings/list-services/",
@@ -330,7 +353,7 @@ function delete_services(pk){
         success: function(response){
             notificationSuccess(response.msj);
             list_services();
-            $('#supplierModalDelete').modal('hide');
+            $('#servicesTypesDelete').modal('hide');
         },
         error: function(error){
             notificationError(error.responseJSON.msj);

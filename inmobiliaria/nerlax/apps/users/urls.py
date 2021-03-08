@@ -12,7 +12,7 @@ urlpatterns = [
     path('create/', login_required(CreateUsers.as_view()), name='create-users'),
     path('edit/<int:pk>', login_required(UpdateUsers.as_view()), name='update-users'),
     path('delete/<int:pk>', login_required(DeleteUsers.as_view()), name='delete-users'),
-    path('profile/<int:pk>', login_required(UpdateProfileUser.as_view()), name='profile-users'),
+    path('profile/<int:pk>', login_required(DetailUser.as_view()), name='profile-users'),
 ]
 
 # url de vista implicitas

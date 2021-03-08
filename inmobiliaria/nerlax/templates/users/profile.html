@@ -58,7 +58,7 @@
                                 name:</h4>
                             </label>
                             <div class="col-lg-8">
-                                {{ form.first_name }}
+                                {{ object.first_name }}
                                 <!--                        <input class="form-control" placeholder="first name"-->
                                 <!--                               name="first_name" type="text">-->
                             </div>
@@ -68,8 +68,7 @@
                                 name:</h4>
                             </label>
                             <div class="col-lg-8">
-                                <input class="form-control" name="last_name"
-                                       placeholder="last name" type="text">
+                                {{ object.last_name }}
                             </div>
                         </div>
                         <div class="form-group">
@@ -77,8 +76,7 @@
                                 Email:</h4>
                             </label>
                             <div class="col-lg-8">
-                                <input class="form-control" name="email"
-                                       placeholder="you@email.com" type="text">
+                                {{ object.email }}
                             </div>
                         </div>
 
@@ -87,8 +85,7 @@
                                 Username:</h4>
                             </label>
                             <div class="col-md-8">
-                                <input class="form-control" name="username"
-                                       placeholder="username" type="text">
+                                {{ object.username }}
                             </div>
                         </div>
                         <div class="form-group">

@@ -63,7 +63,7 @@ class ListUsers(ListView):
 
     def get_queryset(self):
         if self.request.user.is_active:
-            return UserModel.objects.filter(is_active=True)
+            return self.model.objects.filter(is_active=True)
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
@@ -164,13 +164,8 @@ class DeleteUsers(DeleteView):
             return redirect('login:users')
 
 
-class UpdateProfileUser(TemplateView):
+class DetailUser(DetailView):
     model = UserModel
     template_name = 'users/profile.html'
 
 
-    # def get_context_data(self, **kwargs):
-    #     context = super(ProfileUser, self).get_context_data(**kwargs)
-    #
-    #     print(context)
-    #     return context

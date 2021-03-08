@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from ..users.models import UserModel
+from django.db.models.signals import post_save
 
 Users = get_user_model()
 
@@ -83,8 +84,8 @@ class Supplier(models.Model):
     state = models.BooleanField(default=True)
     create_to = models.DateTimeField(auto_now_add=True)
     update_to = models.DateTimeField(auto_now=True)
-    # create_by = models.ForeignKey(Users, blank=True, null=True, related_name='author_post', on_delete=models.CASCADE)
-    # update_by = models.ForeignKey(Users, blank=True, null=True, related_name='post_update', on_delete=models.CASCADE)
+    # create_by = models.ForeignKey(UserModel, blank=True, null=True, related_name='author_post', on_delete=models.CASCADE)
+    # update_by = models.ForeignKey(UserModel, blank=True, null=True, related_name='post_update', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Supplier'
@@ -119,3 +120,12 @@ class Services(models.Model):
 
     def natural_key(self):
         return (self.name)
+
+
+def remove_ralational_supplier(sender, instance, **kwargs):
+    if instance.state == False:
+        supplier = instance.id
+        services = Services.objects.filter(supplier=supplier)
+        for rec in services:
+            rec.supplier.remove(supplier)
+post_save.connect(remove_ralational_supplier, sender=Supplier)

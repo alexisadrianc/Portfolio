@@ -22,15 +22,15 @@ urlpatterns = [
     path('update_ce/<int:pk>', login_required(UpdateCommonExpenses.as_view()), name='update-ce'),
     path('delete_ce/<int:pk>', login_required(DeleteCommonExpenses.as_view()), name='delete-ce'),
 
-    path('list_ce_lines/', login_required(ListCommonExpensesLines.as_view()), name='list-ce-lines'),
-    path('create_ce_lines/', login_required(CreateCommonExpensesLines.as_view()), name='create-ce-lines'),
-    path('update_ce_lines/<int:pk>', login_required(UpdateCommonExpensesLines.as_view()), name='update-ce-lines'),
-    path('delete_ce_lines/<int:pk>', login_required(DeleteCommonExpensesLines.as_view()), name='delete-ce-lines'),
+    # path('list_ce_lines/', login_required(ListCommonExpensesLines.as_view()), name='list-ce-lines'),
+    # path('create_ce_lines/', login_required(CreateCommonExpensesLines.as_view()), name='create-ce-lines'),
+    # path('update_ce_lines/<int:pk>', login_required(UpdateCommonExpensesLines.as_view()), name='update-ce-lines'),
+    # path('delete_ce_lines/<int:pk>', login_required(DeleteCommonExpensesLines.as_view()), name='delete-ce-lines'),
 ]
 
 urlpatterns += [
     path('unit/', login_required(TemplateView.as_view(template_name='buildings/unit.html')), name='unit'),
     path('building/', login_required(TemplateView.as_view(template_name='buildings/building.html')), name='building'),
     path('common-expenses/', login_required(TemplateView.as_view(template_name='buildings/common_expenses.html')), name='common-expenses'),
-    path('ce_lines/', login_required(TemplateView.as_view(template_name='buildings/common_expenses/create.html')), name='ce-lines'),
+    # path('ce_lines/', login_required(TemplateView.as_view(template_name='buildings/common_expenses/create.html')), name='ce-lines'),
 ]

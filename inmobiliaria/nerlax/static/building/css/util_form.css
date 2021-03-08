@@ -26,7 +26,6 @@ h2, .h2 {
       }
       input, select, textarea {
       width: 100%;
-      margin-bottom: 10px;
       border: 1px solid #ccc;
       border-radius: 3px;
       }
@@ -89,11 +88,9 @@ h2, .h2 {
       @media (min-width: 568px) {
         input {
             width: calc(35% - 20px);
-            margin: 0 0 0 8px;
         }
         select {
             width: calc(50% - 8px);
-            margin: 0 0 10px 8px;
         }
         .item {
             flex-direction: row;
@@ -126,7 +123,8 @@ h2, .h2 {
             margin-left: 12px;
         }
         textarea {
-            width: calc(100% - 0px);
+            width: calc(101% - 0px);
+            margin: 0 0 0 -10px;
         }
       }
 
