@@ -31,7 +31,7 @@
 
 <div class="d-grid gap-2 d-md-block">
     <a class="btn btn-primary" href="javascript:addExpensesLinesForm('{% url 'nerlax:create-ce-lines' %}')"">
-        Create
+    Create
     </a>
     <button type="button" class="btn btn-outline-secondary">
         Import
@@ -41,19 +41,26 @@
 <br/>
 <div class="container">
     <div class="row">
-        <div class="card">
-            <table id="ce_lines_table" class="table">
-                <thead>
-                <tr>
-                    <th class="cell100 column3">Concept</th>
-                    <th class="cell100 column1" style="text-align: center">Amount</th>
-                    <th class="cell100 column3" width="3%">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
 
-                </tbody>
-            </table>
+                </div>
+                <div class="card-body">
+                    <table id="ce_lines_table" class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="cell100 column3">Concept</th>
+                            <th class="cell100 column1" style="text-align: center">Amount</th>
+                            <th class="cell100 column3" width="3%">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

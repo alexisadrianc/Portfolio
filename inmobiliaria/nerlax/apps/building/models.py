@@ -141,7 +141,6 @@ class CommonExpenses(models.Model):
     # update_by = models.ForeignKey(Users, blank=True, null=True, related_name='post_update', on_delete=models.CASCADE)
 
     def __str__(self):
-
         return f'{self.building},{self.payment_date}'
 
     class Meta:
@@ -157,32 +156,33 @@ def remove_relational_building_ce(sender, instance, **kwargs):
             rec.building.remove(building)
 post_save.connect(remove_relational_building_ce, sender=Building)
 
-# class CommonExpensesLines(models.Model):
-#     id = models.AutoField(primary_key=True)
-#     amount = models.PositiveIntegerField(default=1)
-#     concept = models.ForeignKey(Services, on_delete=models.CASCADE)
-#     common_expenses = models.ForeignKey(CommonExpenses, on_delete=models.CASCADE)
-#     state = models.BooleanField(default=True)
-#     create_to = models.DateTimeField(auto_now_add=True)
-#     update_to = models.DateTimeField(auto_now=True)
+
+class CommonExpensesLines(models.Model):
+    id = models.AutoField(primary_key=True)
+    amount = models.PositiveIntegerField(default=1)
+    concept = models.ForeignKey(Services, on_delete=models.CASCADE)
+    common_expenses = models.ForeignKey(CommonExpenses, on_delete=models.CASCADE)
+    state = models.BooleanField(default=True)
+    create_to = models.DateTimeField(auto_now_add=True)
+    update_to = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = 'Common Expenses Lines'
+        ordering = ['create_to']
 #
-#     class Meta:
-#         verbose_name_plural = 'Common Expenses Lines'
-#         ordering = ['create_to']
-#
-# def remove_relational_services(sender, instance, **kwargs):
-#     if instance.state is False:
-#         services = instance.id
-#         commonExpensesLines = CommonExpensesLines.objects.filter(concept=services)
-#         for rec in commonExpensesLines:
-#             rec.concept.remove(services)
-# post_save.connect(remove_relational_services, sender=Services)
-#
-#
-# def remove_relational_common_expenses(sender, instance, **kwargs):
-#     if instance.state is False:
-#         commonExpenses = instance.id
-#         commonExpensesLines = CommonExpensesLines.objects.filter(common_expenses=commonExpenses)
-#         for rec in commonExpensesLines:
-#             rec.common_expenses.remove(commonExpenses)
-# post_save.connect(remove_relational_common_expenses, sender=CommonExpenses)
+def remove_relational_services(sender, instance, **kwargs):
+    if instance.state is False:
+        services = instance.id
+        commonExpensesLines = CommonExpensesLines.objects.filter(concept=services)
+        for rec in commonExpensesLines:
+            rec.concept.remove(services)
+post_save.connect(remove_relational_services, sender=Services)
+
+
+def remove_relational_common_expenses(sender, instance, **kwargs):
+    if instance.state is False:
+        commonExpenses = instance.id
+        commonExpensesLines = CommonExpensesLines.objects.filter(common_expenses=commonExpenses)
+        for rec in commonExpensesLines:
+            rec.common_expenses.remove(commonExpenses)
+post_save.connect(remove_relational_common_expenses, sender=CommonExpenses)

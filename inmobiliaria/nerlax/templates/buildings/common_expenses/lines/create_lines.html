@@ -1,37 +1,39 @@
 {% load static %}
+<form id="form_create_data" action="{% url 'nerlax:create-ce-lines' %}" method="post">
+    {% csrf_token %}
+    <div class="modal-dialog modal-mg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="expensesLinesModalLabel">Add Expenses</h2>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
 
-<div class="modal-dialog modal-mg" role="document">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2 class="modal-title" id="expensesLinesModalLabel">Add Expenses</h2>
-            <button type="button" class="btn-close"
-                    data-dismiss="modal"
-                    aria-label="Close"></button>
-        </div>
-
-        <form id="form_create_data" action="{% url 'nerlax:create-ce-lines' %}" method="post">
-            {% csrf_token %}
             <div class="modal-body">
-                <div class="mb-3">
-                    <p class="col-form-label">{{ form.concept.label }}</p>
-                    {{ form.concept }}
+                <div class="form-group row">
+                    <p class="col-form-label col-sm-2 text-sm-right">{{ form.concept.label }}</p>
+                    <div class="col-sm-10">
+                        {{ form.concept }}
+                    </div>
                 </div>
-<!--                <div class="mb-3">-->
-<!--                    <p class="col-form-label">{{ form.amount.label }}</p>-->
-<!--                    {{ form.amount }}-->
-<!--                </div>-->
-                <div class="mb-3">
-                    <p class="col-form-label">{{ form.common_expenses.label }}</p>
-                    <div class="street">
+                <div class="form-group row">
+                    <p class="col-form-label col-sm-2 text-sm-right">{{ form.amount.label }}</p>
+                    <div class="col-sm-10">
+                        {{ form.amount }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <p class="col-form-label col-sm-2 text-sm-right">{{ form.common_expenses.label }}</p>
+                    <div class="col-sm-10">
                         {{ form.common_expenses }}
                     </div>
                 </div>
             </div>
 
             <div class="modal-footer">
-                <button id="button_creation" type="button" class="btn btn-primary" onclick="add_ce_Lines();">Save</button>
+                <button id="button_creation" type="button" class="btn btn-primary" onclick="add_ce_Lines();">Save
+                </button>
                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+</form>

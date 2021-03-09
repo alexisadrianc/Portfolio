@@ -171,17 +171,17 @@ class commonExpensesForm(forms.ModelForm):
         }
 
 
-# class commonExpensesLinesForm(forms.ModelForm):
-#
-#     def __init__(self, *args, **kwargs):
-#         super(commonExpensesLinesForm, self).__init__(*args, **kwargs)
-#         self.fields['concept'].queryset = Services.objects.filter(state=True)
-#
-#     class Meta:
-#         model = CommonExpensesLines
-#         fields = ['concept', 'amount', 'common_expenses']
-#         labels = {
-#             'concept': 'Concept',
-#             'common_expenses': 'Concept expenses',
-#             'amount': 'Amount',
-#         }
+class commonExpensesLinesForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(commonExpensesLinesForm, self).__init__(*args, **kwargs)
+        self.fields['concept'].queryset = Services.objects.filter(state=True)
+
+    class Meta:
+        model = CommonExpensesLines
+        fields = ['concept', 'amount', 'common_expenses']
+        labels = {
+            'concept': 'Concept',
+            'common_expenses': 'Concept expenses',
+            'amount': 'Amount',
+        }
