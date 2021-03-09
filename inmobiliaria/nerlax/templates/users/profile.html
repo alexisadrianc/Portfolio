@@ -1,23 +1,26 @@
 {% extends 'home.html' %}
 
 {% block content %}
-<div class="container-fluid">
-    <h1 class="h3 mb-3">Profile </h1>
-</div>
 
-<div class="container">
-    <div class="row">
-        <!-- left column -->
-        <div class="col-md-4 col-xl-3">
-            <div class="card mb-3">
-                <div class="card-body text-center">
-                    <div class="cardheader"></div>
-                    <div class="text-center">
-                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                             class="avatar img-circle img-thumbnail"
-                             alt="avatar">
-                        <h4>Upload a different photo...</h4>
-                        <div class="mt-2">
+<form method="post" action="">
+    {% csrf_token %}
+    <div class="container-fluid">
+        <h1 class="h3 mb-3">Profile </h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-4 col-xl-3">
+                <div class="card mb-3">
+                    <div class="card-body text-center">
+                        <div class="cardheader"></div>
+                        <div class="text-center">
+                            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                                 class="avatar img-circle img-thumbnail"
+                                 alt="avatar">
+                            <h4>Upload a different photo...</h4>
+                            <div class="mt-2">
                     <span class="btn btn-primary">
                         <svg xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -32,77 +35,48 @@
                                 d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path
                                 d="M17 8l-5-5l-5 5"/><path
                                 d="M12 3v12"/></g></svg> Upload</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- edit form column -->
-        <div class="col-md-8 col-xl-9">
-            <div class="card">
-                <div class="alert alert-info alert-dismissable">
-                    <a class="panel-close close" data-dismiss="alert">×</a>
-                    <i class="fa fa-coffee"></i>
-                    This is an <strong>.alert</strong>. Use this to show
-                    important
-                    messages to the user.
-                </div>
-                <div class="card-header">
-                    <h3 class="card-title mb-0">Personal info</h3>
-                </div>
-                <div class="card-body h-100">
-                    <form method="post" action="">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label"><h4>First
-                                name:</h4>
-                            </label>
-                            <div class="col-lg-8">
+            <!-- edit form column -->
+            <div class="col-md-8 col-xl-9">
+                <div class="card">
+                    <div class="alert alert-info alert-dismissable">
+                        <a class="panel-close close" data-dismiss="alert">×</a>
+                        <i class="fa fa-coffee"></i>
+                        This is an <strong>.alert</strong>. Use this to show
+                        important
+                        messages to the user.
+                    </div>
+                    <div class="card-header">
+                        <h3 class="card-title mb-0">Personal info</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <p>{{ object.first_name.label }}</p>
                                 {{ object.first_name }}
-                                <!--                        <input class="form-control" placeholder="first name"-->
-                                <!--                               name="first_name" type="text">-->
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label"><h4>Last
-                                name:</h4>
-                            </label>
-                            <div class="col-lg-8">
+                            <div class="form-group col-md-6">
+                                <p>{{ object.last_name.label }}</p>
                                 {{ object.last_name }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label"><h4>
-                                Email:</h4>
-                            </label>
-                            <div class="col-lg-8">
-                                {{ object.email }}
-                            </div>
+                            <p>{{ object.email.label }}</p>
+                            {{ object.email }}
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-md-3 control-label"><h4>
-                                Username:</h4>
-                            </label>
-                            <div class="col-md-8">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <p>{{ object.username.label }}</p>
                                 {{ object.username }}
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label"><h4>
-                                Password:</h4>
-                            </label>
-                            <div class="col-md-8">
-                                <input class="form-control" name="password1"
-                                       placeholder="password" type="password">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-3 control-label"><h4>Confirm
-                                password:</h4></label>
-                            <div class="col-md-8">
-                                <input class="form-control" name="password2"
-                                       placeholder="password" type="password">
+                            <div class="form-group col-md-6">
+                                <p>{{ object.user_type.label }}</p>
+                                {{ object.user_type }}
                             </div>
                         </div>
                         <div class="form-group">
@@ -113,12 +87,12 @@
                                 <a href="{% url 'home' %}" class="btn btn-secondary">Close</a>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>
 {% endblock content %}
 {% block extrajs %}
 <script type="text/javascript">
@@ -139,6 +113,8 @@ $(document).ready(function() {
         readURL(this);
     });
 });
+
+
 
 
 
