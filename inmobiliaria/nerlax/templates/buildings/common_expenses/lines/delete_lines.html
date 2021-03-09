@@ -10,7 +10,7 @@
             </div>
             <div class="modal-body">
                 <p class="delete-text">Are you sure you want to delete line of Common Expenses with title <strong>
-                    {{ object }}</strong>?</p>
+                    {{ object.concept }}</strong>?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" onclick="delete_ce_lines({{ object.pk }});">Delete</button>
