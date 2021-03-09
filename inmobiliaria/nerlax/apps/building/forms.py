@@ -185,3 +185,10 @@ class commonExpensesLinesForm(forms.ModelForm):
             'common_expenses': 'Concept expenses',
             'amount': 'Amount',
         }
+        widgets = {
+            'amount': forms.NumberInput(
+                attrs={
+                    'id': 'amount',
+                    'class': 'form-control',
+                }),
+        }
