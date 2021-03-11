@@ -124,7 +124,6 @@ h2, .h2 {
         }
         textarea {
             width: calc(101% - 0px);
-            margin: 0 0 0 -10px;
         }
       }
 

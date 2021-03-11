@@ -58,6 +58,8 @@ class buildingForm(forms.ModelForm):
             'description': forms.Textarea(
                 attrs={
                     'id': 'description',
+                    'class': 'form-control',
+                    'row': 6
                 }),
             'supplier': forms.SelectMultiple(
                 attrs={
@@ -103,7 +105,7 @@ class unitForm(forms.ModelForm):
                 format=('%d-%m-%Y'),
                 attrs={
                     'placeholder': 'dd/mm/aaaa',
-                    'class': 'fas fa-calendar-alt',
+                    'class': 'fa fa-calendar-alt',
                     'id': 'init_date'
                 }),
             'number': forms.TextInput(
@@ -165,8 +167,13 @@ class commonExpensesForm(forms.ModelForm):
                 format=('%d-%m-%Y'),
                 attrs={
                     'placeholder': 'dd/mm/aaaa',
-                    'class': 'street street-item',
+                    'class': 'form-control',
                     'id': 'payment_date'
+                }),
+            'total_amount': forms.NumberInput(
+                attrs={
+                    'id': 'total_amount',
+                    'class': 'form-control',
                 }),
         }
 

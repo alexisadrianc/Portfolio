@@ -15,46 +15,64 @@
     <div class="container">
         <div class="row">
             <div class="card">
+                <div class="card-header">
 
-                <div class="modal-body">
-                    <div class="item">
-                        <p>{{ form.init_date.label }}</p>
-                        {{ form.init_date }}
-                        <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.init_date.label }}</p>
+                        <div class="col-sm-10">
+                            {{ form.init_date }}
+                            <i class="fa fa-calendar-alt"></i>
+                        </div>
                     </div>
-                    <div class="item">
-                        <p>{{ form.name.label }}</p>
-                        {{ form.name }}
+                    <div class="form-group row">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.name.label }}</p>
+                        <div class="col-sm-10">
+                            {{ form.name }}
+                        </div>
                     </div>
-                    <div class="item">
-                        <p>{{ form.number.label }}</p>
-                        {{ form.flat }} <span> - </span>
-                        {{ form.number }}
+                    <div class="form-group row">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.number.label }}</p>
+                        <div class="col-sm-10">
+                            {{ form.flat }} <span> - </span>
+                            {{ form.number }}
+                        </div>
                     </div>
-                    <div class="item location">
-                        <p>{{ form.meter_qty.label }}</p>
-                        {{ form.meter_qty }}
+                    <div class="form-group row">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.meter_qty.label }}</p>
+                        <div class="col-sm-10">
+                            {{ form.meter_qty }}
+                        </div>
                     </div>
-                    <div class="item">
-                        <p>{{ form.building_id.label }}</p>
-                        {{ form.building_id }}
+                    <div class="form-group row">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.building_id.label }}</p>
+                        <div class="col-sm-10">
+                            {{ form.building_id }}
+                        </div>
                     </div>
-                    <div class="item">
-                        <p>{{ form.rent_price.label }}</p>
-                        {{ form.rent_price }}
+                    <div class="form-group row">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.rent_price.label }}</p>
+                        <div class="col-sm-10">
+                            {{ form.rent_price }}
+                        </div>
                     </div>
 
-                    <div class="item">
-                        <p>{{ form.renovation_date.label }}</p>
-                        {{ form.renovation_date }}
+                    <div class="form-group row">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.renovation_date.label }}</p>
+                        <div class="col-sm-10">
+                            {{ form.renovation_date }}
+                        </div>
                     </div>
-                    <div class="item">
-                        <p>{{ form.expiration_date.label }}</p>
-                        {{ form.expiration_date }}
+                    <div class="form-group row">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.expiration_date.label }}</p>
+                        <div class="col-sm-10">
+                            {{ form.expiration_date }}
+                        </div>
                     </div>
-                    <div class="item">
-                        <p>{{ form.renter.label }}</p>
-                        <div class="street">
+                    <div class="form-group row">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.renter.label }}</p>
+                        <div class="col-sm-10">
                             {{ form.renter }}
                         </div>
 
@@ -64,13 +82,9 @@
                         <div class="desired-outcome-item">
                             {{ form.description }}
                             <small>By signing you declare that all information
-                                you
-                                have entered is truthful and accurate.</small>
+                                you have entered is truthful and accurate.</small>
                         </div>
                     </div>
-                </div>
-
-                <div class="modal-footer">
                 </div>
 
             </div>
@@ -82,6 +96,7 @@
 {% block extrajs %}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.23/b-1.6.5/b-html5-1.6.5/b-print-1.6.5/datatables.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.23/b-1.6.5/b-html5-1.6.5/b-print-1.6.5/datatables.min.js"></script>
 <script src="{% static 'building/js/index.js'%}"></script>
 {% endblock extrajs %}

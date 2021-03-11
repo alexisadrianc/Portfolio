@@ -144,11 +144,12 @@ class ActivityTypeForm(forms.ModelForm):
             'name': forms.TextInput(
                 attrs={
                     'id': 'name',
-                    'class': 'street street-item',
+                    'class': 'form-control mb-3',
                 }),
             'description': forms.Textarea(
                 attrs={
-                    'id': 'description'
+                    'id': 'description',
+                    'class': 'form-control',
                 })
         }
 
@@ -165,11 +166,14 @@ class ClassificationForm(forms.ModelForm):
             'name': forms.TextInput(
                 attrs={
                     'id': 'name',
-                    'class': 'street street-item',
+                    'class': 'form-control mb-3',
                 }),
             'description': forms.Textarea(
                 attrs={
-                    'id': 'description'
+                    'id': 'description',
+                    'class': 'form-control',
+                    'rows': 4,
+                    'cols': 15
                 })
         }
 
@@ -191,6 +195,6 @@ class ServicesForm(forms.ModelForm):
             'name': forms.TextInput(
                 attrs={
                     'id': 'name',
-                    'class': 'street street-item',
+                    'class': 'form-control mb-3',
                 }),
         }
