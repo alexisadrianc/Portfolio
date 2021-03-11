@@ -8666,3 +8666,17 @@ footer.footer {
     padding: .75rem .75rem;
     direction: ltr;
 }
+
+.text-center {
+    text-align: center !important;
+}
+
+.col-xxl-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.col-xxl-9 {
+    flex: 0 0 75%;
+    max-width: 75%;
+}

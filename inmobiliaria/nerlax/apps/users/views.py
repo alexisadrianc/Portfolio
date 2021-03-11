@@ -22,7 +22,10 @@ class Index(FormView):
     @method_decorator(never_cache)
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            return HttpResponseRedirect(self.get_success_url())
+            if request.user.user_type == '2':
+                return HttpResponseRedirect('home_employee')
+            elif request.user.user_type == '1':
+                return HttpResponseRedirect('home_client')
         else:
             return super(Index, self).dispatch(request, *args, **kwargs)
 

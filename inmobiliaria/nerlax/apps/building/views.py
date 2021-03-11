@@ -9,7 +9,15 @@ from .forms import *
 
 
 class Home(TemplateView):
+    template_name = 'home.html'
+
+
+class HomeEmployee(TemplateView):
     template_name = 'dashboard.html'
+
+
+class HomeClient(TemplateView):
+    template_name = 'dashboard_client.html'
 
 
 class ListBuilding(ListView):

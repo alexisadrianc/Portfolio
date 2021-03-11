@@ -1,9 +1,5 @@
 from django.db import models
-from django.contrib.auth import get_user_model
-from ..users.models import UserModel
 from django.db.models.signals import post_save
-
-Users = get_user_model()
 
 # Create your models here.
 
