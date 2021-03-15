@@ -22,6 +22,10 @@
     <!-- Profile  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- DatePicker -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
     {% block extra_css %}
     {% endblock extra_css %}
@@ -45,6 +49,7 @@
                     <a href="{% url 'home_client' %}">General information</a>
                 </li>
                 {% endif %}
+                {% if request.user.user_type == '2' %}
                 <li>
                     <a href="#ManagerSubmenu" data-toggle="collapse"
                        aria-expanded="false"
@@ -58,20 +63,26 @@
                         </li>
                     </ul>
                 </li>
+                {% endif %}
                 <li class="active">
                     <a href="#PaymentSubmenu" data-toggle="collapse"
                        aria-expanded="false"
                        class="dropdown-toggle">Payments</a>
                     <ul class="collapse list-unstyled" id="PaymentSubmenu">
+                        {% if request.user.user_type == '2' %}
                         <li>
                             <a href="#">Monthly rent</a>
                         </li>
                         <li>
-                            <a href="{% url 'nerlax:common-expenses' %}">Common
-                                expenses</a>
+                            <a href="{% url 'nerlax:common-expenses' %}">General common expenses</a>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <a href="#">Common expenses</a>
                         </li>
                     </ul>
                 </li>
+                {% if request.user.user_type == '2' %}
                 <li>
                     <a href="#">Reports</a>
                 </li>
@@ -118,6 +129,7 @@
                         </li>
                     </ul>
                 </li>
+                {% endif %}
             </ul>
 
         </div>
@@ -255,6 +267,9 @@
 <script src="{% static 'base/js/main.js' %}"></script>
 <script src="{% static 'base/js/main_grid.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
 {% block extrajs %}
 {% endblock extrajs %}
 

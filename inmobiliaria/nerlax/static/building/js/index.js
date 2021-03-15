@@ -1,3 +1,7 @@
+$(document).ready(function() {
+    $('.datepicker').datepicker();
+});
+
 function list_building(){
     $.ajax({
        url: "/nerlax/list_building/",

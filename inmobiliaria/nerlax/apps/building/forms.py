@@ -105,7 +105,6 @@ class unitForm(forms.ModelForm):
                 format=('%d-%m-%Y'),
                 attrs={
                     'placeholder': 'dd/mm/aaaa',
-                    'class': 'fa fa-calendar-alt',
                     'id': 'init_date'
                 }),
             'number': forms.TextInput(
