@@ -151,6 +151,7 @@ class City(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=150)
     state = models.ForeignKey(State, on_delete=models.CASCADE)
+    code = models.CharField(max_length=3, blank=True, null=True)
     active = models.BooleanField(default=True)
     create_to = models.DateTimeField(auto_now_add=True)
     update_to = models.DateTimeField(auto_now=True)

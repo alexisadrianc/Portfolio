@@ -232,15 +232,21 @@ class CityForm(forms.ModelForm):
 
     class Meta:
         model = City
-        fields = ['name', 'state']
+        fields = ['name', 'state', 'code']
         labels = {
             'name': 'City',
             'state': 'State',
+            'code': 'Code'
         }
         widgets = {
             'name': forms.TextInput(
                 attrs={
                     'id': 'name',
+                    'class': 'form-control'
+                }),
+            'code': forms.TextInput(
+                attrs={
+                    'id': 'code',
                     'class': 'form-control'
                 }),
         }

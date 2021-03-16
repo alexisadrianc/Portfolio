@@ -446,15 +446,15 @@ function importStateFile(url){
 //$('#form_state_import').on('submit', function(e) {
 //    e.preventDefault();
 //    $.ajax({
-//        url : "/settings/list-state/",
+//        url : "/settings/import-state/",
 //        type: "POST",
 //        data: $(this).serialize(),
 //        success: function (data) {
+//            notificationSuccess(response.msj);
 //            list_state();
-//            $('#importFile').modal('hide');
 //        },
-//        error: function (jXHR, textStatus, errorThrown) {
-//            alert("error");
+//        error: function(error){
+//            notificationError(error.responseJSON.msj);
 //        }
 //    });
 //});
@@ -470,6 +470,7 @@ function list_city(){
             for (let i = 0; i < response.length; i++){
                 let row = '<tr>';
                 row += '<td>' + response[i]['fields']['name'] + '</td>';
+                row += '<td>' + response[i]['fields']['code'] + '</td>';
                 row += '<td>' + response[i]['fields']['state'] + '</td>';
                 row += '<td style="text-align: center; vertical-align: middle;"><a href="/settings/update-city/'+response[i]['pk']+'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>';
                 row += '<a href="#" onclick="deleteCityForm(\'/settings/delete-city/'+response[i]['pk']+'\');"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a></td>';

@@ -35,12 +35,13 @@ urlpatterns = [
     path('create-state/', login_required(CreateState.as_view()), name='create-state'),
     path('update-state/<int:pk>', login_required(UpdateState.as_view()), name='edit-state'),
     path('delete-state/<int:pk>', login_required(DeleteState.as_view()), name='delete-state'),
-    path('import_file/', login_required(upload_states), name='import-state'),
+    path('import-state/', login_required(upload_states), name='import-state'),
 
     path('list-city/', login_required(ListCity.as_view()), name='list-city'),
     path('create-city/', login_required(CreateCity.as_view()), name='create-city'),
     path('update-city/<int:pk>', login_required(UpdateCity.as_view()), name='edit-city'),
     path('delete-city/<int:pk>', login_required(DeleteCity.as_view()), name='delete-city'),
+    path('import-city/', login_required(upload_city), name='import-city'),
 ]
 
 urlpatterns += [
