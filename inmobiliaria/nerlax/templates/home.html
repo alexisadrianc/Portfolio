@@ -16,6 +16,8 @@
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
           crossorigin="anonymous">
 
+    <link rel="icon" href="{% static 'building/images/icons/favicon.png' %}"/>
+
     <link rel="stylesheet" href="{% static 'base/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'building/css/util_form.css' %}">
 
@@ -126,6 +128,18 @@
                         </li>
                         <li>
                             <a href="{% url 'settings:kanban-supplier' %}">Suppliers</a>
+                        </li>
+                        <li>
+                            <a href="#locationSubmenu" data-toggle="collapse"
+                               aria-expanded="false" class="dropdown-toggle">Location</a>
+                            <ul class="collapse list-unstyled" id="locationSubmenu">
+                                <li>
+                                    <a href="{% url 'settings:state' %}">State</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'settings:city' %}">City</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>

@@ -5,7 +5,8 @@ from .models import *
 class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
-        fields = ['name', 'rut_dgi', 'address', 'address2', 'city', 'postal_code', 'region', 'mobile', 'email']
+        fields = ['name', 'rut_dgi', 'address', 'address2', 'city', 'postal_code',
+                  'region', 'mobile', 'email']
         labels = {
             'name': "Name",
             'rut_dgi': "RUT DGI",
@@ -76,7 +77,7 @@ class SupplierForm(forms.ModelForm):
     class Meta:
         model = Supplier
         fields = ['name', 'nro_documento', 'logo', 'address', 'address2', 'city',
-                  'postal_code', 'region', 'mobile', 'email',]
+                  'postal_code', 'region', 'mobile', 'email', ]
         labels = {
             'name': "Name",
             'nro_documento': "Nro documento",
@@ -196,5 +197,50 @@ class ServicesForm(forms.ModelForm):
                 attrs={
                     'id': 'name',
                     'class': 'form-control mb-3',
+                }),
+        }
+
+
+class StateForm(forms.ModelForm):
+
+    class Meta:
+        model = State
+        fields = ['name', 'code']
+        labels = {
+            'name': 'State',
+            'code': 'Code'
+        }
+        widgets = {
+            'name': forms.TextInput(
+                attrs={
+                    'id': 'name',
+                    'class': 'form-control'
+                }),
+            'code': forms.TextInput(
+                attrs={
+                    'id': 'code',
+                    'class': 'form-control'
+                }),
+        }
+
+
+class CityForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(CityForm, self).__init__(*args, **kwargs)
+        self.fields['state'].queryset = State.objects.filter(active=True)
+
+    class Meta:
+        model = City
+        fields = ['name', 'state']
+        labels = {
+            'name': 'City',
+            'state': 'State',
+        }
+        widgets = {
+            'name': forms.TextInput(
+                attrs={
+                    'id': 'name',
+                    'class': 'form-control'
                 }),
         }

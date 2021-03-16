@@ -87,7 +87,7 @@ h2, .h2 {
       }
       @media (min-width: 568px) {
         input {
-            width: calc(35% - 20px);
+            width: calc(100% - 20px);
         }
         select {
             width: calc(50% - 8px);

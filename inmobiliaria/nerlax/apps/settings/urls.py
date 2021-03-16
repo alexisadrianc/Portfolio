@@ -30,6 +30,17 @@ urlpatterns = [
     path('create-services/', login_required(CreateServices.as_view()), name='create-services'),
     path('update-services/<int:pk>', login_required(UpdateServices.as_view()), name='edit-services'),
     path('delete-services/<int:pk>', login_required(DeleteServices.as_view()), name='delete-services'),
+
+    path('list-state/', login_required(ListState.as_view()), name='list-state'),
+    path('create-state/', login_required(CreateState.as_view()), name='create-state'),
+    path('update-state/<int:pk>', login_required(UpdateState.as_view()), name='edit-state'),
+    path('delete-state/<int:pk>', login_required(DeleteState.as_view()), name='delete-state'),
+    path('import_file/', login_required(upload_states), name='import-state'),
+
+    path('list-city/', login_required(ListCity.as_view()), name='list-city'),
+    path('create-city/', login_required(CreateCity.as_view()), name='create-city'),
+    path('update-city/<int:pk>', login_required(UpdateCity.as_view()), name='edit-city'),
+    path('delete-city/<int:pk>', login_required(DeleteCity.as_view()), name='delete-city'),
 ]
 
 urlpatterns += [
@@ -38,4 +49,6 @@ urlpatterns += [
     path('classification/', login_required(TemplateView.as_view(template_name='settings/classification.html')), name='classification'),
     path('services/', login_required(TemplateView.as_view(template_name='settings/services.html')), name='services'),
     path('supplier/', login_required(TemplateView.as_view(template_name='settings/supplier/list.html')), name='supplier'),
+    path('state/', login_required(TemplateView.as_view(template_name='settings/state.html')), name='state'),
+    path('city/', login_required(TemplateView.as_view(template_name='settings/city.html')), name='city'),
 ]

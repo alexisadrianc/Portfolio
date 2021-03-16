@@ -125,3 +125,54 @@ def remove_ralational_supplier(sender, instance, **kwargs):
         for rec in services:
             rec.supplier.remove(supplier)
 post_save.connect(remove_ralational_supplier, sender=Supplier)
+
+
+class State(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=150)
+    code = models.CharField(max_length=3, blank=True, null=True)
+    active = models.BooleanField(default=True)
+    create_to = models.DateTimeField(auto_now_add=True)
+    update_to = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'State'
+        verbose_name_plural = 'States'
+        ordering = ['name']
+
+    def __str__(self):
+       return self.name
+
+    def natural_key(self):
+        return (self.name)
+
+
+class City(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=150)
+    state = models.ForeignKey(State, on_delete=models.CASCADE)
+    active = models.BooleanField(default=True)
+    create_to = models.DateTimeField(auto_now_add=True)
+    update_to = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'City'
+        verbose_name_plural = 'Cities'
+        ordering = ['name']
+
+    def __str__(self):
+       return self.name
+
+    def natural_key(self):
+        return (self.name)
+
+
+def remove_ralational_state(sender, instance, **kwargs):
+    if instance.active == False:
+        state = instance.id
+        city = State.objects.filter(state=state)
+        for rec in city:
+            rec.state.remove(state)
+post_save.connect(remove_ralational_state, sender=State)
+
+

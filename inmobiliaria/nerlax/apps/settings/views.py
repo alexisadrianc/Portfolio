@@ -1,4 +1,6 @@
+import csv, io
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.urls import reverse_lazy
 from django.core.serializers import serialize
 from django.views.generic import *
@@ -261,7 +263,7 @@ class DeleteServices(DeleteView):
         else:
             return redirect('settings:services')
 
-
+# Supplier
 class KanbanSupplier(ListView):
     model = Supplier
     template_name = 'settings/supplier.html'
@@ -362,3 +364,160 @@ class DeleteSupplier(DeleteView):
             return response
         else:
             return redirect('settings:supplier')
+
+
+# State
+class ListState(ListView):
+    model = State
+    context_object_name = 'state'
+    queryset = model.objects.filter(active=True)
+
+    def get(self, request, *args, **kwargs):
+        if request.is_ajax():
+            return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
+        else:
+            return redirect('settings:state')
+
+
+class CreateState(CreateView):
+    model = State
+    form_class = StateForm
+    template_name = 'settings/state/create.html'
+    success_message = 'Success: State was created.'
+    success_url = reverse_lazy('settings:state')
+
+
+class UpdateState(UpdateView):
+    model = State
+    form_class = StateForm
+    success_message = 'Success: State was updated.'
+    template_name = 'settings/state/edit.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            form = self.form_class(request.POST, instance=self.get_object())
+            if form.is_valid():
+                form.save()
+                msj = f'{self.model.__name__} edited successful!'
+                error = "There isn't error"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} not edited !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
+        else:
+            return redirect('settings:state')
+
+
+class DeleteState(DeleteView):
+    model = State
+    template_name = 'settings/state/delete.html'
+
+    def delete(self, request, *args, **kwargs):
+        if request.is_ajax():
+            object = self.get_object()
+            object.state = False
+            object.save()
+            msj = f'{self.model.__name__} delete successful!'
+            error = "There isn't error"
+            response = JsonResponse({'msj': msj, 'error': error})
+            response.status_code = 201
+            return response
+        else:
+            return redirect('settings:state')
+
+
+def upload_states(request):
+    template_name = 'settings/import/state_import.html'
+
+    prompt = {
+        'order': 'Order of the CSV should by State, Code'
+    }
+
+    if request.method == 'GET':
+        return render(request, template_name, prompt)
+
+    csv_files = request.FILES['file_state']
+
+    if not csv_files.name.endswith('.csv'):
+        messages.error(request, 'This is not a csv file')
+
+    data_set = csv_files.read().decode('UTF-8')
+    io_string = io.StringIO(data_set)
+    next(io_string)
+    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+        _, created = State.objects.update_or_create(
+            name=column[0],
+            code=column[1]
+        )
+    context = {}
+    return render(request, template_name, context)
+
+
+# City
+class ListCity(ListView):
+    model = City
+    context_object_name = 'city'
+    queryset = model.objects.filter(active=True)
+
+    def get(self, request, *args, **kwargs):
+        if request.is_ajax():
+            return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
+        else:
+            return redirect('settings:city')
+
+
+class CreateCity(CreateView):
+    model = City
+    form_class = CityForm
+    template_name = 'settings/city/create.html'
+    success_message = 'Success: City was created.'
+    success_url = reverse_lazy('settings:city')
+
+
+class UpdateCity(UpdateView):
+    model = City
+    form_class = CityForm
+    success_message = 'Success: City was updated.'
+    template_name = 'settings/city/edit.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            form = self.form_class(request.POST, instance=self.get_object())
+            if form.is_valid():
+                form.save()
+                msj = f'{self.model.__name__} edited successful!'
+                error = "There isn't error"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} not edited !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
+        else:
+            return redirect('settings:city')
+
+
+class DeleteCity(DeleteView):
+    model = City
+    template_name = 'settings/city/delete.html'
+
+    def delete(self, request, *args, **kwargs):
+        if request.is_ajax():
+            object = self.get_object()
+            object.active = False
+            object.save()
+            msj = f'{self.model.__name__} delete successful!'
+            error = "There isn't error"
+            response = JsonResponse({'msj': msj, 'error': error})
+            response.status_code = 201
+            return response
+        else:
+            return redirect('settings:city')
