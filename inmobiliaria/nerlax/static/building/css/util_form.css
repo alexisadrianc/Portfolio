@@ -90,7 +90,7 @@ h2, .h2 {
             width: calc(100% - 20px);
         }
         select {
-            width: calc(50% - 8px);
+            width: calc(100% - 8px);
         }
         .item {
             flex-direction: row;

@@ -20,74 +20,78 @@
 
                 </div>
                 <div class="card-body">
-                    <div class="form-group row">
-                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.init_date.label }}</p>
-                        <div class="col-sm-10">
-                            {{ form.init_date }}
-                            <i class="fa fa-calendar-alt"></i>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.name.label }}</p>
+                            <div class="col-sm-8">
+                                {{ form.name }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.name.label }}</p>
-                        <div class="col-sm-10">
-                            {{ form.name }}
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.number.label }}</p>
+                            <div class="col-sm-4">
+                                {{ form.flat }}
+                            </div>
+                            <div class="col-sm-4">
+                                {{ form.number }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.number.label }}</p>
-                        <div class="col-sm-10">
-                            {{ form.flat }} <span> - </span>
-                            {{ form.number }}
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.meter_qty.label }}</p>
-                        <div class="col-sm-10">
-                            {{ form.meter_qty }}
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.building_id.label }}</p>
-                        <div class="col-sm-10">
-                            {{ form.building_id }}
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.rent_price.label }}</p>
-                        <div class="col-sm-10">
-                            {{ form.rent_price }}
-                        </div>
-                    </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.renter.label }}</p>
+                            <div class="col-sm-8">
+                                {{ form.renter }}
+                            </div>
 
-                    <div class="form-group row">
-                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.renovation_date.label }}</p>
-                        <div class="col-sm-10">
-                            {{ form.renovation_date }}
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.rent_price.label }}</p>
+                            <div class="col-sm-8">
+                                {{ form.rent_price }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.renovation_date.label }}</p>
+                            <div class="col-sm-8">
+                                {{ form.renovation_date }}
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.expiration_date.label }}</p>
-                        <div class="col-sm-10">
-                            {{ form.expiration_date }}
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.init_date.label }}</p>
+                            <div class="col-sm-8">
+                                {{ form.init_date }}
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.meter_qty.label }}</p>
+                            <div class="col-sm-8">
+                                {{ form.meter_qty }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.building_id.label }}</p>
+                            <div class="col-sm-8">
+                                {{ form.building_id }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.expiration_date.label }}</p>
+                            <div class="col-sm-8">
+                                {{ form.expiration_date }}
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.renter.label }}</p>
+                    <div class="form-group row col-sm-12">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.description.label }}</p>
                         <div class="col-sm-10">
-                            {{ form.renter }}
-                        </div>
-                    </div>
-                    <div class="item desired-outcome">
-                        <p>{{ form.description.label }}</p>
-                        <div class="desired-outcome-item">
                             {{ form.description }}
                             <small>By signing you declare that all information
-                                you
-                                have entered is truthful and accurate.</small>
+                                you have entered is truthful and accurate.</small>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

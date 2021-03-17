@@ -107,6 +107,23 @@ function addSupplier_form(url){
     });
 }
 
+//$("#id_region").change(function(){
+//    const region = $(this).val();
+//    $.ajax({
+//        url: ""
+//        data: {
+//            'region': region
+//        },
+//        success: function(data){
+//        let html_data = '<option value="">--------</option>';
+//        data.forEach(function(city){
+//            html_data += `<option value="$(city.id)">$(city.name)</option>`
+//
+//        });
+//        }
+//    })
+//})
+
 //Unit
 var $ = jQuery.noConflict()
 function list_unit(){
