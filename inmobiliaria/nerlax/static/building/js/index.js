@@ -1,5 +1,21 @@
 $(document).ready(function() {
-    $('.datepicker').datepicker();
+    $('#init_date').datepicker({
+        changeYear: true,
+        changeMonth: true,
+    });
+    $('#expiration_date').datepicker({
+        changeYear: true,
+        changeMonth: true,
+    });
+    $('#renovation_date').datepicker({
+        changeYear: true,
+        changeMonth: true,
+    });
+    $('#payment_date').datepicker({
+        changeYear: true,
+        changeMonth: true,
+    });
+
 });
 
 function list_building(){
@@ -110,16 +126,17 @@ function addSupplier_form(url){
 //$("#id_region").change(function(){
 //    const region = $(this).val();
 //    $.ajax({
-//        url: ""
+//        url: "/nerlax/create/",
 //        data: {
 //            'region': region
 //        },
 //        success: function(data){
 //        let html_data = '<option value="">--------</option>';
 //        data.forEach(function(city){
-//            html_data += `<option value="$(city.id)">$(city.name)</option>`
-//
+//            html_data += `<option value="${city.id}">${city.name}</option>`
 //        });
+//        console.log(html_data);
+//        $("#id_city").html(html_data);
 //        }
 //    })
 //})

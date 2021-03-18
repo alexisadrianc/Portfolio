@@ -26,16 +26,17 @@ class buildingForm(forms.ModelForm):
             'name': forms.TextInput(
                 attrs={
                     'placeholder': 'Building name ...',
-                    'id': 'name'
+                    'id': 'name',
+                    'class': 'form-control',
                 }),
             'address': forms.TextInput(
                 attrs={
-                    'class': 'street street-item',
+                    'class': 'form-control',
                     'placeholder': 'Street address'
                 }),
             'address2': forms.TextInput(
                 attrs={
-                    'class': 'street street-item',
+                    'class': 'form-control',
                     'placeholder': 'Street addres line 2'
                 }),
             'city': forms.TextInput(
@@ -49,11 +50,17 @@ class buildingForm(forms.ModelForm):
             'postal_code': forms.TextInput(
                 attrs={
                     'placeholder': 'Postal / zip code',
-                    'id': 'postal_code'
+                    'id': 'postal_code',
+                    'class': 'form-control',
                 }),
             'amenities': forms.CheckboxInput(
                 attrs={
                     'id': 'aminities'
+                }),
+            'unit_qty': forms.NumberInput(
+                attrs={
+                    'id': 'unit_qty',
+                    'class': 'form-control',
                 }),
             'description': forms.Textarea(
                 attrs={
@@ -99,49 +106,55 @@ class unitForm(forms.ModelForm):
                 attrs={
                     'placeholder': 'Unit name ...',
                     'id': 'name',
-                    'class': 'street-item',
+                    'class': 'form-control',
                 }),
             'init_date': forms.DateInput(
                 format=('%d-%m-%Y'),
                 attrs={
                     'placeholder': 'dd/mm/aaaa',
-                    'id': 'init_date'
+                    'id': 'init_date',
+                    'class': 'form-control',
                 }),
             'number': forms.TextInput(
                 attrs={
                     'placeholder': 'Unit ...',
+                    'class': 'form-control',
                     'id': 'number'
                 }),
             'flat': forms.TextInput(
                 attrs={
                     'placeholder': 'Flat ...',
+                    'class': 'form-control',
                     'id': 'flat'
                 }),
             'meter_qty': forms.NumberInput(
                 attrs={
-                    'id': 'meter_qty'
+                    'id': 'meter_qty',
+                    'class': 'form-control',
                 }),
             'rent_price': forms.NumberInput(
                 attrs={
-                    'id': 'rent_price'
+                    'id': 'rent_price',
+                    'class': 'form-control',
                 }),
             'expiration_date': forms.DateInput(
                 format=('%d-%m-%Y'),
                 attrs={
                     'placeholder': 'dd/mm/aaaa',
-                    'class': 'fas fa-calendar-alt',
-                    'id': 'expiration_date'
+                    'id': 'expiration_date',
+                    'class': 'form-control',
                 }),
             'renovation_date': forms.DateInput(
                 format=('%d-%m-%Y'),
                 attrs={
                     'placeholder': 'dd/mm/aaaa',
-                    'class': 'fas fa-calendar-alt',
-                    'id': 'renovation_date'
+                    'id': 'renovation_date',
+                    'class': 'form-control',
                 }),
             'description': forms.Textarea(
                 attrs={
-                    'id': 'description'
+                    'id': 'description',
+                    'class': 'form-control',
                 }),
 
         }

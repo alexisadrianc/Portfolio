@@ -25,9 +25,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- DatePicker -->
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="{% static 'base/js/jquery-ui-1.12.1/jquery-ui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'base/js/jquery-ui-1.12.1/jquery-ui.structure.min.css' %}">
+    <link rel="stylesheet" href="{% static 'base/js/jquery-ui-1.12.1/jquery-ui.theme.min.css' %}">
 
     {% block extra_css %}
     {% endblock extra_css %}
@@ -275,11 +275,12 @@
     </footer>
     </div>
 </div>
-<script src="{% static 'base/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'base/js/jquery-3.6.0.min.js' %}"></script>
 <script src="{% static 'base/js/popper.js' %}"></script>
 <script src="{% static 'base/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'base/js/main.js' %}"></script>
 <script src="{% static 'base/js/main_grid.js' %}"></script>
+<script src="{% static 'base/js/jquery-ui-1.12.1/jquery-ui.min.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
