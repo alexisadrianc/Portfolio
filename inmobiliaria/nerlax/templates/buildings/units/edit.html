@@ -21,12 +21,12 @@
                 </div>
                 <div class="card-body">
                     <div class="col-sm-6">
-                        <div class="form-group row">
-                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.name.label }}</p>
-                            <div class="col-sm-8">
-                                {{ form.name }}
-                            </div>
-                        </div>
+<!--                        <div class="form-group row">-->
+<!--                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.name.label }}</p>-->
+<!--                            <div class="col-sm-8">-->
+<!--                                {{ form.name }}-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="form-group row">
                             <p class="col-form-label col-sm-4 text-sm-left">{{ form.number.label }}</p>
                             <div class="col-sm-4">
@@ -44,17 +44,18 @@
 
                         </div>
                         <div class="form-group row">
+                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.building_id.label }}</p>
+                            <div class="col-sm-8">
+                                {{ form.building_id }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <p class="col-form-label col-sm-4 text-sm-left">{{ form.rent_price.label }}</p>
                             <div class="col-sm-8">
                                 {{ form.rent_price }}
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.renovation_date.label }}</p>
-                            <div class="col-sm-8">
-                                {{ form.renovation_date }}
-                            </div>
-                        </div>
+
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
@@ -65,21 +66,21 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.meter_qty.label }}</p>
+                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.renovation_date.label }}</p>
                             <div class="col-sm-8">
-                                {{ form.meter_qty }}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.building_id.label }}</p>
-                            <div class="col-sm-8">
-                                {{ form.building_id }}
+                                {{ form.renovation_date }}
                             </div>
                         </div>
                         <div class="form-group row">
                             <p class="col-form-label col-sm-4 text-sm-left">{{ form.expiration_date.label }}</p>
                             <div class="col-sm-8">
                                 {{ form.expiration_date }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-4 text-sm-left">{{ form.meter_qty.label }}</p>
+                            <div class="col-sm-8">
+                                {{ form.meter_qty }}
                             </div>
                         </div>
                     </div>

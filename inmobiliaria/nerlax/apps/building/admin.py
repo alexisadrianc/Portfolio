@@ -11,7 +11,7 @@ class BuildingAdmin(admin.ModelAdmin):
 class UnitAdmin(admin.ModelAdmin):
     model = Unit
 
-    list_display = ('apartment', 'building_id', 'meter_qty', 'renter', 'init_date',  'expiration_date')
+    list_display = ('name', 'building_id', 'meter_qty', 'renter', 'init_date',  'expiration_date')
 
 
 admin.site.register(Amenities)
@@ -19,3 +19,4 @@ admin.site.register(Building, BuildingAdmin)
 admin.site.register(Unit, UnitAdmin)
 admin.site.register(CommonExpenses)
 admin.site.register(CommonExpensesLines)
+admin.site.register(Garage)

@@ -15,6 +15,10 @@ $(document).ready(function() {
         changeYear: true,
         changeMonth: true,
     });
+    $('#payment_date_g').datepicker({
+        changeYear: true,
+        changeMonth: true,
+    });
 
 });
 
@@ -286,7 +290,7 @@ function delete_common_expenses(pk){
         type: $('#delete_ce_form').attr('method'),
         success: function(response){
             notificationSuccess(response.msj);
-            list_unit();
+            list_common_expenses();
             $('#commonExpensesModalDelete').modal('hide');
         },
         error: function(error){
@@ -409,3 +413,90 @@ function delete_ce_lines(pk){
         }
     });
 }
+
+//garage
+function list_garage(){
+    $.ajax({
+       url: "/nerlax/list_garage/",
+       type: "get",
+       dataType: "json",
+       success: function(response){
+            $('#garage_table tbody').html("")
+            for (let i = 0; i < response.length; i++){
+                let row = '<tr>';
+                row += '<td>' + response[i]['fields']['name'] + '</td>';
+                row += '<td>' + response[i]['fields']['building'] + '</td>';
+                row += '<td style="text-align: center; vertical-align: middle;">' + response[i]['fields']['payment_date'] + '</td>';
+                row += '<td style="text-align: center; vertical-align: middle;">' + response[i]['fields']['total_amount'] + '</td>';
+                row += '<td style="text-align: center; vertical-align: middle;"><a href="/nerlax/update_garage/'+response[i]['pk']+'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>';
+                row += '<a href="#" onclick="deleteGarageForm(\'/nerlax/delete_garage/'+response[i]['pk']+'\');"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a></td>';
+                row += '</tr>';
+                $('#garage_table tbody').append(row);
+            }
+            $('#garage_table').DataTable();
+       },
+       error: function(error){
+            console.log(error);
+       }
+    });
+}
+
+$(document).ready(function(){
+    list_garage();
+});
+
+function create_garage(){
+    $.ajax({
+        data: $('#create_garage_form').serialize(),
+        url: $('#create_garage_form').attr('action'),
+        type: $('#create_garage_form').attr('method'),
+        success: function(response){
+            notificationSuccess(response.msj);
+            list_garage();
+        },
+        error: function(error){
+            notificationError(error.responseJSON.msj);
+        }
+    });
+}
+
+function update_garage(){
+    $.ajax({
+        data: $('#edit_garage_form').serialize(),
+        url: $('#edit_garage_form').attr('action'),
+        type: $('#edit_garage_form').attr('method'),
+        success: function(response){
+            notificationSuccess(response.msj);
+            list_garage();
+        },
+        error: function(error){
+            notificationError(error.responseJSON.msj);
+        }
+    });
+}
+
+function delete_garage(pk){
+    $.ajax({
+        data: {
+            csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val()
+        },
+        url: $('#delete_garage_form').attr('action'),
+        type: $('#delete_garage_form').attr('method'),
+        success: function(response){
+            notificationSuccess(response.msj);
+            list_garage();
+            $('#garageModalDelete').modal('hide');
+        },
+        error: function(error){
+            notificationError(error.responseJSON.msj);
+        }
+    });
+}
+
+function deleteGarageForm(url){
+    $('#garageModalDelete').load(url, function(){
+        $(this).modal('show');
+    });
+}
+
+

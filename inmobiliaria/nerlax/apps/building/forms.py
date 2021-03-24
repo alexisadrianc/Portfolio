@@ -8,6 +8,16 @@ class buildingForm(forms.ModelForm):
         super(buildingForm, self).__init__(*args, **kwargs)
         self.fields['supplier'].queryset = Supplier.objects.filter(state=True)
         self.fields['type_resource'].queryset = Classification.objects.filter(state=True)
+        self.fields['city'].queryset = City.objects.none()
+        if 'region' in self.data:
+            try:
+                region_id = int(self.data.get('region'))
+                self.fields['city'].queryset = City.objects.filter(
+                    state=region_id).order_by('name')
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['city'].queryset = self.instance.region.city_set.order_by('name')
 
     class Meta:
         model = Building
@@ -38,14 +48,6 @@ class buildingForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control',
                     'placeholder': 'Street addres line 2'
-                }),
-            'city': forms.TextInput(
-                attrs={
-                    'placeholder': 'City'
-                }),
-            'region': forms.TextInput(
-                attrs={
-                    'placeholder': 'Zone'
                 }),
             'postal_code': forms.TextInput(
                 attrs={
@@ -109,7 +111,7 @@ class unitForm(forms.ModelForm):
                     'class': 'form-control',
                 }),
             'init_date': forms.DateInput(
-                format=('%d-%m-%Y'),
+                format=('%Y-%m-%d'),
                 attrs={
                     'placeholder': 'dd/mm/aaaa',
                     'id': 'init_date',
@@ -120,6 +122,7 @@ class unitForm(forms.ModelForm):
                     'placeholder': 'Unit ...',
                     'class': 'form-control',
                     'id': 'number'
+
                 }),
             'flat': forms.TextInput(
                 attrs={
@@ -138,14 +141,14 @@ class unitForm(forms.ModelForm):
                     'class': 'form-control',
                 }),
             'expiration_date': forms.DateInput(
-                format=('%d-%m-%Y'),
+                format=('%Y-%m-%d'),
                 attrs={
                     'placeholder': 'dd/mm/aaaa',
                     'id': 'expiration_date',
                     'class': 'form-control',
                 }),
             'renovation_date': forms.DateInput(
-                format=('%d-%m-%Y'),
+                format=('%Y-%m-%d'),
                 attrs={
                     'placeholder': 'dd/mm/aaaa',
                     'id': 'renovation_date',
@@ -209,5 +212,42 @@ class commonExpensesLinesForm(forms.ModelForm):
                 attrs={
                     'id': 'amount',
                     'class': 'form-control',
+                }),
+        }
+
+
+class GarageForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(GarageForm, self).__init__(*args, **kwargs)
+        self.fields['building'].queryset = Building.objects.filter(state=True)
+
+    class Meta:
+        model = Garage
+        fields = ['name', 'total_amount', 'building', 'payment_date']
+        labels = {
+            'name': 'Name',
+            'building': 'Building',
+            'total_amount': 'Amount',
+            'payment_date': 'Date',
+        }
+        widgets = {
+            'name': forms.TextInput(
+                attrs={
+                    'placeholder': 'Name ...',
+                    'id': 'name',
+                    'class': 'form-control',
+                }),
+            'total_amount': forms.NumberInput(
+                attrs={
+                    'id': 'total_amount',
+                    'class': 'form-control',
+                }),
+            'payment_date': forms.DateInput(
+                format=('%d-%m-%Y'),
+                attrs={
+                    'placeholder': 'dd/mm/aaaa',
+                    'class': 'form-control',
+                    'id': 'payment_date_g'
                 }),
         }

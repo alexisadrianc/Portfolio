@@ -24,9 +24,9 @@ class Building(models.Model):
     description = models.CharField(max_length=225, blank=True, null=True)
     address = models.CharField(max_length=225, blank=True, null=True)
     address2 = models.CharField(max_length=225, blank=True, null=True)
-    city = models.CharField(max_length=100, blank=True, null=True)
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, blank=True, null=True)
     postal_code = models.DecimalField(max_digits=5, decimal_places=0, blank=True, null=True)
-    region = models.CharField(max_length=100, blank=True, null=True)
+    region = models.ForeignKey(State, on_delete=models.SET_NULL, blank=True, null=True)
     unit_qty = models.DecimalField(max_digits=2, decimal_places=0)
     amenities = models.BooleanField(blank=True, null=True)
     type_resource = models.ForeignKey(Classification, blank=True, null=True, on_delete=models.CASCADE)
@@ -66,6 +66,7 @@ def remove_relational_resources(sender, instance, **kwargs):
             rec.type_resource.remove(classification)
 post_save.connect(remove_relational_resources, sender=Classification)
 
+
 class Unit(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, blank=True, null=True)
@@ -99,16 +100,15 @@ class Unit(models.Model):
     def __str__(self):
         return self.name
 
-    @property
-    def apartment(self):
-        apartment = None
+    def save(self, *args, **kwargs):
         if self.number != 0 and self.flat != None:
             if self.number < 10:
                 apartment = f'{self.flat}0{self.number}'
             else:
                 apartment = f'{self.flat}{self.number}'
             self.name = apartment
-            return apartment
+        super(Unit, self).save(*args, **kwargs)
+
 
 def remove_relational_building(sender, instance, **kwargs):
     if instance.state is False:
@@ -186,3 +186,38 @@ def remove_relational_common_expenses(sender, instance, **kwargs):
         for rec in commonExpensesLines:
             rec.common_expenses.remove(commonExpenses)
 post_save.connect(remove_relational_common_expenses, sender=CommonExpenses)
+
+
+class Garage(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100, blank=True, null=True)
+    building = models.ForeignKey(Building, on_delete=models.CASCADE)
+    payment_date = models.DateField(blank=True, null=True)
+    state = models.BooleanField(default=True)
+    total_amount = models.IntegerField(default=1)
+
+    create_to = models.DateTimeField(auto_now_add=True)
+    update_to = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Garage'
+        verbose_name_plural = 'Garages'
+        ordering = ['create_to']
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        year = self.payment_date.strftime('%Y')
+        month = self.payment_date.strftime('%m')
+        self.name = f'{self.building}-{month}-{year}'
+        super(Garage, self).save(*args, **kwargs)
+
+
+def remove_relational_building_garage(sender, instance, **kwargs):
+    if instance.state is False:
+        building = instance.id
+        garage = Garage.objects.filter(building=building)
+        for rec in garage:
+            rec.building.remove(building)
+post_save.connect(remove_relational_building_garage, sender=Building)

@@ -28,7 +28,7 @@ class ListBuilding(ListView):
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
-            return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
+            return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
         else:
             return redirect('nerlax:building')
 
@@ -231,7 +231,7 @@ class ListCommonExpensesLines(ListView):
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
-            return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
+            return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
         else:
             return redirect('nerlax:ce-lines')
 
@@ -307,3 +307,67 @@ class DeleteCommonExpensesLines(DeleteView):
             return response
         else:
             return redirect('nerlax:create-ce')
+
+
+class ListGarage(ListView):
+    model = Garage
+    context_object_name = 'garages'
+    queryset = model.objects.filter(state=True)
+
+    def get(self, request, *args, **kwargs):
+        if request.is_ajax():
+            return HttpResponse(
+                serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
+        else:
+            return redirect('nerlax:garage')
+
+
+class CreateGarage(CreateView):
+    model = Garage
+    form_class = GarageForm
+    template_name = 'buildings/garage/create.html'
+    success_message = 'Success: Garage was created.'
+    success_url = reverse_lazy('nerlax:garage')
+
+
+class UpdateGarage(UpdateView):
+    model = Garage
+    form_class = GarageForm
+    template_name = 'buildings/garage/edit.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            form = self.form_class(request.POST, instance=self.get_object())
+            if form.is_valid():
+                form.save()
+                msj = f'{self.model.__name__} edited successful!'
+                error = "There isn't error"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} not edited !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
+        else:
+            return redirect('nerlax:garage')
+
+
+class DeleteGarage(DeleteView):
+    model = Garage
+    template_name = 'buildings/garage/delete.html'
+
+    def delete(self, request, *args, **kwargs):
+        if request.is_ajax():
+            object = self.get_object()
+            object.state = False
+            object.save()
+            msj = f'{self.model.__name__} delete successful!'
+            error = "There isn't error"
+            response = JsonResponse({'msj': msj, 'error': error})
+            response.status_code = 201
+            return response
+        else:
+            return redirect('nerlax:garage')
