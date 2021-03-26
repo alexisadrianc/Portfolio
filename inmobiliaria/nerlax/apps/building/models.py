@@ -145,7 +145,7 @@ class CommonExpenses(models.Model):
 
     def __str__(self):
         date = self.payment_date.strftime('%m/%Y')
-        return f'CE/{self.building},{date}'
+        return f'{self.building}-{date}'
 
     class Meta:
         verbose_name_plural = 'Common Expenses'
@@ -213,7 +213,7 @@ class Garage(models.Model):
 
     def save(self, *args, **kwargs):
         date = self.payment_date.strftime('%m/%Y')
-        self.name = f'GA/{self.building}-{date}'
+        self.name = f'{self.building}-{date}'
         super(Garage, self).save(*args, **kwargs)
 
 
