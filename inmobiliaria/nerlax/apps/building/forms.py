@@ -251,3 +251,58 @@ class GarageForm(forms.ModelForm):
                     'id': 'payment_date_g'
                 }),
         }
+
+    # def clean_building(self):
+    #     building = self.cleaned_data.get('building')
+    #     date = self.cleaned_data.get('payment_date')
+    #     if building != "":
+    #         if date != "":
+    #             for instance in Garage.objects.all():
+    #                 if instance.building == building:
+    #                     raise forms.ValidationError("There is a garage with this building"+building+"and this date"+date)
+    #         return building
+    #     raise forms.ValidationError("This field cannot be left blank")
+    #
+    # def clean_payment_date(self):
+    #     payment_date = self.cleaned_data.get('payment_date')
+    #     building = self.cleaned_data.get('building')
+    #     if payment_date != "":
+    #         if building != "":
+    #             for instance in Garage.objects.all():
+    #                 if instance.building == building:
+    #                     raise forms.ValidationError(
+    #                         "There is a garage with this building" + building + "and this date" + payment_date)
+    #         return payment_date
+    #     raise forms.ValidationError("This field cannot be left blank")
+    #
+    # def clean_total_amount(self):
+    #     amount = self.cleaned_data.get('total_amount')
+    #     if amount > 0:
+    #         return amount
+    #     raise forms.ValidationError("The value can not be less than 0 ")
+
+
+class GarageLinesForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(GarageLinesForm, self).__init__(*args, **kwargs)
+        self.fields['garage'].queryset = Garage.objects.filter(state=True)
+        self.fields['apartment'].queryset = Unit.objects.filter(state=True)
+
+    class Meta:
+        model = GarageLines
+        fields = ['amount', 'apartment', 'is_paid', 'voucher', 'garage']
+        labels = {
+            'amount': 'Amount',
+            'apartment': 'Apartment',
+            'is_paid': 'Is paid',
+            'voucher': 'Voucher',
+            'garage': 'Garage'
+        }
+        widgets = {
+            'amount': forms.NumberInput(
+                attrs={
+                    'id': 'total_amount',
+                    'class': 'form-control',
+                }),
+        }

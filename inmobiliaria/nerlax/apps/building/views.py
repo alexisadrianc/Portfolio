@@ -263,7 +263,7 @@ class CreateCommonExpensesLines(CreateView):
                 response.status_code = 400
                 return response
         else:
-            return redirect('nerlax:ce-lines')
+            return redirect('nerlax:create-ce')
 
 
 class UpdateCommonExpensesLines(UpdateView):
@@ -371,3 +371,104 @@ class DeleteGarage(DeleteView):
             return response
         else:
             return redirect('nerlax:garage')
+
+
+class ListGarageLines(ListView):
+    model = GarageLines
+    context_object_name = 'lines_garages'
+    queryset = model.objects.filter(state=True)
+
+    def get(self, request, *args, **kwargs):
+        if request.is_ajax():
+            return HttpResponse(
+                serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
+        else:
+            return redirect('nerlax:create-garage')
+
+
+class ListGarageLinesSm(ListView):
+    model = GarageLines
+    context_object_name = 'garages_sm'
+    queryset = model.objects.filter(state=True)
+
+    def get(self, request, *args, **kwargs):
+        if request.is_ajax():
+            return HttpResponse(
+                serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
+        else:
+            return redirect('nerlax:garage-lines-sm')
+
+
+class CreateGarageLines(CreateView):
+    model = GarageLines
+    form_class = GarageLinesForm
+    template_name = 'buildings/garage/lines/create_lines.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            form = self.form_class(request.POST, request.FILES)
+            if form.is_valid():
+                line = GarageLines(
+                    apartment=form.cleaned_data.get('apartment'),
+                    amount=form.cleaned_data.get('amount'),
+                    garage=form.cleaned_data.get('garage'),
+                    is_paid=form.cleaned_data.get('is_paid'),
+                    voucher=form.cleaned_data.get('voucher'),
+                )
+                line.save()
+                msj = f'{self.model.__name__} created successful!'
+                error = "There isn't error"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} not created !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
+        else:
+            return redirect('nerlax:create-garage')
+
+
+class UpdateGarageLines(UpdateView):
+    model = GarageLines
+    form_class = GarageLinesForm
+    template_name = 'buildings/garage/lines/edit_lines.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            form = self.form_class(request.POST, request.FILES, instance=self.get_object())
+            if form.is_valid():
+                form.save()
+                msj = f'{self.model.__name__} edited successful!'
+                error = "There isn't error"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} not edited !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
+        else:
+            return redirect('nerlax:create-garage')
+
+
+class DeleteGarageLines(DeleteView):
+    model = GarageLines
+    template_name = 'buildings/garage/lines/delete_lines.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            object = self.get_object()
+            object.state = False
+            object.save()
+            msj = f'{self.model.__name__} delete successful!'
+            error = "There isn't error"
+            response = JsonResponse({'msj': msj, 'error': error})
+            response.status_code = 201
+            return response
+        else:
+            return redirect('nerlax:create-garage')

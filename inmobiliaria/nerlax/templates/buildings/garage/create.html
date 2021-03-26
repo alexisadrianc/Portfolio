@@ -54,11 +54,23 @@
                                         <div class="card">
                                             <div class="card-header">
                                                 <a class="btn btn-outline-primary btn-sm"
-                                                   href="#">
+                                                   href="#" onclick="addGarageLinesForm('{% url 'nerlax:create-garage-lines' %}');">
                                                     Add new element</a>
                                             </div>
                                             <div class="card-body">
+                                                <table id="garage_lines_table" class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th class="cell100 column3">Apartment</th>
+                                                        <th class="cell100 column1" style="text-align: center">Amount</th>
+                                                        <th class="cell100 column3" style="text-align: center">Is paid</th>
+                                                        <th class="cell100 column3" width="3%">Actions</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
 
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -71,6 +83,22 @@
         </div>
     </div>
 </form>
+
+<!--Wizard for create garage Lines -->
+<div class="modal fade" id="garageLinesModal" tabindex="-1"
+     aria-labelledby="garageModalLabel" aria-hidden="true">
+
+</div>
+
+<div class="modal fade" id="garageLinesModalEdit" tabindex="-1"
+     aria-labelledby="garageModalLabelEdit" aria-hidden="true">
+
+</div>
+
+<div class="modal fade" id="garageLinesModalDelete" tabindex="-1"
+     aria-labelledby="garageModalLabelDelete" aria-hidden="true">
+
+</div>
 
 {% endblock content %}
 

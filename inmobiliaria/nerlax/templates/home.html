@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" href="{% static 'base/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'building/css/util_form.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/datatables.min.css' %}">
 
     <!-- Profile  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -76,15 +77,20 @@
                             <a href="#">Monthly rent</a>
                         </li>
                         <li>
-                            <a href="{% url 'nerlax:common-expenses' %}">General common expenses</a>
-                        </li>
-                        {% endif %}
-                        <li>
-                            <a href="#">Common expenses</a>
+                            <a href="{% url 'nerlax:common-expenses' %}">Common expenses</a>
                         </li>
                         <li>
                             <a href="{% url 'nerlax:garage' %}">Garage</a>
                         </li>
+                        {% endif %}
+                        {% if request.user.user_type == '1' %}
+                        <li>
+                            <a href="#">Common expenses</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'nerlax:garage-lines-sm' %}">Garage</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </li>
                 {% if request.user.user_type == '2' %}

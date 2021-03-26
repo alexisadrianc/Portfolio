@@ -100,6 +100,9 @@ class Unit(models.Model):
     def __str__(self):
         return self.name
 
+    def natural_key(self):
+        return (self.name)
+
     def save(self, *args, **kwargs):
         if self.number != 0 and self.flat != None:
             if self.number < 10:
@@ -141,7 +144,8 @@ class CommonExpenses(models.Model):
     # update_by = models.ForeignKey(Users, blank=True, null=True, related_name='post_update', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.building},{self.payment_date}'
+        date = self.payment_date.strftime('%m/%Y')
+        return f'CE/{self.building},{date}'
 
     class Meta:
         verbose_name_plural = 'Common Expenses'
@@ -208,9 +212,8 @@ class Garage(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        year = self.payment_date.strftime('%Y')
-        month = self.payment_date.strftime('%m')
-        self.name = f'{self.building}-{month}-{year}'
+        date = self.payment_date.strftime('%m/%Y')
+        self.name = f'GA/{self.building}-{date}'
         super(Garage, self).save(*args, **kwargs)
 
 
@@ -221,3 +224,43 @@ def remove_relational_building_garage(sender, instance, **kwargs):
         for rec in garage:
             rec.building.remove(building)
 post_save.connect(remove_relational_building_garage, sender=Building)
+
+
+class GarageLines(models.Model):
+    id = models.AutoField(primary_key=True)
+    amount = models.IntegerField(default=1)
+    apartment = models.ForeignKey(Unit, on_delete=models.CASCADE)
+    is_paid = models.BooleanField(default=False)
+    voucher = models.FileField(upload_to='documents/', blank=True, null=True)
+    garage = models.ForeignKey(Garage, on_delete=models.CASCADE)
+
+    state = models.BooleanField(default=True)
+    create_to = models.DateTimeField(auto_now_add=True)
+    update_to = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Garage Line'
+        verbose_name_plural = 'Garages Lines'
+        ordering = ['create_to']
+
+    def __str__(self):
+        month = self.create_to.strftime('%m')
+        return f'{self.apartment}-{month}'
+
+
+def remove_relational_garage(sender, instance, **kwargs):
+    if instance.state is False:
+        garage_id = instance.id
+        lines = GarageLines.objects.filter(garage=garage_id)
+        for rec in lines:
+            rec.garage.remove(garage_id)
+post_save.connect(remove_relational_garage, sender=Garage)
+
+
+def remove_relational_apartment(sender, instance, **kwargs):
+    if instance.state is False:
+        apartment_id = instance.id
+        lines = GarageLines.objects.filter(apartment=apartment_id)
+        for rec in lines:
+            rec.apartment.remove(apartment_id)
+post_save.connect(remove_relational_garage, sender=Unit)

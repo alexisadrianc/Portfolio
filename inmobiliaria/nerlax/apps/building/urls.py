@@ -31,6 +31,12 @@ urlpatterns = [
     path('create_garage/', login_required(CreateGarage.as_view()), name='create-garage'),
     path('update_garage/<int:pk>', login_required(UpdateGarage.as_view()), name='update-garage'),
     path('delete_garage/<int:pk>', login_required(DeleteGarage.as_view()), name='delete-garage'),
+
+    path('list_garage_lines/', login_required(ListGarageLines.as_view()), name='list-garage-lines'),
+    path('list_garage_lines_sm/', login_required(ListGarageLinesSm.as_view()), name='list-garage-lines-sm'),
+    path('create_garage_lines/', login_required(CreateGarageLines.as_view()), name='create-garage-lines'),
+    path('update_garage_lines/<int:pk>', login_required(UpdateGarageLines.as_view()), name='update-garage-lines'),
+    path('delete_garage_lines/<int:pk>', login_required(DeleteGarageLines.as_view()), name='delete-garage-lines'),
 ]
 
 urlpatterns += [
@@ -39,4 +45,6 @@ urlpatterns += [
     path('common-expenses/', login_required(TemplateView.as_view(template_name='buildings/common_expenses.html')), name='common-expenses'),
     path('ce_lines/', login_required(TemplateView.as_view(template_name='buildings/common_expenses/create.html')), name='ce-lines'),
     path('garage/', login_required(TemplateView.as_view(template_name='buildings/garage.html')), name='garage'),
+    path('garage_lines/', login_required(TemplateView.as_view(template_name='buildings/garage/create.html')), name='garage-lines'),
+    path('garage_lines_sm/', login_required(TemplateView.as_view(template_name='buildings/garage/lines/list_lines.html')), name='garage-lines-sm'),
 ]
