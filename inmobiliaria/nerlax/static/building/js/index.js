@@ -127,23 +127,30 @@ function addSupplier_form(url){
     });
 }
 
-//$("#id_region").change(function(){
-//    const region = $(this).val();
-//    $.ajax({
-//        url: "/nerlax/create/",
-//        data: {
-//            'region': region
-//        },
-//        success: function(data){
-//        let html_data = '<option value="">--------</option>';
-//        data.forEach(function(city){
-//            html_data += `<option value="${city.id}">${city.name}</option>`
-//        });
-//        console.log(html_data);
-//        $("#id_city").html(html_data);
-//        }
-//    })
-//})
+$("#id_region").change(function(){
+    const region = $(this).val();
+    const upd = $("#edit_building_form");
+    const crear = $("#form-create-building");
+    if (upd.length > 0){
+        formulario = upd;
+    }else{
+        formulario =crear;
+    }
+    const url = formulario.attr("data-cities-url")
+    $.ajax({
+        url: url,
+        data: {
+            'region': region
+        },
+        success: function(data){
+            let html_data = '<option value="">--------</option>';
+            data.forEach(function(city){
+                html_data += `<option value="${city.id}">${city.name}</option>`
+            });
+            $("#id_city").html(html_data);
+        }
+    })
+})
 
 //Unit
 var $ = jQuery.noConflict()

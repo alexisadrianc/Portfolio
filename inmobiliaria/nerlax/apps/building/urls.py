@@ -16,6 +16,7 @@ urlpatterns = [
     path('create/', login_required(CreateBuilding.as_view()), name='create-building'),
     path('update/<int:pk>', login_required(UpdateBuilding.as_view()), name='update-building'),
     path('delete/<int:pk>', login_required(DeleteBuilding.as_view()), name='delete-building'),
+    path('load_cities/', login_required(load_cities), name='load-cities'),
 
     path('list_ce/', login_required(ListCommonExpenses.as_view()), name='list-ce'),
     path('create_ce/', login_required(CreateCommonExpenses.as_view()), name='create-ce'),

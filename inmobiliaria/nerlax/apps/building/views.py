@@ -84,6 +84,12 @@ class DeleteBuilding(DeleteView):
             return redirect('nerlax:building')
 
 
+def load_cities(request):
+    region_id = request.GET.get('region')
+    cities = City.objects.filter(state=region_id)
+    return JsonResponse(list(cities.values('id', 'name')), safe=False)
+
+
 class ListSupplier(ListView):
     model = Supplier
     context_object_name = 'supplier'
