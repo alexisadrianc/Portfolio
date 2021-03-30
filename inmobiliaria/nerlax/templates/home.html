@@ -93,10 +93,18 @@
                         {% endif %}
                     </ul>
                 </li>
-                {% if request.user.user_type == '2' %}
+
                 <li>
-                    <a href="#">Reports</a>
+                    <a href="#Report" data-toggle="collapse" aria-expanded="false"
+                       class="dropdown-toggle">Reports</a>
+                    <ul class="collapse list-unstyled" id="Report">
+                        <li>
+                            <a href="#" onclick="ceReportModalForm('{% url 'reports:report-ce' %}');">Common
+                                expenses</a>
+                        </li>
+                    </ul>
                 </li>
+                {% if request.user.user_type == '2' %}
                 <li>
                     <a href="#settingSubmenu" data-toggle="collapse"
                        aria-expanded="false"
@@ -260,28 +268,35 @@
             {% block content %}
 
             {% endblock content %}
+            <div class="modal fade" id="ceReportModal" tabindex="-1"
+                 aria-labelledby="ceReportModalLabel" aria-hidden="true">
+
+            </div>
         </div>
         <footer class="footer">
             <div class="container-fluid">
                 <div class="row text-muted">
-						<div class="col-6 text-left">
-                            <ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Privacy</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Terms of Service</a>
-								</li>
-							</ul>
-                        </div>
+                    <div class="col-6 text-left">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a class="text-muted" href="#">Privacy</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="text-muted" href="#">Terms of Service</a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="col-6 text-right">
-                        &copy; <script>
+                        &copy;
+                        <script>
                         document.write(new Date().getFullYear());
-                        </script> - <a href="#" target="_blank">nerlax.com</a>
+
+                        </script>
+                        - <a href="#" target="_blank">nerlax.com</a>
                     </div>
                 </div>
             </div>
-    </footer>
+        </footer>
     </div>
 </div>
 <script src="{% static 'base/js/jquery-3.6.0.min.js' %}"></script>
@@ -292,7 +307,7 @@
 <script src="{% static 'base/js/jquery-ui-1.12.1/jquery-ui.min.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
+<script src="{% static 'reports/js/index.js'%}"></script>
 
 {% block extrajs %}
 {% endblock extrajs %}

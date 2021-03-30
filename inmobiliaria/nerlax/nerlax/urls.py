@@ -27,6 +27,7 @@ urlpatterns = [
     path('home_client/', login_required(HomeClient.as_view()), name='home_client'),
     path('home_employee/', login_required(HomeEmployee.as_view()), name='home_employee'),
     path('settings/', include(('apps.settings.urls', 'settings'))),
+    path('reports/', include(('apps.reports.urls', 'reports'))),
     path('nerlax/', include(('apps.building.urls', 'nerlax'))),
 ]
 
