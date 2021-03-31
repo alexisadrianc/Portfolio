@@ -135,6 +135,33 @@ class DeleteActivityType(DeleteView):
             return redirect('settings:activity-type')
 
 
+def UploadActivityType(request):
+    template_name = 'settings/import/import_activity.html'
+
+    prompt = {
+        'order': 'Order of the CSV should by Name, Description'
+    }
+
+    if request.method == 'GET':
+        return render(request, template_name, prompt)
+
+    csv_files = request.FILES['file_activity']
+
+    if not csv_files.name.endswith('.csv'):
+        return HttpResponse("This is not a csv file")
+
+    data_set = csv_files.read().decode('UTF-8')
+    io_string = io.StringIO(data_set)
+    next(io_string)
+    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+        _, created = ActivityType.objects.update_or_create(
+            name=column[0],
+            description=column[1],
+        )
+    messages.success(request, 'Your csv file has been imported successfully =)', extra_tags='alert-success')
+    return HttpResponseRedirect(reverse_lazy('settings:activity-type'))
+
+
 # Classifications
 class ListClassification(ListView):
     model = Classification
@@ -198,6 +225,33 @@ class DeleteClassifications(DeleteView):
         else:
             return redirect('settings:classification')
 
+
+def UploadClassification(request):
+    template_name = 'settings/import/import_classification.html'
+
+    prompt = {
+        'order': 'Order of the CSV should by Name, Description'
+    }
+
+    if request.method == 'GET':
+        return render(request, template_name, prompt)
+
+    csv_files = request.FILES['file_classification']
+
+    if not csv_files.name.endswith('.csv'):
+        return HttpResponse("This is not a csv file")
+
+    data_set = csv_files.read().decode('UTF-8')
+    io_string = io.StringIO(data_set)
+    next(io_string)
+    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+        _, created = Classification.objects.update_or_create(
+            name=column[0],
+            description=column[1],
+        )
+    messages.success(request, 'Your csv file has been imported '
+                              'successfully =)', extra_tags='alert-success')
+    return HttpResponseRedirect(reverse_lazy('settings:classification'))
 
 # Services types
 class ListServices(ListView):

@@ -14,6 +14,7 @@ urlpatterns = [
     path('create-activity/', login_required(CreateActivityType.as_view()), name='create-activity'),
     path('update-activity/<int:pk>', login_required(UpdateActivityType.as_view()), name='edit-activity'),
     path('delete-activity/<int:pk>', login_required(DeleteActivityType.as_view()), name='delete-activity'),
+    path('import-activity/', login_required(UploadActivityType), name='import-activity'),
 
     path('kanban/', login_required(KanbanSupplier.as_view()), name='kanban-supplier'),
     path('list-supplier/', login_required(ListSupplier.as_view()), name='list-supplier'),
@@ -25,6 +26,7 @@ urlpatterns = [
     path('create-classification/', login_required(CreateClassifications.as_view()), name='create-classification'),
     path('update-classification/<int:pk>', login_required(UpdateClassifications.as_view()), name='edit-classification'),
     path('delete-classification/<int:pk>', login_required(DeleteClassifications.as_view()), name='delete-classification'),
+    path('import-classification/', login_required(UploadClassification), name='import-classification'),
 
     path('list-services/', login_required(ListServices.as_view()), name='list-services'),
     path('create-services/', login_required(CreateServices.as_view()), name='create-services'),
