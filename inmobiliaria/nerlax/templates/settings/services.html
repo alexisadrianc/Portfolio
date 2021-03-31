@@ -1,9 +1,6 @@
 {% extends 'home.html' %}
 {% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'users/css/datatables.min.css' %}">
-{% endblock extra_css %}
 {% block content %}
 <div class="container-title">
     <h1 class="h3 mb-3">Services types</h1>
@@ -13,9 +10,9 @@
     <a href="{% url 'settings:create-services' %}" class="btn btn-primary">
         Create
     </a>
-    <button type="button" class="btn btn-outline-secondary">
+    <a href="{% url 'settings:import-services' %}" class="btn btn-outline-secondary">
         Import
-    </button>
+    </a>
 
 </div>
 <br/>

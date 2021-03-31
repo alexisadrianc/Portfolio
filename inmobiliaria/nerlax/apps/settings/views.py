@@ -317,6 +317,35 @@ class DeleteServices(DeleteView):
         else:
             return redirect('settings:services')
 
+
+def UploadServices(request):
+    template_name = 'settings/import/city_import.html'
+
+    prompt = {
+        'order': 'Order of the CSV should by Name, Supplier'
+    }
+
+    if request.method == 'GET':
+        return render(request, template_name, prompt)
+
+    csv_files = request.FILES['file_services']
+
+    if not csv_files.name.endswith('.csv'):
+        return HttpResponse("This is not a csv file")
+
+    data_set = csv_files.read().decode('UTF-8')
+    io_string = io.StringIO(data_set)
+    next(io_string)
+    for column in csv.reader(io_string, delimiter=',', quotechar="|"):
+        supplier_id = Supplier.objects.get(nro_documento=column[1])
+        _, created = Services.objects.update_or_create(
+            name=column[0],
+            supplier=supplier_id,
+        )
+    messages.success(request, 'Your csv file has been imported successfully =)', extra_tags='alert-success')
+    return HttpResponseRedirect(reverse_lazy('settings:services'))
+
+
 # Supplier
 class KanbanSupplier(ListView):
     model = Supplier

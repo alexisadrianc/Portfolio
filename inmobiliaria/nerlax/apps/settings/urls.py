@@ -32,6 +32,7 @@ urlpatterns = [
     path('create-services/', login_required(CreateServices.as_view()), name='create-services'),
     path('update-services/<int:pk>', login_required(UpdateServices.as_view()), name='edit-services'),
     path('delete-services/<int:pk>', login_required(DeleteServices.as_view()), name='delete-services'),
+    path('import-services/', login_required(UploadServices), name='import-services'),
 
     path('list-state/', login_required(ListState.as_view()), name='list-state'),
     path('create-state/', login_required(CreateState.as_view()), name='create-state'),
