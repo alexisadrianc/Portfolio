@@ -16,6 +16,9 @@ class State(models.Model):
         verbose_name = 'State'
         verbose_name_plural = 'States'
         ordering = ['name']
+        constraints = [
+            models.UniqueConstraint(fields=['name', 'code'], name='unique name_code')
+        ]
 
     def __str__(self):
        return self.name
@@ -28,7 +31,7 @@ class City(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=150)
     state = models.ForeignKey(State, on_delete=models.CASCADE)
-    code = models.CharField(max_length=3, blank=True, null=True)
+    code = models.CharField(unique=True, max_length=3, blank=True, null=True)
     active = models.BooleanField(default=True)
     create_to = models.DateTimeField(auto_now_add=True)
     update_to = models.DateTimeField(auto_now=True)
@@ -37,6 +40,9 @@ class City(models.Model):
         verbose_name = 'City'
         verbose_name_plural = 'Cities'
         ordering = ['name']
+        constraints = [
+            models.UniqueConstraint(fields=['name', 'state'], name='unique name_state')
+        ]
 
     def __str__(self):
        return self.name
@@ -56,7 +62,7 @@ post_save.connect(remove_ralational_state, sender=State)
 
 class Classification(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(unique=True, max_length=100)
     description = models.CharField(max_length=225, blank=True, null=True)
     state = models.BooleanField(default=True)
     create_to = models.DateTimeField(auto_now_add=True)
@@ -69,13 +75,14 @@ class Classification(models.Model):
         verbose_name_plural = 'Classifications'
         ordering = ['create_to']
 
+
     def __str__(self):
         return self.name
 
 
 class ActivityType(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(unique=True, max_length=100)
     description = models.CharField(max_length=250, blank=True, null=True)
     state = models.BooleanField(default=True)
     create_to = models.DateTimeField(auto_now_add=True)
@@ -114,6 +121,9 @@ class Supplier(models.Model):
         verbose_name = 'Supplier'
         verbose_name_plural = 'Suppliers'
         ordering = ['create_to']
+        constraints = [
+            models.UniqueConstraint(fields=['name', 'nro_documento'], name='unique name_nro_documento')
+        ]
 
     def __str__(self):
         return self.name
@@ -137,6 +147,9 @@ class Services(models.Model):
         verbose_name = 'Service'
         verbose_name_plural = 'Services'
         ordering = ['create_to']
+        constraints = [
+            models.UniqueConstraint(fields=['name', 'supplier'], name='unique name_supplier')
+        ]
 
     def __str__(self):
        return self.name
