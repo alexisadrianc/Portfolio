@@ -16,16 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.decorators import login_required
-from apps.building.views import Home, HomeClient, HomeEmployee
+from apps.building import views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('apps.base.urls', 'base'))),
-    path('home/', login_required(Home.as_view()), name='home'),
-    path('home_client/', login_required(HomeClient.as_view()), name='home_client'),
-    path('home_employee/', login_required(HomeEmployee.as_view()), name='home_employee'),
+    path('home/', login_required(views.Home), name='home'),
+    path('home_client/', login_required(views.HomeClient), name='home_client'),
+    path('home_employee/', login_required(views.HomeEmployee), name='home_employee'),
     path('settings/', include(('apps.settings.urls', 'settings'))),
     path('reports/', include(('apps.reports.urls', 'reports'))),
     path('nerlax/', include(('apps.building.urls', 'nerlax'))),

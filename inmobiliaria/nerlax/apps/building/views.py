@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import *
 from django.urls import reverse_lazy
 from django.core.serializers import serialize
 from django.views.generic import *
@@ -8,16 +8,21 @@ from .models import *
 from .forms import *
 
 
-class Home(TemplateView):
-    template_name = 'home.html'
+def Home(request):
+    if request.user.user_type == '2':
+        return redirect(reverse('home_employee'))
+    elif request.user.user_type == '1':
+        return redirect(reverse('home_client'))
+    else:
+        return redirect(reverse(template_name='home.html'))
 
 
-class HomeEmployee(TemplateView):
-    template_name = 'dashboard.html'
+def HomeEmployee(request):
+    return render(request, template_name='dashboard.html')
 
 
-class HomeClient(TemplateView):
-    template_name = 'dashboard_client.html'
+def HomeClient(request):
+    return render(request, template_name='dashboard_client.html')
 
 
 class ListBuilding(ListView):
