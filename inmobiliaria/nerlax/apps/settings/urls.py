@@ -5,10 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .views import *
 
 urlpatterns = [
-    path('list-company/', login_required(ListCompany.as_view()), name='list-company'),
-    path('create-company/', login_required(CreateCompany.as_view()), name='create-company'),
-    path('update-company/<int:pk>', login_required(UpdateCompany.as_view()), name='edit-company'),
-    path('delete-company/<int:pk>', login_required(DeleteCompany.as_view()), name='delete-company'),
+
 
     path('list_activity/', login_required(ListActivityType.as_view()), name='list-activity'),
     path('create-activity/', login_required(CreateActivityType.as_view()), name='create-activity'),
@@ -49,7 +46,6 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    path('companies/', login_required(TemplateView.as_view(template_name='settings/company.html')), name='companies'),
     path('activity_type/', login_required(TemplateView.as_view(template_name='settings/activity.html')), name='activity-type'),
     path('classification/', login_required(TemplateView.as_view(template_name='settings/classification.html')), name='classification'),
     path('services/', login_required(TemplateView.as_view(template_name='settings/services.html')), name='services'),

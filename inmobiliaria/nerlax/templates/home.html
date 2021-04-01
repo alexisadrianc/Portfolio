@@ -118,10 +118,10 @@
                             <ul class="collapse list-unstyled"
                                 id="userCompSubmenu">
                                 <li>
-                                    <a href="{% url 'login:users' %}">Users</a>
+                                    <a href="{% url 'base:users' %}">Users</a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'settings:companies' %}">Companies</a>
+                                    <a href="{% url 'base:companies' %}">Companies</a>
                                 </li>
                                 <li>
                                     <a href="#">Groups</a>
@@ -229,7 +229,7 @@
                             </h6>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item"
-                               href="{% url 'login:profile-users' user.pk %}">
+                               href="{% url 'base:profile-users' user.pk %}">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      width="24" height="24" viewBox="0 0 24 24"
                                      fill="none" stroke="currentColor"
@@ -242,7 +242,7 @@
                                 Profile
                             </a>
                             <a class="dropdown-item"
-                               href="{% url 'login:logout' %}">
+                               href="{% url 'base:logout' %}">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                      width="24" height="24" viewBox="0 0 24 24"
                                      fill="none" stroke="currentColor"

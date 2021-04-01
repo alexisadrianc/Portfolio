@@ -8,69 +8,6 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from .forms import *
 
 
-#Company
-class ListCompany(ListView):
-    model = Company
-    context_object_name = 'company'
-    queryset = model.objects.filter(state=True)
-
-    def get(self, request, *args, **kwargs):
-        if request.is_ajax():
-            return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
-        else:
-            return redirect('settings:companies')
-
-
-class CreateCompany(CreateView):
-    model = Company
-    form_class = CompanyForm
-    template_name = 'settings/company/create.html'
-    success_url = reverse_lazy('settings:companies')
-
-
-class UpdateCompany(UpdateView):
-    model = Company
-    form_class = CompanyForm
-    template_name = 'settings/company/edit.html'
-
-    def post(self, request, *args, **kwargs):
-        if request.is_ajax():
-            form = self.form_class(request.POST, instance=self.get_object())
-            if form.is_valid():
-                form.save()
-                msj = f'{self.model.__name__} edited successful!'
-                error = "There isn't error"
-                response = JsonResponse({'msj': msj, 'error': error})
-                response.status_code = 201
-                return response
-            else:
-                msj = f'{self.model.__name__} not edited !'
-                error = form.errors
-                response = JsonResponse({'msj': msj, 'error': error})
-                response.status_code = 400
-                return response
-        else:
-            return redirect('settings:companies')
-
-
-class DeleteCompany(DeleteView):
-    model = Company
-    template_name = 'settings/company/delete.html'
-
-    def delete(self, request, *args, **kwargs):
-        if request.is_ajax():
-            object = self.get_object()
-            object.state = False
-            object.save()
-            msj = f'{self.model.__name__} delete successful!'
-            error = "There isn't error"
-            response = JsonResponse({'msj': msj, 'error': error})
-            response.status_code = 201
-            return response
-        else:
-            return redirect('settings:companies')
-
-
 # Activity Types
 class ListActivityType(ListView):
     model = ActivityType

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.users',
+    'apps.base',
     'apps.settings',
     'apps.building',
     'apps.reports',
@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Custom Authentication
-AUTH_USER_MODEL = 'users.UserModel'
+AUTH_USER_MODEL = 'base.UserModel'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

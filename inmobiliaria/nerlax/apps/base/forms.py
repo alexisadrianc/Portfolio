@@ -154,3 +154,92 @@ class UsersForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class CompanyForm(forms.ModelForm):
+    class Meta:
+        model = Company
+        fields = ['name', 'rut_dgi', 'address', 'address2', 'city', 'postal_code',
+                  'region', 'mobile', 'email']
+        labels = {
+            'name': "Name",
+            'rut_dgi': "RUT DGI",
+            'address': "Address",
+            'address2': "Address2",
+            'city': "City",
+            'postal_code': "Postal code",
+            'region': "Zone",
+            'mobile': "Mobile",
+            'email': "Email",
+        }
+        widgets = {
+            'name': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'id': 'name',
+                }),
+            'address': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'id': 'address',
+                    'placeholder': 'Street address'
+                }),
+            'address2': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Street addres line 2',
+                    'id': 'address2',
+                }),
+            'city': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'id': 'city',
+                    'placeholder': 'City'
+                }),
+            'region': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'id': 'region',
+                    'placeholder': 'Zone'
+                }),
+            'postal_code': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Postal / zip code',
+                    'id': 'postal_code'
+                }),
+            'mobile': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'id': 'mobile'
+                }),
+            'email': forms.EmailInput(
+                attrs={
+                    'class': 'form-control',
+                    'id': 'email'
+                }),
+            'rut_dgi': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'RUT',
+                    'id': 'rut_dgi'
+                }),
+        }
+
+
+class GroupForm(forms.ModelForm):
+
+    class Meta:
+        name = GroupModel
+        fields = ['name']
+        labels = {
+            'name': 'Name'
+        }
+        widgets = {
+            'name': forms.TextInput(
+                attrs={
+                    'placeholder': 'Group name ...',
+                    'id': 'name',
+                    'class': 'form-control',
+                }),
+        }

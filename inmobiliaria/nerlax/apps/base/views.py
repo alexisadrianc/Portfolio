@@ -41,7 +41,7 @@ def logoutUser(request):
 
 class UsersRegister(CreateView):
     model = UserModel
-    template_name = 'users/register.html'
+    template_name = 'base/register.html'
     form_class = RegisterUserForm
 
     def post(self, request, *args, **kwargs):
@@ -87,14 +87,14 @@ class ListUsers(ListView):
             # return HttpResponse(data, 'application/json')
             return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
         else:
-            return redirect('login:users')
+            return redirect('base:users')
 
 
 class CreateUsers(CreateView):
     model = UserModel
-    template_name = 'users/create.html'
+    template_name = 'base/user/create.html'
     form_class = UsersForm
-    success_url = reverse_lazy('login:users')
+    success_url = reverse_lazy('base:users')
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
@@ -121,13 +121,13 @@ class CreateUsers(CreateView):
                 response.status_code = 400
                 return response
         else:
-            return redirect('login:users')
+            return redirect('base:users')
 
 
 class UpdateUsers(UpdateView):
     model = UserModel
     form_class = UsersForm
-    template_name = 'users/edit.html'
+    template_name = 'base/user/edit.html'
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
@@ -146,12 +146,12 @@ class UpdateUsers(UpdateView):
                 response.status_code = 400
                 return response
         else:
-            return redirect('login:users')
+            return redirect('base:users')
 
 
 class DeleteUsers(DeleteView):
     model = UserModel
-    template_name = 'users/delete.html'
+    template_name = 'base/user/delete.html'
 
     def delete(self, request, *args, **kwargs):
         if request.is_ajax():
@@ -164,11 +164,74 @@ class DeleteUsers(DeleteView):
             response.status_code = 201
             return response
         else:
-            return redirect('login:users')
+            return redirect('base:users')
 
 
 class DetailUser(DetailView):
     model = UserModel
-    template_name = 'users/profile.html'
+    template_name = 'base/profile.html'
+
+
+#Company
+class ListCompany(ListView):
+    model = Company
+    context_object_name = 'company'
+    queryset = model.objects.filter(state=True)
+
+    def get(self, request, *args, **kwargs):
+        if request.is_ajax():
+            return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
+        else:
+            return redirect('base:companies')
+
+
+class CreateCompany(CreateView):
+    model = Company
+    form_class = CompanyForm
+    template_name = 'base/company/create.html'
+    success_url = reverse_lazy('base:companies')
+
+
+class UpdateCompany(UpdateView):
+    model = Company
+    form_class = CompanyForm
+    template_name = 'base/company/edit.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            form = self.form_class(request.POST, instance=self.get_object())
+            if form.is_valid():
+                form.save()
+                msj = f'{self.model.__name__} edited successful!'
+                error = "There isn't error"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} not edited !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
+        else:
+            return redirect('base:companies')
+
+
+class DeleteCompany(DeleteView):
+    model = Company
+    template_name = 'base/company/delete.html'
+
+    def delete(self, request, *args, **kwargs):
+        if request.is_ajax():
+            object = self.get_object()
+            object.state = False
+            object.save()
+            msj = f'{self.model.__name__} delete successful!'
+            error = "There isn't error"
+            response = JsonResponse({'msj': msj, 'error': error})
+            response.status_code = 201
+            return response
+        else:
+            return redirect('base:companies')
 
 

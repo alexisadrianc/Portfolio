@@ -1,17 +1,15 @@
 {% extends 'home.html' %}
 {% load static %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'users/css/datatables.min.css' %}">
 {% endblock extra_css %}
 
 {% block content %}
 <div class="container-title">
-    <h1 class="h3 mb-3">Company</h1>
+    <h1 class="h3 mb-3">Users</h1>
 </div>
-
 <div class="d-grid gap-2 d-md-block">
-    <a href="{% url 'settings:create-company' %}" class="btn btn-primary">
+    <a href="{% url 'base:create-users' %}" class="btn btn-primary">
         Create
     </a>
     <button type="button" class="btn btn-outline-secondary">
@@ -27,33 +25,35 @@
 
             </div>
             <div class="card-body">
-                <table id="table_companies" class="table table-bordered">
+                <table id="table_users" class="table table-bordered">
                     <thead>
                     <tr>
-                        <th class="cell100 column1" width="40%">Name</th>
-                        <th class="cell100 column4" width="20%">RUT</th>
-                        <th class="cell100 column4" width="35%">Address</th>
-                        <th class="cell100 column3">Actions</th>
+                        <th class="cell100 column1">First name</th>
+                        <th class="cell100 column4">Last name</th>
+                        <th class="cell100 column3">User</th>
+                        <th class="cell100 column4">Email</th>
+                        <th class="cell100 column4">User type</th>
+                        <th class="cell100 column4" width="3%">Actions</th>
                     </tr>
                     </thead>
                     <tbody>
 
                     </tbody>
+
                 </table>
             </div>
-
         </div>
     </div>
 </div>
-<!---->
-<div class="modal fade" id="companyDelete" tabindex="-1" aria-labelledby="companyDeleteLabel" aria-hidden="true">
+
+<div class="modal fade" id="usersModalDelete" tabindex="-1"
+     aria-labelledby="usersModalDeleteLabel" aria-hidden="true">
 
 </div>
-
 {% endblock content %}
-
 {% block extrajs %}
 <script src="{% static 'users/js/datatables.js' %}"></script>
 <script src="{% static 'users/js/datatables.min.js' %}"></script>
-<script src="{% static 'settings/js/index.js'%}"></script>
+<script src="{% static 'users/js/index.js'%}"></script>
 {% endblock extrajs %}
+

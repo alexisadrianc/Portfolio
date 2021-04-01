@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.datetime_safe import datetime
 from django.contrib.auth import get_user_model
 from ..settings.models import *
-from ..users.models import UserModel
+from ..base.models import UserModel
 from django.db.models.signals import post_save
 
 Users = get_user_model()

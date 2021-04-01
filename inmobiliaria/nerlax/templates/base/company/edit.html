@@ -1,14 +1,15 @@
 {% extends 'home.html' %}
 {% load static %}
+
 {% block content %}
-<form id="create_user_form" method="post" action="{% url 'login:create-users' %}">
+<form id="edit_company_form" method="post" action="{% url 'base:edit-company' object.pk %}">
     {% csrf_token %}
     <div class="container-title">
-        <h1 class="h3 mb-3">Create users</h1>
+        <h1 class="h3 mb-3">Edit {{ object }}</h1>
     </div>
     <div class="d-grid gap-2 d-md-block">
-        <button type="button" class="btn btn-primary" onclick="create_users();">Save</button>
-        <a href="{% url 'login:users' %}" class="btn btn-outline-secondary">Cancel</a>
+        <button type="button" class="btn btn-primary" onclick="update_company();">Save</button>
+        <a href="{% url 'base:companies' %}" class="btn btn-outline-secondary">Cancel</a>
     </div>
     <br/>
     <div class="container">
@@ -44,6 +45,7 @@
             </div>
             <div class="col-md-8 col-xl-9">
                 <div class="card">
+
                     <div class="card-header">
                         <div class="card-actions float-right">
                             <div class="dropdown show">
@@ -75,38 +77,50 @@
                     <div class="card-body">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <p>{{ form.first_name.label }}</p>
-                                {{ form.first_name }}
+                                <p>{{ form.name.label }}</p>
+                                {{ form.name }}
                             </div>
                             <div class="form-group col-md-6">
-                                <p>{{ form.last_name.label }}</p>
-                                {{ form.last_name }}
+                                <p>{{ form.rut_dgi.label }}</p>
+                                {{ form.rut_dgi }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <p>{{ form.email.label }}</p>
-                            {{ form.email }}
+                            <p>{{ form.address.label }}</p>
+                            {{ form.address }}
                         </div>
                         <div class="form-group">
-                            <p>{{ form.username.label }}</p>
-                            {{ form.username }}
+                            <p>{{ form.address2.label }}</p>
+                            {{ form.address2 }}
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <p>{{ form.password.label }}</p>
-                                {{ form.password }}
+                                <p>{{ form.region.label }}</p>
+                                {{ form.region }}
                             </div>
                             <div class="form-group col-md-4">
-                                <p>{{ form.password2.label }}</p>
-                                {{ form.password2 }}
+                                <label for="inputState">State</label>
+                                <select id="inputState" class="form-control">
+                                    <option selected="">Choose...</option>
+                                    <option>...</option>
+                                </select>
                             </div>
                             <div class="form-group col-md-2">
-                                <p>{{ form.user_type.label }}</p>
-                                {{ form.user_type }}
+                                <p>{{ form.postal_code.label }}</p>
+                                {{ form.postal_code }}
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <p>{{ form.email.label }}</p>
+                                {{ form.email }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <p>{{ form.mobile.label }}</p>
+                                {{ form.mobile }}
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -117,5 +131,5 @@
 {% block extrajs %}
 <script src="{% static 'users/js/datatables.js' %}"></script>
 <script src="{% static 'users/js/datatables.min.js' %}"></script>
-<script src="{% static 'users/js/index.js'%}"></script>
+<script src="{% static 'settings/js/index.js'%}"></script>
 {% endblock extrajs %}
