@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<form id="edit_building_form" method="post" action="{% url 'nerlax:update-building' object.pk %}" data-cities-url="{% url 'nerlax:load-cities' %}">
+<form id="edit_building_form" method="post" action="{% url 'nerlax:update-building' object.pk %}" data-cities-url="{% url 'settings:load-cities' %}">
     {% csrf_token %}
     <div class="container-title">
         <h1 class="h3 mb-3">Edit {{ object }}</h1>

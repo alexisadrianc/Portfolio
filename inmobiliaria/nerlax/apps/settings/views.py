@@ -607,7 +607,13 @@ class DeleteCity(DeleteView):
             return redirect('settings:city')
 
 
-def upload_city(request):
+def LoadCities(request):
+    region_id = request.GET.get('region')
+    cities = City.objects.filter(state=region_id)
+    return JsonResponse(list(cities.values('id', 'name')), safe=False)
+
+
+def UploadCity(request):
     template_name = 'settings/import/city_import.html'
 
     prompt = {

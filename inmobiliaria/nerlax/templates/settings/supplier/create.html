@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <form id="create_supplier_form" method="post" action="{% url 'settings:create-supplier' %}"
-      enctype="multipart/form-data">
+      enctype="multipart/form-data" data-cities-url="{% url 'settings:load-cities' %}">
     {% csrf_token %}
     <div class="container-title">
         <h1 class="h3 mb-3">Supplier</h1>
@@ -20,37 +20,57 @@
 
                     </div>
                     <div class="card-body">
-                        <div class="image">
-                            <p>{{form.logo.label}}</p>
-                            {{ form.logo }}
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-2 text-sm-left">{{form.name.label}}</p>
+                            <div class="col-sm-10">
+                                {{form.name}}
+                            </div>
                         </div>
-                        <div class="item">
-                            <p>{{form.name.label}}</p>
-                            {{form.name}}
-                        </div>
-                        <div class="item">
-                            <p>{{form.nro_documento.label}}</p>
-                            {{form.nro_documento}}
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-2 text-sm-left">{{form.nro_documento.label}}</p>
+                            <div class="col-sm-10">
+                                {{form.nro_documento}}
+                            </div>
                         </div>
 
-                        <div class="item address">
-                            <p>{{ form.address.label}}</p>
-                            <div class="street">
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-2 text-sm-left">{{ form.address.label}}</p>
+                            <div class="col-sm-10">
                                 {{ form.address }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-2 text-sm-left"></p>
+                            <div class="col-sm-10">
                                 {{ form.address2 }}
-                                {{ form.city }}
-                                <span><p style="color:white"> - </p></span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-2 text-sm-left"></p>
+                            <div class="col-sm-5">
                                 {{ form.region }}
+                            </div>
+                            <div class="col-sm-5">
+                                {{ form.city }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-2 text-sm-left"></p>
+                            <div class="col-sm-5">
                                 {{ form.postal_code }}
                             </div>
                         </div>
-                        <div class="item location">
-                            <p>{{ form.mobile.label }}</p>
-                            {{ form.mobile }}
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-2 text-sm-left">{{form.mobile.label}}</p>
+                            <div class="col-sm-10">
+                                {{form.mobile}}
+                            </div>
                         </div>
-                        <div class="item location">
-                            <p>{{ form.email.label }}</p>
-                            {{ form.email }}
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-2 text-sm-left">{{form.email.label}}</p>
+                            <div class="col-sm-10">
+                                {{form.email}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -60,25 +80,30 @@
                     <div class="card-body text-center">
                         <div class="cardheader"></div>
                         <div class="text-center">
+                            {% if form.logo.url %}
+                            {{ form.logo }}
+                            {% else %}
                             <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
                                  class="avatar img-circle img-thumbnail"
                                  alt="avatar">
                             <h4>Upload a different photo...</h4>
                             <div class="mt-2">
-                    <span class="btn btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             xmlns:xlink="http://www.w3.org/1999/xlink"
-                             aria-hidden="true" focusable="false" width="1em"
-                             height="1em"
-                             style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"
-                             preserveAspectRatio="xMidYMid meet"
-                             viewBox="0 0 24 24"><g fill="none" stroke="white"
-                                                    stroke-width="2"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"><path
-                                d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path
-                                d="M17 8l-5-5l-5 5"/><path
-                                d="M12 3v12"/></g></svg> Upload</span>
+                                {{ form.logo }}
+                                {% endif %}
+                                <!--                    <span class="btn btn-primary">-->
+                                <!--                        <svg xmlns="http://www.w3.org/2000/svg"-->
+                                <!--                             xmlns:xlink="http://www.w3.org/1999/xlink"-->
+                                <!--                             aria-hidden="true" focusable="false" width="1em"-->
+                                <!--                             height="1em"-->
+                                <!--                             style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"-->
+                                <!--                             preserveAspectRatio="xMidYMid meet"-->
+                                <!--                             viewBox="0 0 24 24"><g fill="none" stroke="white"-->
+                                <!--                                                    stroke-width="2"-->
+                                <!--                                                    stroke-linecap="round"-->
+                                <!--                                                    stroke-linejoin="round"><path-->
+                                <!--                                d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path-->
+                                <!--                                d="M17 8l-5-5l-5 5"/><path-->
+                                <!--                                d="M12 3v12"/></g></svg> Upload</span>-->
                             </div>
                         </div>
                     </div>

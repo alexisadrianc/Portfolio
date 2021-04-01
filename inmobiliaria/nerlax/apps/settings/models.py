@@ -1,7 +1,57 @@
 from django.db import models
 from django.db.models.signals import post_save
 
+
 # Create your models here.
+
+class State(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=150)
+    code = models.CharField(max_length=3, blank=True, null=True)
+    active = models.BooleanField(default=True)
+    create_to = models.DateTimeField(auto_now_add=True)
+    update_to = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'State'
+        verbose_name_plural = 'States'
+        ordering = ['name']
+
+    def __str__(self):
+       return self.name
+
+    def natural_key(self):
+        return (self.name)
+
+
+class City(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=150)
+    state = models.ForeignKey(State, on_delete=models.CASCADE)
+    code = models.CharField(max_length=3, blank=True, null=True)
+    active = models.BooleanField(default=True)
+    create_to = models.DateTimeField(auto_now_add=True)
+    update_to = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'City'
+        verbose_name_plural = 'Cities'
+        ordering = ['name']
+
+    def __str__(self):
+       return self.name
+
+    def natural_key(self):
+        return (self.name)
+
+
+def remove_ralational_state(sender, instance, **kwargs):
+    if instance.active == False:
+        state = instance.id
+        city = State.objects.filter(state=state)
+        for rec in city:
+            rec.state.remove(state)
+post_save.connect(remove_ralational_state, sender=State)
 
 
 class Company(models.Model):
@@ -70,9 +120,9 @@ class Supplier(models.Model):
     name = models.CharField(max_length=150)
     address = models.CharField(max_length=225, blank=True, null=True)
     address2 = models.CharField(max_length=225, blank=True, null=True)
-    city = models.CharField(max_length=100, blank=True, null=True)
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, blank=True, null=True)
     postal_code = models.DecimalField(max_digits=5, decimal_places=0, blank=True, null=True)
-    region = models.CharField(max_length=100, blank=True, null=True)
+    region = models.ForeignKey(State, on_delete=models.SET_NULL, blank=True, null=True)
     mobile = models.CharField(max_length=11, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
     nro_documento = models.CharField(max_length=15)
@@ -126,54 +176,5 @@ def remove_ralational_supplier(sender, instance, **kwargs):
             rec.supplier.remove(supplier)
 post_save.connect(remove_ralational_supplier, sender=Supplier)
 
-
-class State(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=150)
-    code = models.CharField(max_length=3, blank=True, null=True)
-    active = models.BooleanField(default=True)
-    create_to = models.DateTimeField(auto_now_add=True)
-    update_to = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name = 'State'
-        verbose_name_plural = 'States'
-        ordering = ['name']
-
-    def __str__(self):
-       return self.name
-
-    def natural_key(self):
-        return (self.name)
-
-
-class City(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=150)
-    state = models.ForeignKey(State, on_delete=models.CASCADE)
-    code = models.CharField(max_length=3, blank=True, null=True)
-    active = models.BooleanField(default=True)
-    create_to = models.DateTimeField(auto_now_add=True)
-    update_to = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name = 'City'
-        verbose_name_plural = 'Cities'
-        ordering = ['name']
-
-    def __str__(self):
-       return self.name
-
-    def natural_key(self):
-        return (self.name)
-
-
-def remove_ralational_state(sender, instance, **kwargs):
-    if instance.active == False:
-        state = instance.id
-        city = State.objects.filter(state=state)
-        for rec in city:
-            rec.state.remove(state)
-post_save.connect(remove_ralational_state, sender=State)
 
 

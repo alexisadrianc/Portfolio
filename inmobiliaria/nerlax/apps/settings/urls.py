@@ -44,7 +44,8 @@ urlpatterns = [
     path('create-city/', login_required(CreateCity.as_view()), name='create-city'),
     path('update-city/<int:pk>', login_required(UpdateCity.as_view()), name='edit-city'),
     path('delete-city/<int:pk>', login_required(DeleteCity.as_view()), name='delete-city'),
-    path('import-city/', login_required(upload_city), name='import-city'),
+    path('load_cities/', login_required(LoadCities), name='load-cities'),
+    path('import-city/', login_required(UploadCity), name='import-city'),
 ]
 
 urlpatterns += [

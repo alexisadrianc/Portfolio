@@ -74,6 +74,20 @@ class CompanyForm(forms.ModelForm):
 
 
 class SupplierForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(SupplierForm, self).__init__(*args, **kwargs)
+        self.fields['city'].queryset = City.objects.none()
+        if 'region' in self.data:
+            try:
+                region_id = int(self.data.get('region'))
+                self.fields['city'].queryset = City.objects.filter(
+                    state=region_id).order_by('name')
+            except (ValueError, TypeError):
+                pass
+        elif self.instance.pk:
+            self.fields['city'].queryset = self.instance.region.city_set.order_by('name')
+
     class Meta:
         model = Supplier
         fields = ['name', 'nro_documento', 'logo', 'address', 'address2', 'city',
@@ -94,41 +108,40 @@ class SupplierForm(forms.ModelForm):
             'name': forms.TextInput(
                 attrs={
                     'id': 'name',
+                    'class': 'form-control',
                 }),
             'address': forms.TextInput(
                 attrs={
-                    'class': 'street street-item',
                     'id': 'address',
-                    'placeholder': 'Street address'
+                    'placeholder': 'Street address',
+                    'class': 'form-control',
                 }),
             'address2': forms.TextInput(
                 attrs={
-                    'class': 'street street-item',
                     'placeholder': 'Street addres line 2',
                     'id': 'address2',
-                }),
-            'city': forms.TextInput(
-                attrs={
-                    'id': 'city',
-                    'placeholder': 'City'
-                }),
-            'region': forms.TextInput(
-                attrs={
-                    'id': 'region',
-                    'placeholder': 'Region'
+                    'class': 'form-control',
                 }),
             'postal_code': forms.TextInput(
                 attrs={
                     'placeholder': 'Postal / zip code',
-                    'id': 'postal_code'
+                    'id': 'postal_code',
+                    'class': 'form-control',
                 }),
             'mobile': forms.TextInput(
                 attrs={
-                    'id': 'mobile'
+                    'id': 'mobile',
+                    'class': 'form-control',
                 }),
             'nro_documento': forms.TextInput(
                 attrs={
-                    'id': 'nro_documento'
+                    'id': 'nro_documento',
+                    'class': 'form-control',
+                }),
+            'email': forms.EmailInput(
+                attrs={
+                    'id': 'email',
+                    'class': 'form-control',
                 }),
         }
 
@@ -145,7 +158,7 @@ class ActivityTypeForm(forms.ModelForm):
             'name': forms.TextInput(
                 attrs={
                     'id': 'name',
-                    'class': 'form-control mb-3',
+                    'class': 'form-control',
                 }),
             'description': forms.Textarea(
                 attrs={
