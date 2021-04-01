@@ -235,3 +235,64 @@ class DeleteCompany(DeleteView):
             return redirect('base:companies')
 
 
+class ListRol(ListView):
+    model = Rol
+    context_object_name = 'roles'
+    queryset = model.objects.filter(state=True)
+
+    def get(self, request, *args, **kwargs):
+        if request.is_ajax():
+            return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
+        else:
+            return redirect('base:roles')
+
+
+class CreateRol(CreateView):
+    model = Rol
+    form_class = RolesForm
+    template_name = 'base/rol/create.html'
+    success_url = reverse_lazy('base:roles')
+
+
+class UpdateRol(UpdateView):
+    model = Rol
+    form_class = RolesForm
+    template_name = 'base/rol/edit.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            form = self.form_class(request.POST, instance=self.get_object())
+            if form.is_valid():
+                form.save()
+                msj = f'{self.model.__name__} edited successful!'
+                error = "There isn't error"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} not edited !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
+        else:
+            return redirect('base:roles')
+
+
+class DeleteRol(DeleteView):
+    model = Rol
+    template_name = 'base/rol/delete.html'
+
+    def delete(self, request, *args, **kwargs):
+        if request.is_ajax():
+            object = self.get_object()
+            object.state = False
+            object.save()
+            msj = f'{self.model.__name__} delete successful!'
+            error = "There isn't error"
+            response = JsonResponse({'msj': msj, 'error': error})
+            response.status_code = 201
+            return response
+        else:
+            return redirect('base:roles')
+

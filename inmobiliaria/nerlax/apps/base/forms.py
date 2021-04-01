@@ -227,13 +227,12 @@ class CompanyForm(forms.ModelForm):
         }
 
 
-class GroupForm(forms.ModelForm):
-
+class RolesForm(forms.ModelForm):
     class Meta:
-        name = GroupModel
-        fields = ['name']
+        model = Rol
+        fields = ['name',]
         labels = {
-            'name': 'Name'
+            'name': "Name",
         }
         widgets = {
             'name': forms.TextInput(

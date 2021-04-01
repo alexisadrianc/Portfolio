@@ -18,11 +18,17 @@ urlpatterns = [
     path('create-company/', login_required(CreateCompany.as_view()), name='create-company'),
     path('update-company/<int:pk>', login_required(UpdateCompany.as_view()), name='edit-company'),
     path('delete-company/<int:pk>', login_required(DeleteCompany.as_view()), name='delete-company'),
+
+    path('list-rol/', login_required(ListRol.as_view()), name='list-rol'),
+    path('create-rol/', login_required(CreateRol.as_view()), name='create-rol'),
+    path('update-rol/<int:pk>', login_required(UpdateRol.as_view()), name='edit-rol'),
+    path('delete-rol/<int:pk>', login_required(DeleteRol.as_view()), name='delete-rol'),
 ]
 
 # url de vista implicitas
 urlpatterns += [
     path('users/', login_required(TemplateView.as_view(template_name='base/users.html')), name='users'),
     path('companies/', login_required(TemplateView.as_view(template_name='base/company.html')), name='companies'),
+    path('roles/', login_required(TemplateView.as_view(template_name='base/rol.html')), name='roles'),
 
 ]

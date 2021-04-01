@@ -103,13 +103,16 @@ class Company(models.Model):
         return self.name
 
 
-class GroupModel(models.Model):
+class Rol(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField('Name', unique=True, max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+    state = models.BooleanField(default=True)
+    create_to = models.DateTimeField(auto_now_add=True)
+    update_to = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "Group"
-        verbose_name_plural = "Groups"
+        verbose_name = 'Rol'
+        verbose_name_plural = 'Roles'
 
     def __str__(self):
         return self.name

@@ -3,4 +3,4 @@ from .models import *
 
 admin.site.register(UserModel)
 admin.site.register(Company)
-admin.site.register(GroupModel)
+admin.site.register(Rol)
