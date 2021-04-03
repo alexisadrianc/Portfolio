@@ -84,12 +84,18 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <p>{{ form.email.label }}</p>
-                            {{ form.email }}
+                            <p>{{ form.company.label }}</p>
+                            {{ form.company }}
                         </div>
-                        <div class="form-group">
-                            <p>{{ form.username.label }}</p>
-                            {{ form.username }}
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <p>{{ form.email.label }}</p>
+                                {{ form.email }}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <p>{{ form.username.label }}</p>
+                                {{ form.username }}
+                            </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">

@@ -116,6 +116,25 @@ $(document).ready(function(){
     list_company();
 });
 
+function create_company(){
+    var data = new FormData($('#create_company_form').get(0));
+    $.ajax({
+        data: data,
+        url: $('#create_company_form').attr('action'),
+        type: $('#create_company_form').attr('method'),
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function(response){
+            notificationSuccess(response.msj);
+            list_company();
+        },
+        error: function(error){
+            notificationError(error.responseJSON.msj);
+        }
+    });
+}
+
 function update_company(){
     $.ajax({
         data: $('#edit_company_form').serialize(),

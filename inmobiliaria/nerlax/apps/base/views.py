@@ -188,6 +188,37 @@ class CreateCompany(CreateView):
     template_name = 'base/company/create.html'
     success_url = reverse_lazy('base:companies')
 
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            form = self.form_class(request.POST, files=request.FILES)
+            if form.is_valid():
+                company = Company(
+                    name=form.cleaned_data.get('name'),
+                    rut_dgi=form.cleaned_data.get('rut_dgi'),
+                    address=form.cleaned_data.get('address'),
+                    address2=form.cleaned_data.get('address2'),
+                    email=form.cleaned_data.get('email'),
+                    mobile=form.cleaned_data.get('mobile'),
+                    city=form.cleaned_data.get('city'),
+                    postal_code=form.cleaned_data.get('postal_code'),
+                    region=form.cleaned_data.get('region'),
+                    image=form.cleaned_data.get('image'),
+                )
+                company.save()
+                msj = f'{self.model.__name__} created successful!'
+                error = "There isn't error"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} not created !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
+        else:
+            return redirect('base:companies')
+
 
 class UpdateCompany(UpdateView):
     model = Company

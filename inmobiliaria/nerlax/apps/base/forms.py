@@ -93,7 +93,7 @@ class UsersForm(forms.ModelForm):
 
     class Meta:
         model = UserModel
-        fields = ['username', 'first_name', 'last_name', 'password', 'email', 'user_type']
+        fields = ['username', 'first_name', 'last_name', 'password', 'email', 'user_type', 'company']
         labels = {
             'username': 'User',
             'first_name': 'First name',
@@ -101,6 +101,7 @@ class UsersForm(forms.ModelForm):
             'password': 'Password',
             'email': 'Email',
             'user_type': 'User type',
+            'company': 'Company',
         }
         widgets = {
             'username': forms.TextInput(
@@ -160,7 +161,7 @@ class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = ['name', 'rut_dgi', 'address', 'address2', 'city', 'postal_code',
-                  'region', 'mobile', 'email']
+                  'region', 'mobile', 'email', 'image']
         labels = {
             'name': "Name",
             'rut_dgi': "RUT DGI",
@@ -171,6 +172,7 @@ class CompanyForm(forms.ModelForm):
             'region': "Zone",
             'mobile': "Mobile",
             'email': "Email",
+            'image': 'Logo'
         }
         widgets = {
             'name': forms.TextInput(
