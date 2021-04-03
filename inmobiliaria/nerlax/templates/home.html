@@ -45,18 +45,8 @@
                     <img src="{{ user.company.image.url }}" class="img-fluid rounded-circle mb-2" width="128" height="128"/>
                 </div>
             {% endif %}
-            <h1><a href="index.html" class="logo" style="text-align: center">{{ user.company.name }}</a></h1>
+            <h1><a href="{% url 'home' %}" class="logo" style="text-align: center">{{ user.company.name }}</a></h1>
             <ul class="list-unstyled components mb-5">
-                {% if request.user.user_type == '2' %}
-                <li>
-                    <a href="{% url 'home_employee' %}">General information</a>
-                </li>
-                {% endif %}
-                {% if request.user.user_type == '1' %}
-                <li>
-                    <a href="{% url 'home_client' %}">General information</a>
-                </li>
-                {% endif %}
                 {% if request.user.user_type == '2' %}
                 <li>
                     <a href="#ManagerSubmenu" data-toggle="collapse"
@@ -177,7 +167,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{% url 'home' %}">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink"
                                  aria-hidden="true" focusable="false"
