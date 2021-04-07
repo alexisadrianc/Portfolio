@@ -7,14 +7,15 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic import *
 from django.contrib.auth import *
+from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from .forms import *
 from .models import *
 
 
 # Create your views here.
-class Index(FormView):
-    template_name = 'index.html'
+class Login(FormView):
+    template_name = 'login.html'
     form_class = CustomAuthenticationForm
     success_url = reverse_lazy('home')
 
@@ -24,11 +25,11 @@ class Index(FormView):
         if request.user.is_authenticated:
             return HttpResponseRedirect(self.get_success_url())
         else:
-            return super(Index, self).dispatch(request, *args, **kwargs)
+            return super(Login, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         login(self.request, form.get_user())
-        return super(Index, self).form_valid(form)
+        return super(Login, self).form_valid(form)
 
 
 def logoutUser(request):
@@ -36,25 +37,17 @@ def logoutUser(request):
     return HttpResponseRedirect('/')
 
 
-class UsersRegister(CreateView):
-    model = UserModel
-    template_name = 'base/register.html'
-    form_class = RegisterUserForm
-
-    def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
+def UsersRegister(request):
+    if request.method == 'POST':
+        form = UsersForm(request.POST)
         if form.is_valid():
-            new_user = UserModel(
-                email=form.cleaned_data.get('email'),
-                username=form.cleaned_data.get('username'),
-                first_name=form.cleaned_data.get('first_name'),
-                last_name=form.cleaned_data.get('last_name'),
-            )
-            new_user.set_password(form.cleaned_data.get('password'))
-            new_user.save()
-            return redirect('login')
-        else:
-            return render(request, self.template_name, {'form': form})
+            form.save()
+            username = form.cleaned_data.get('username'),
+            messages.success(request, f'The user {username} is was registered ')
+            return redirect('/')
+    else:
+        form = UsersForm()
+    return render(request, 'base/register.html', {'form': form})
 
 
 class ListUsers(ListView):
@@ -164,9 +157,29 @@ class DeleteUsers(DeleteView):
             return redirect('base:users')
 
 
-class DetailUser(DetailView):
+class DetailUser(UpdateView):
     model = UserModel
+    form_class = UsersForm
     template_name = 'base/profile.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            form = self.form_class(request.POST, instance=self.get_object())
+            if form.is_valid():
+                form.save()
+                msj = f'{self.model.__name__} edited successful!'
+                error = "There isn't error"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} not edited !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
+        else:
+            return redirect('base:users')
 
 
 #Company

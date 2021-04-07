@@ -211,8 +211,11 @@
                         <div class="dropdown-menu dropdown-menu-right"
                              aria-labelledby="navbarDropdownUserImage">
                             <h6 class="dropdown-header d-flex align-items-center">
-                                <img class="dropdown-user-img"
-                                     src="{% static 'building/images/person_4.jpg' %}">
+                                {% if user.image %}
+                                    <img class="dropdown-user-img" src="{{user.image.url}}">
+                                {% else %}
+                                    <img class="dropdown-user-img" src="{% static 'building/images/person_4.jpg' %}">
+                                {% endif %}
                                 <div class="dropdown-user-details">
                                     <div class="dropdown-user-details-name">
                                         {{ user.first_name|add:" "|add:user.last_name }}

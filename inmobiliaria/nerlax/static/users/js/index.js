@@ -86,6 +86,12 @@ function deleteUsersForm(url){
     });
 }
 
+function changePasswordModalForm(){
+    $('#changePasswordModal').load(function(){
+        $(this).modal('show');
+    });
+}
+
 //Company
 function list_company(){
     $.ajax({

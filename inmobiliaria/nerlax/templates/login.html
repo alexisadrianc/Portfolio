@@ -98,11 +98,15 @@
 						</a>
 					</div>
 
+                {% if message %}
                 <div class="text-center p-t-10">
                     {% for message in messages %}
-                        {{message}}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{message}}
+                        </div>
                     {%endfor%}
                 </div>
+                {% endif %}
             </form>
         </div>
     </div>
@@ -126,7 +130,7 @@
 <!--===============================================================================================-->
 <script src="{% static 'login/vendor/countdowntime/countdowntime.js' %}"></script>
 <!--===============================================================================================-->
-<script src="{% static 'login/js/mains.js' %}"></script>
+<script src="{% static 'login/js/main.js' %}"></script>
 
 </body>
 </html>

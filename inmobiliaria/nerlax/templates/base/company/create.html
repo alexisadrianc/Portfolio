@@ -15,108 +15,57 @@
     <br/>
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-xl-3">
-                <div class="card mb-3">
-                    <div class="card-body text-center">
-                        <div class="cardheader"></div>
-                        <div class="text-center">
-                            {{ form.image }}
-<!--                            <h4>Upload a different photo...</h4>-->
-<!--                            <div class="mt-2">-->
-<!--                    <span class="btn btn-primary">-->
-<!--                        <svg xmlns="http://www.w3.org/2000/svg"-->
-<!--                             xmlns:xlink="http://www.w3.org/1999/xlink"-->
-<!--                             aria-hidden="true" focusable="false" width="1em"-->
-<!--                             height="1em"-->
-<!--                             style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);"-->
-<!--                             preserveAspectRatio="xMidYMid meet"-->
-<!--                             viewBox="0 0 24 24"><g fill="none" stroke="white"-->
-<!--                                                    stroke-width="2"-->
-<!--                                                    stroke-linecap="round"-->
-<!--                                                    stroke-linejoin="round"><path-->
-<!--                                d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path-->
-<!--                                d="M17 8l-5-5l-5 5"/><path-->
-<!--                                d="M12 3v12"/></g></svg> Upload</span>-->
-<!--                            </div>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8 col-xl-9">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-actions float-right">
-                            <div class="dropdown show">
-                                <a href="#" data-toggle="dropdown"
-                                   data-display="static">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         width="24" height="24" viewBox="0 0 24 24"
-                                         fill="none" stroke="currentColor"
-                                         stroke-width="2" stroke-linecap="round"
-                                         stroke-linejoin="round"
-                                         class="feather feather-more-horizontal align-middle">
-                                        <circle cx="12" cy="12" r="1"></circle>
-                                        <circle cx="19" cy="12" r="1"></circle>
-                                        <circle cx="5" cy="12" r="1"></circle>
-                                    </svg>
-                                </a>
 
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Change
-                                        Password</a>
-                                    <a class="dropdown-item" href="#">Another
-                                        action</a>
-                                    <a class="dropdown-item" href="#">Something
-                                        else here</a>
-                                </div>
-                            </div>
+            <div class="card">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        {{ form.image }}
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <p>{{ form.name.label }}</p>
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <p>{{ form.rut_dgi.label }}</p>
+                            {{ form.rut_dgi }}
                         </div>
                     </div>
-                    <div class="card-body">
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <p>{{ form.name.label }}</p>
-                                {{ form.name }}
-                            </div>
-                            <div class="form-group col-md-6">
-                                <p>{{ form.rut_dgi.label }}</p>
-                                {{ form.rut_dgi }}
-                            </div>
+                    <div class="form-group">
+                        <p>{{ form.address.label }}</p>
+                        {{ form.address }}
+                    </div>
+                    <div class="form-group">
+                        <p>{{ form.address2.label }}</p>
+                        {{ form.address2 }}
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <p>{{ form.region.label }}</p>
+                            {{ form.region }}
                         </div>
-                        <div class="form-group">
-                            <p>{{ form.address.label }}</p>
-                            {{ form.address }}
+                        <div class="form-group col-md-4">
+                            <label for="inputState">State</label>
+                            <select id="inputState" class="form-control">
+                                <option selected="">Choose...</option>
+                                <option>...</option>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <p>{{ form.address2.label }}</p>
-                            {{ form.address2 }}
+                        <div class="form-group col-md-2">
+                            <p>{{ form.postal_code.label }}</p>
+                            {{ form.postal_code }}
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <p>{{ form.region.label }}</p>
-                                {{ form.region }}
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputState">State</label>
-                                <select id="inputState" class="form-control">
-                                    <option selected="">Choose...</option>
-                                    <option>...</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-2">
-                                <p>{{ form.postal_code.label }}</p>
-                                {{ form.postal_code }}
-                            </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <p>{{ form.email.label }}</p>
+                            {{ form.email }}
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <p>{{ form.email.label }}</p>
-                                {{ form.email }}
-                            </div>
-                            <div class="form-group col-md-6">
-                                <p>{{ form.mobile.label }}</p>
-                                {{ form.mobile }}
-                            </div>
+                        <div class="form-group col-md-6">
+                            <p>{{ form.mobile.label }}</p>
+                            {{ form.mobile }}
                         </div>
                     </div>
                 </div>

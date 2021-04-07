@@ -30,8 +30,9 @@
 </head>
 
 <body>
-<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins" style="background-image: url({% static 'login/images/bg-01.jpg' %});">
-    <div class="wrapper wrapper--w680" >
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins"
+     style="background-image: url({% static 'login/images/bg-01.jpg' %});">
+    <div class="wrapper wrapper--w680">
         <div class="card card-4">
             <div class="card-body">
                 <h2 class="title">Registration Form</h2>
@@ -57,7 +58,7 @@
                         <label class="label">Username</label>
                         <div class="rs-select2 js-select-simple select--no-search">
                             <input class="input--style-4" type="text"
-                                       name="username">
+                                   name="username">
                         </div>
                     </div>
                     <div class="row row-space">
@@ -80,7 +81,7 @@
                         <label class="label">Email</label>
                         <div class="rs-select2 js-select-simple select--no-search">
                             <input class="input--style-4" type="email"
-                                       name="email">
+                                   name="email">
                         </div>
                     </div>
                     <div class="input-group">
@@ -96,10 +97,19 @@
                             <div class="select-dropdown"></div>
                         </div>
                     </div>
+
+                    <div class="alert alert-success alert-dismissible">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert-message">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
                     <div class="p-t-15">
-                        <button class="btn btn--radius-2 btn--blue"
-                                type="submit">Submit
-                        </button>
+                        <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
                     </div>
                 </form>
             </div>
@@ -113,10 +123,8 @@
 <script src="{% static 'users/vendor/select2/select2.min.js' %}"></script>
 <script src="{% static 'users/vendor/datepicker/moment.min.js' %}"></script>
 <script src="{% static 'users/vendor/datepicker/daterangepicker.js' %}"></script>
-
 <!-- Main JS-->
 <script src="{% static 'users/js/global.js' %}"></script>
-
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
 </html>
