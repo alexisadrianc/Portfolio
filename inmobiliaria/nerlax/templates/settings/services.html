@@ -2,22 +2,20 @@
 {% load static %}
 
 {% block content %}
-<div class="container-title">
+<div class="container-fluid p-0">
     <h1 class="h3 mb-3">Services types</h1>
-</div>
+    <div class="d-grid gap-2 d-md-block">
+        <a href="{% url 'settings:create-services' %}" class="btn btn-primary">
+            Create
+        </a>
+        <a href="{% url 'settings:import-services' %}" class="btn btn-outline-secondary">
+            Import
+        </a>
 
-<div class="d-grid gap-2 d-md-block">
-    <a href="{% url 'settings:create-services' %}" class="btn btn-primary">
-        Create
-    </a>
-    <a href="{% url 'settings:import-services' %}" class="btn btn-outline-secondary">
-        Import
-    </a>
-
-</div>
-<br/>
-<div class="container">
+    </div>
+    <br/>
     <div class="row">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
 
@@ -38,12 +36,13 @@
                 </div>
 
             </div>
+        </div>
     </div>
-</div>
-<!---->
-<div class="modal fade" id="servicesTypesDelete" tabindex="-1"
-     aria-labelledby="servicesTypesDeleteLabel" aria-hidden="true">
+    <!---->
+    <div class="modal fade" id="servicesTypesDelete" tabindex="-1"
+         aria-labelledby="servicesTypesDeleteLabel" aria-hidden="true">
 
+    </div>
 </div>
 
 {% endblock content %}

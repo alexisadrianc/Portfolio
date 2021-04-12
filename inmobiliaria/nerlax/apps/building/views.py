@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.core.serializers import serialize
 from django.views.generic import *
 from django.contrib import messages
-from django.http import HttpResponseRedirect, HttpResponse,JsonResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from .models import *
 from .forms import *
 
@@ -33,7 +33,8 @@ class ListBuilding(ListView):
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
-            return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
+            return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True),
+                                'application/json')
         else:
             return redirect('nerlax:building')
 
@@ -110,7 +111,8 @@ class ListUnit(ListView):
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
-            return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
+            return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True),
+                                'application/json')
         else:
             return redirect('nerlax:unit')
 
@@ -173,7 +175,8 @@ class ListCommonExpenses(ListView):
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
-            return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
+            return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True),
+                                'application/json')
         else:
             return redirect('nerlax:common-expenses')
 
@@ -236,7 +239,8 @@ class ListCommonExpensesLines(ListView):
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
-            return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
+            return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True),
+                                'application/json')
         else:
             return redirect('nerlax:ce-lines')
 
@@ -339,6 +343,14 @@ class UpdateGarage(UpdateView):
     model = Garage
     form_class = GarageForm
     template_name = 'buildings/garage/edit.html'
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        lines = list(GarageLines.objects.filter(state=True, garage=self.kwargs.get('pk')).values_list('id', 'apartment',
+                                                                                                      'amount',
+                                                                                                      'is_paid'))
+        print(lines)
+        return super(UpdateGarage, self).get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():

@@ -6,39 +6,17 @@
 {% endblock extra_css %}
 
 {% block content %}
-<div class="container-title">
+<div class="container-fluid p-0">
     <h1 class="h3 mb-3">Apartment</h1>
-    <!--    <form class="form-inline d-flex justify-content-center md-form form-sm">-->
-    <!--        <input type="text"-->
-    <!--               class="form-control bg-light border-0 small"-->
-    <!--               placeholder="Search for..." aria-label="Search"-->
-    <!--               aria-describedby="basic-addon2">-->
-    <!--        <div class="input-group-append">-->
-    <!--            <button class="btn btn-primary" type="button">-->
-    <!--                <svg xmlns="http://www.w3.org/2000/svg" width="24"-->
-    <!--                     height="24" viewBox="0 0 24 24" fill="none"-->
-    <!--                     stroke="currentColor" stroke-width="2"-->
-    <!--                     stroke-linecap="round" stroke-linejoin="round"-->
-    <!--                     class="feather feather-search align-middle">-->
-    <!--                    <circle cx="11" cy="11" r="8"></circle>-->
-    <!--                    <line x1="21" y1="21" x2="16.65"-->
-    <!--                          y2="16.65"></line>-->
-    <!--                </svg>-->
-    <!--            </button>-->
-    <!--        </div>-->
-    <!--    </form>-->
-</div>
-
-<div class="d-grid gap-2 d-md-block">
-    <a class="btn btn-primary" type="button"
-       href="{% url 'nerlax:create-unit' %}">
-        Create
-    </a>
-
-</div>
-<br/>
-<div class="container">
+    <div class="d-grid gap-2 d-md-block">
+        <a class="btn btn-primary" type="button"
+           href="{% url 'nerlax:create-unit' %}">
+            Create
+        </a>
+    </div>
+    <br/>
     <div class="row">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
 
@@ -63,12 +41,13 @@
                 </div>
 
             </div>
+        </div>
     </div>
-</div>
-<!--Wizard for create building -->
-<div class="modal fade" id="unitModalDelete" tabindex="-1"
-     aria-labelledby="unitModalDeleteLabel" aria-hidden="true">
+    <!--Wizard for create building -->
+    <div class="modal fade" id="unitModalDelete" tabindex="-1"
+         aria-labelledby="unitModalDeleteLabel" aria-hidden="true">
 
+    </div>
 </div>
 
 {% endblock content %}

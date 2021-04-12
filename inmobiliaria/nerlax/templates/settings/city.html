@@ -1,26 +1,20 @@
 {% extends 'home.html' %}
 {% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'users/css/datatables.min.css' %}">
-{% endblock extra_css %}
 {% block content %}
-<div class="container-title">
+<div class="container-fluid p-0">
     <h1 class="h3 mb-3">City</h1>
-</div>
-
-<div class="d-grid gap-2 d-md-block">
-    <a href="{% url 'settings:create-city' %}" class="btn btn-primary">
-        Create
-    </a>
-    <a href="{% url 'settings:import-city' %}" class="btn btn-outline-secondary">
-        Import
-    </a>
-
-</div>
-<br/>
-<div class="container">
+    <div class="d-grid gap-2 d-md-block">
+        <a href="{% url 'settings:create-city' %}" class="btn btn-primary">
+            Create
+        </a>
+        <a href="{% url 'settings:import-city' %}" class="btn btn-outline-secondary">
+            Import
+        </a>
+    </div>
+    <br/>
     <div class="row">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
 
@@ -43,12 +37,13 @@
                 </div>
 
             </div>
+        </div>
     </div>
-</div>
-<!---->
-<div class="modal fade" id="cityDelete" tabindex="-1"
-     aria-labelledby="cityDeleteLabel" aria-hidden="true">
+    <!---->
+    <div class="modal fade" id="cityDelete" tabindex="-1"
+         aria-labelledby="cityDeleteLabel" aria-hidden="true">
 
+    </div>
 </div>
 
 {% endblock content %}

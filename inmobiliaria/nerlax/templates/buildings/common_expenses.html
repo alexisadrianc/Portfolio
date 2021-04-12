@@ -6,19 +6,17 @@
 {% endblock extra_css %}
 
 {% block content %}
-<div class="container-title">
+
+<div class="container-fluid p-0">
     <h1 class="h3 mb-3">Common expenses</h1>
-</div>
-
-<div class="d-grid gap-2 d-md-block">
-    <a class="btn btn-primary" href="{% url 'nerlax:create-ce' %}">
-        Create
-    </a>
-
-</div>
-<br/>
-<div class="container">
+    <div class="d-grid gap-2 d-md-block">
+        <a class="btn btn-primary" href="{% url 'nerlax:create-ce' %}">
+            Create
+        </a>
+    </div>
+    <br/>
     <div class="row">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
 
@@ -41,12 +39,13 @@
                 </div>
 
             </div>
+        </div>
     </div>
-</div>
-<!--Wizard for create common Expenses -->
-<div class="modal fade" id="commonExpensesModalDelete" tabindex="-1"
-     aria-labelledby="commonExpensesModalDeleteLabel" aria-hidden="true">
+    <!--Wizard for create common Expenses -->
+    <div class="modal fade" id="commonExpensesModalDelete" tabindex="-1"
+         aria-labelledby="commonExpensesModalDeleteLabel" aria-hidden="true">
 
+    </div>
 </div>
 
 {% endblock content %}

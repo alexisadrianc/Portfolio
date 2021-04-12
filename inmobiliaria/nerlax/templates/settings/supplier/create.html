@@ -81,16 +81,12 @@
                     <div class="card-body text-center">
                         <div class="cardheader"></div>
                         <div class="text-center">
-                            {% if form.logo.url %}
-                            {{ form.logo }}
-                            {% else %}
-                            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-                                 class="avatar img-circle img-thumbnail"
-                                 alt="avatar">
+                            <img class="avatar img-thumbnail" alt="avatar" width="75%"
+                                 src={% if form.instance.logo %} "{{ supplier.logo.url }}" {% else %} "http://ssl.gstatic.com/accounts/ui/avatar_2x.png" {% endif %}/>
                             <h4>Upload a different photo...</h4>
-                            <div class="mt-2">
-                                {{ form.logo }}
-                                {% endif %}
+                                <div class="mt-2">
+                            {{ form.logo }}
+
                                 <!--                    <span class="btn btn-primary">-->
                                 <!--                        <svg xmlns="http://www.w3.org/2000/svg"-->
                                 <!--                             xmlns:xlink="http://www.w3.org/1999/xlink"-->

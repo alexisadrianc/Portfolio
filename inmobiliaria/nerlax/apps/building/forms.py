@@ -68,7 +68,6 @@ class buildingForm(forms.ModelForm):
                 attrs={
                     'id': 'description',
                     'class': 'form-control',
-                    'row': 6
                 }),
             'supplier': forms.SelectMultiple(
                 attrs={

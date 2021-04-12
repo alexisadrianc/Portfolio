@@ -11,7 +11,7 @@ Users = get_user_model()
 class Amenities(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=225, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     state = models.BooleanField(default=True)
 
     def __str__(self):
@@ -21,7 +21,7 @@ class Amenities(models.Model):
 class Building(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
-    description = models.CharField(max_length=225, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     address = models.CharField(max_length=225, blank=True, null=True)
     address2 = models.CharField(max_length=225, blank=True, null=True)
     city = models.ForeignKey(City, on_delete=models.SET_NULL, blank=True, null=True)
@@ -80,7 +80,7 @@ class Unit(models.Model):
     rent_price = models.IntegerField(default=0)
     renter = models.ForeignKey(Users, blank=True, null=True,
                                on_delete=models.CASCADE)
-    description = models.CharField(max_length=225, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     type_resource = models.ForeignKey(Classification, blank=True, null=True,
                                       on_delete=models.CASCADE)
     building_id = models.ForeignKey(Building, on_delete=models.CASCADE)
@@ -231,7 +231,7 @@ class GarageLines(models.Model):
     amount = models.IntegerField(default=1)
     apartment = models.ForeignKey(Unit, on_delete=models.CASCADE)
     is_paid = models.BooleanField(default=False)
-    voucher = models.FileField(upload_to='documents/', blank=True, null=True)
+    voucher = models.ImageField(upload_to='images/voucher/', blank=True, null=True)
     garage = models.ForeignKey(Garage, on_delete=models.CASCADE)
 
     state = models.BooleanField(default=True)

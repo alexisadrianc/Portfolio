@@ -109,14 +109,12 @@ class ClassificationForm(forms.ModelForm):
             'name': forms.TextInput(
                 attrs={
                     'id': 'name',
-                    'class': 'form-control mb-3',
+                    'class': 'form-control',
                 }),
             'description': forms.Textarea(
                 attrs={
                     'id': 'description',
                     'class': 'form-control',
-                    'rows': 4,
-                    'cols': 15
                 })
         }
 

@@ -6,6 +6,16 @@ from django.dispatch import receiver
 from ..settings.models import *
 
 
+# class Base(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     state = models.BooleanField(default=True)
+#     create_to = models.DateTimeField(auto_now_add=True)
+#     update_to = models.DateTimeField(auto_now=True)
+#
+#     class Meta:
+#         abstract = True
+
+
 class UserManagerModel(BaseUserManager):
 
     def _create_user(self, email, username, first_name, last_name, password, is_active, superuser, **extra_fields):
@@ -40,7 +50,7 @@ class Company(models.Model):
     city = models.CharField(max_length=100, blank=True, null=True)
     postal_code = models.DecimalField(max_digits=5, decimal_places=0, blank=True, null=True)
     region = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField(upload_to='images/', max_length=200, blank=True, null=True)
+    image = models.ImageField(upload_to='images/company/', max_length=200, blank=True, null=True)
     state = models.BooleanField(default=True)
     create_to = models.DateTimeField(auto_now_add=True)
     update_to = models.DateTimeField(auto_now=True)
@@ -51,6 +61,7 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class UserModel(AbstractBaseUser):
     CUSTOMER = '1'
@@ -66,7 +77,7 @@ class UserModel(AbstractBaseUser):
     email = models.EmailField('Email', max_length=254, unique=True)
     is_active = models.BooleanField(default=True)
     superuser = models.BooleanField(default=False)
-    image = models.ImageField('Image', upload_to='images/', max_length=200, blank=True, null=True)
+    image = models.ImageField('Image', upload_to='images/users/', max_length=200, blank=True, null=True)
     user_type = models.CharField(choices=USER_TYPE, max_length=1, blank=True, null=True)
     company = models.ForeignKey(Company, on_delete=models.CASCADE, blank=True, null=True)
     objects = UserManagerModel()
