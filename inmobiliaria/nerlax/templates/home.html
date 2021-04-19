@@ -39,8 +39,8 @@
     <nav id="sidebar">
         <div class="p-4 pt-5">
             {% if user.company and user.company.image.url %}
-                <div class="rounded-circle mt-2" style="text-align: center">
-                    <img src="{{ user.company.image.url }}" class="img-fluid rounded-circle mb-2" width="128" height="128"/>
+                <div class="rounded mr-2 mb-2" style="text-align: center">
+                    <img src="{{ user.company.image.url }}" class="img-fluid rounded mr-2 mb-2" width="140"/>
                 </div>
             {% endif %}
             <h1><a href="{% url 'home' %}" class="logo" style="text-align: center">{{ user.company.name }}</a></h1>

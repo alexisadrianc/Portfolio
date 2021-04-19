@@ -8537,7 +8537,7 @@ a[data-toggle="collapse"] {
 }
 
 .dropdown-menu .dropdown-header .dropdown-user-img {
-    height: 2.5rem;
+    height: auto;
     width: 2.5rem;
     margin-right: 1rem;
     border-radius: 100%;
@@ -8722,10 +8722,6 @@ position-relative {
     color: #fff;
 }
 
-.container-kanban {
-    margin-left: 0em;
-    margin-right: -12em;
-}
 .card-logo {
     width: 25%;
     padding-top: 2px;
@@ -8733,7 +8729,7 @@ position-relative {
 }
 
 .card-kanban {
-    width: 22%;
+    width: 24%;
     box-shadow: 0px 0px 1px 1px #6f6f6f;
     padding: 6px 6px;
     margin: 4px;
