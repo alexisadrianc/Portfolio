@@ -194,6 +194,13 @@ class UpdateCommonExpenses(UpdateView):
     form_class = commonExpensesForm
     template_name = 'buildings/common_expenses/edit.html'
 
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        lines = list(CommonExpensesLines.objects.filter(state=True, common_expenses=self.kwargs.get('pk')).
+                     values_list('id', 'concept', 'amount',))
+        print(lines)
+        return super(UpdateCommonExpenses, self).get(request, *args, **kwargs)
+
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
             form = self.form_class(request.POST, instance=self.get_object())
@@ -238,6 +245,10 @@ class ListCommonExpensesLines(ListView):
     queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
+        lines = list(CommonExpensesLines.objects.filter(state=True).values_list('id', 'common_expenses', 'concept', 'amount'))
+        common_expenses = list(CommonExpenses.objects.filter(state=True).values_list('id', 'total_amount'))
+        print(lines)
+        print(common_expenses)
         if request.is_ajax():
             return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True),
                                 'application/json')
