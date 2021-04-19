@@ -27,7 +27,7 @@ class buildingForm(forms.ModelForm):
             'name': 'Name',
             'address': 'Address',
             'unit_qty': 'Quantity of flat',
-            'amenities': 'It has amenities ?',
+            'amenities': 'Has it amenities ?',
             'type_resource': 'Property type',
             'supplier': 'Supplier',
             'description': 'Description',
@@ -57,7 +57,8 @@ class buildingForm(forms.ModelForm):
                 }),
             'amenities': forms.CheckboxInput(
                 attrs={
-                    'id': 'aminities'
+                    'id': 'aminities',
+                    'class': 'form-check-input',
                 }),
             'unit_qty': forms.NumberInput(
                 attrs={
@@ -87,7 +88,7 @@ class unitForm(forms.ModelForm):
     class Meta:
         model = Unit
         fields = ['number', 'meter_qty', 'flat', 'rent_price', 'renter',
-                  'init_date', 'name', 'type_resource', 'building_id',
+                  'init_date', 'name', 'type_resource', 'building_id', 'garage',
                   'renovation_date', 'expiration_date', 'description']
         labels = {
             'name': 'Name',
@@ -99,6 +100,7 @@ class unitForm(forms.ModelForm):
             'renovation_date': 'Contract renovation date',
             'renter': 'Renter',
             'building_id': 'Building',
+            'garage': 'Has it garage ?',
             'type_resource': 'Property type',
             'description': 'Description',
         }
@@ -133,6 +135,11 @@ class unitForm(forms.ModelForm):
                 attrs={
                     'id': 'meter_qty',
                     'class': 'form-control',
+                }),
+            'garage': forms.CheckboxInput(
+                attrs={
+                    'id': 'garage',
+                    'class': 'form-check-input',
                 }),
             'rent_price': forms.NumberInput(
                 attrs={

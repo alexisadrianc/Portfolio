@@ -49,12 +49,15 @@ class Building(models.Model):
     def natural_key(self):
         return (self.name)
 
+
 def remove_relational_supplier(sender, instance, **kwargs):
     if instance.state is False:
         supplier = instance.id
         building = Building.objects.filter(supplier=supplier)
         for rec in building:
             rec.supplier.remove(supplier)
+
+
 post_save.connect(remove_relational_supplier, sender=Supplier)
 
 
@@ -64,6 +67,8 @@ def remove_relational_resources(sender, instance, **kwargs):
         building = Building.objects.filter(type_resource=classification)
         for rec in building:
             rec.type_resource.remove(classification)
+
+
 post_save.connect(remove_relational_resources, sender=Classification)
 
 
@@ -84,11 +89,12 @@ class Unit(models.Model):
     type_resource = models.ForeignKey(Classification, blank=True, null=True,
                                       on_delete=models.CASCADE)
     building_id = models.ForeignKey(Building, on_delete=models.CASCADE)
+    garage = models.BooleanField(default=False)
     state = models.BooleanField(default=True)
 
     create_to = models.DateTimeField(auto_now_add=True)
     update_to = models.DateTimeField(auto_now=True)
-    
+
     # create_by = models.ForeignKey(Users, blank=True, null=True, related_name='author_post', on_delete=models.CASCADE)
     # update_by = models.ForeignKey(Users, blank=True, null=True, related_name='post_update', on_delete=models.CASCADE)
 
@@ -119,6 +125,8 @@ def remove_relational_building(sender, instance, **kwargs):
         unit = Unit.objects.filter(building_id=building)
         for rec in unit:
             rec.building_id.remove(building)
+
+
 post_save.connect(remove_relational_building, sender=Building)
 
 
@@ -128,6 +136,8 @@ def remove_relational_resources_unit(sender, instance, **kwargs):
         unit = Unit.objects.filter(type_resource=classification)
         for rec in unit:
             rec.type_resource.remove(classification)
+
+
 post_save.connect(remove_relational_resources_unit, sender=Classification)
 
 
@@ -158,6 +168,8 @@ def remove_relational_building_ce(sender, instance, **kwargs):
         commonExpenses = CommonExpenses.objects.filter(building=building)
         for rec in commonExpenses:
             rec.building.remove(building)
+
+
 post_save.connect(remove_relational_building_ce, sender=Building)
 
 
@@ -173,6 +185,8 @@ class CommonExpensesLines(models.Model):
     class Meta:
         verbose_name_plural = 'Common Expenses Lines'
         ordering = ['create_to']
+
+
 #
 def remove_relational_services(sender, instance, **kwargs):
     if instance.state is False:
@@ -180,6 +194,8 @@ def remove_relational_services(sender, instance, **kwargs):
         commonExpensesLines = CommonExpensesLines.objects.filter(concept=services)
         for rec in commonExpensesLines:
             rec.concept.remove(services)
+
+
 post_save.connect(remove_relational_services, sender=Services)
 
 
@@ -189,6 +205,8 @@ def remove_relational_common_expenses(sender, instance, **kwargs):
         commonExpensesLines = CommonExpensesLines.objects.filter(common_expenses=commonExpenses)
         for rec in commonExpensesLines:
             rec.common_expenses.remove(commonExpenses)
+
+
 post_save.connect(remove_relational_common_expenses, sender=CommonExpenses)
 
 
@@ -223,6 +241,8 @@ def remove_relational_building_garage(sender, instance, **kwargs):
         garage = Garage.objects.filter(building=building)
         for rec in garage:
             rec.building.remove(building)
+
+
 post_save.connect(remove_relational_building_garage, sender=Building)
 
 
@@ -254,6 +274,8 @@ def remove_relational_garage(sender, instance, **kwargs):
         lines = GarageLines.objects.filter(garage=garage_id)
         for rec in lines:
             rec.garage.remove(garage_id)
+
+
 post_save.connect(remove_relational_garage, sender=Garage)
 
 
@@ -263,4 +285,6 @@ def remove_relational_apartment(sender, instance, **kwargs):
         lines = GarageLines.objects.filter(apartment=apartment_id)
         for rec in lines:
             rec.apartment.remove(apartment_id)
+
+
 post_save.connect(remove_relational_garage, sender=Unit)
