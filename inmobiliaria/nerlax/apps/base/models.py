@@ -77,7 +77,7 @@ class UserModel(AbstractBaseUser):
     email = models.EmailField('Email', max_length=254, unique=True)
     is_active = models.BooleanField(default=True)
     superuser = models.BooleanField(default=False)
-    image = models.ImageField('Image', upload_to='images/users/', max_length=200, blank=True, null=True)
+    image = models.ImageField(upload_to='images/users/', blank=True, null=True)
     user_type = models.CharField(choices=USER_TYPE, max_length=1, blank=True, null=True)
     company = models.ForeignKey(Company, on_delete=models.CASCADE, blank=True, null=True)
     objects = UserManagerModel()

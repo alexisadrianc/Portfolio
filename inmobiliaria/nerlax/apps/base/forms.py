@@ -93,7 +93,7 @@ class UsersForm(forms.ModelForm):
 
     class Meta:
         model = UserModel
-        fields = ['username', 'first_name', 'last_name', 'password', 'email', 'user_type', 'company']
+        fields = ['username', 'first_name', 'last_name', 'password', 'email', 'user_type', 'company', 'image']
         labels = {
             'username': 'User',
             'first_name': 'First name',
@@ -102,6 +102,7 @@ class UsersForm(forms.ModelForm):
             'email': 'Email',
             'user_type': 'User type',
             'company': 'Company',
+            'image': 'Image',
         }
         widgets = {
             'username': forms.TextInput(

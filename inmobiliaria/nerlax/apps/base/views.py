@@ -88,7 +88,7 @@ class CreateUsers(CreateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST)
+            form = self.form_class(data=request.POST, files=request.FILES)
             if form.is_valid():
                 new_user = UserModel(
                     email=form.cleaned_data.get('email'),
@@ -96,6 +96,8 @@ class CreateUsers(CreateView):
                     first_name=form.cleaned_data.get('first_name'),
                     last_name=form.cleaned_data.get('last_name'),
                     user_type=form.cleaned_data.get('user_type'),
+                    company=form.cleaned_data.get('company'),
+                    image=form.cleaned_data.get('image'),
                 )
                 new_user.set_password(form.cleaned_data.get('password'))
                 new_user.save()
@@ -121,9 +123,10 @@ class UpdateUsers(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST, instance=self.get_object())
+            form = self.form_class(data=request.POST, files=request.FILES, instance=self.get_object())
             if form.is_valid():
                 form.save()
+                print(form)
                 msj = f'{self.model.__name__} edited successful!'
                 error = "There isn't error"
                 response = JsonResponse({'msj': msj, 'error': error})
@@ -164,7 +167,7 @@ class DetailUser(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST, instance=self.get_object())
+            form = self.form_class(data=request.POST, files=request.FILES, instance=self.get_object())
             if form.is_valid():
                 form.save()
                 msj = f'{self.model.__name__} edited successful!'
@@ -203,7 +206,7 @@ class CreateCompany(CreateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST, files=request.FILES)
+            form = self.form_class(data=request.POST, files=request.FILES)
             if form.is_valid():
                 company = Company(
                     name=form.cleaned_data.get('name'),
@@ -240,7 +243,7 @@ class UpdateCompany(UpdateView):
 
     def post(self, request, *args, **kwargs):
         if request.is_ajax():
-            form = self.form_class(request.POST, instance=self.get_object())
+            form = self.form_class(data=request.POST, files=request.FILES, instance=self.get_object())
             if form.is_valid():
                 form.save()
                 msj = f'{self.model.__name__} edited successful!'

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<form id="edit_company_form" method="post" action="{% url 'base:edit-company' object.pk %}">
+<form id="edit_company_form" method="post" enctype="multipart/form-data" action="{% url 'base:edit-company' object.pk %}">
     {% csrf_token %}
     <div class="container-title">
         <h1 class="h3 mb-3">Edit {{ object }}</h1>
@@ -22,9 +22,8 @@
 
                     <div class="form-group">
                         <img class="img-fluid rounded-circle mb-2" width="128" height="128"
-                             src={% if form.instance.image %} "{{ company.image.url }}" {% else %}
-                        "http://ssl.gstatic.com/accounts/ui/avatar_2x.png" {% endif %}/>
-                        {{ form.image }}
+                                 src={% if form.instance.image %} "{{ form.instance.image.url }}" {% else %} "http://ssl.gstatic.com/accounts/ui/avatar_2x.png" {% endif %}/>
+                           {{ form.image }}
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
