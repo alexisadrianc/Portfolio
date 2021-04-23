@@ -1,0 +1,88 @@
+{% extends 'index.html' %}
+
+{% load static %}
+{% block content %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs aos-init aos-animate" data-aos="fade-in">
+        <div class="container">
+            <h2>Solicitud de Fecha para Examen</h2>
+            <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit
+                quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Cource Details Section ======= -->
+    <section id="contact" class="contact">
+
+        <div class="container aos-init aos-animate" data-aos="fade-up">
+            <div class="row mt-5">
+                <div class="col-lg-12 mt-4 mt-lg-0">
+                    <form method="post" class="php-email-form">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-3 text-sm-left">{{ form.test_type.label}}</p>
+                            <div class="col-sm-9">
+                                {{ form.test_type }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-3 text-sm-left">{{ form.name.label}}</p>
+                            <div class="col-sm-9">
+                                {{ form.name }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-3 text-sm-left">{{ form.ci.label}}</p>
+                            <div class="col-sm-9">
+                                {{ form.ci }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-3 text-sm-left">{{ form.trainer.label}}</p>
+                            <div class="col-sm-9">
+                                {{ form.trainer }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-3 text-sm-left">{{ form.time_available.label}}</p>
+                            <div class="col-sm-9">
+                                {{ form.time_available }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-3 text-sm-left">{{ form.qty_lesson.label}}</p>
+                            <div class="col-sm-9">
+                                {{ form.qty_lesson }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-3 text-sm-left">{{ form.phone.label}}</p>
+                            <div class="col-sm-9">
+                                {{ form.phone }}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <p class="col-form-label col-sm-3 text-sm-left">{{ form.email.label}}</p>
+                            <div class="col-sm-9">
+                                {{ form.email }}
+                            </div>
+                        </div>
+                        <div class="my-3">
+                            <div class="loading">Cargando</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Tu reserva ha sido enviado. ¡Gracias!</div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit">Reservar</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section><!-- End Cource Details Section -->
+
+</main>
+{% endblock content %}

@@ -1,0 +1,470 @@
+{% load static %}
+<!DOCTYPE HTML>
+<!--
+	Verti by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Academía de Choferes El Palacio</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <!--  Favicon -->
+    <link href="{% static 'web/images/favicon.png' %}" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="{% static 'web/vendor/animate/animate.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'web/vendor/aos/aos.css' %}"/>
+    <link rel="stylesheet" href="{% static 'web/vendor/bootstrap/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'web/vendor/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'web/vendor/boxicons/css/boxicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'web/vendor/remixicon/remixicon.css' %}">
+    <link rel="stylesheet" href="{% static 'web/vendor/swiper/swiper-bundle.min.css' %}">
+
+    <!-- Template Main CSS File -->
+    <link rel="stylesheet" href="{% static 'web/css/style.css' %}"/>
+    {% block extracss %}
+    {% endblock extracss %}
+
+    <!-- =======================================================
+    * Template Name: Mentor - v4.1.0
+    * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+<body data-aos-easing="ease-in-out" data-aos-duration="1000" data-aos-delay="0">
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+        <h1 class="logo me-auto"><a href="{% url 'web:index' %}">{{ about.company }}</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+<!--         <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a class="active" href="{% url 'web:index' %}">Home</a></li>
+                <li><a href="{% url 'web:about' %}">Nosotros</a></li>
+                <li><a href="{% url 'web:lesson' %}">Clases</a></li>
+                <li><a href="{% url 'web:trainer' %}">Instructores</a></li>
+                <li><a href="{% url 'web:offer' %}">Ofertas</a></li>
+                <li><a href="{% url 'web:test_request' %}">Agendá tu exámen</a></li>
+
+
+<!--                <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>-->
+<!--                    <ul>-->
+<!--                        <li><a href="#">Drop Down 1</a></li>-->
+<!--                        <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>-->
+<!--                            <ul>-->
+<!--                                <li><a href="#">Deep Drop Down 1</a></li>-->
+<!--                                <li><a href="#">Deep Drop Down 2</a></li>-->
+<!--                                <li><a href="#">Deep Drop Down 3</a></li>-->
+<!--                                <li><a href="#">Deep Drop Down 4</a></li>-->
+<!--                                <li><a href="#">Deep Drop Down 5</a></li>-->
+<!--                            </ul>-->
+<!--                        </li>-->
+<!--                        <li><a href="#">Drop Down 2</a></li>-->
+<!--                        <li><a href="#">Drop Down 3</a></li>-->
+<!--                        <li><a href="#">Drop Down 4</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+                <li><a href="{% url 'web:contact' %}">Contacto</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+<!--        <a href="courses.html" class="get-started-btn">Get Started</a>-->
+
+    </div>
+</header><!-- End Header -->
+{% block content %}
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex justify-content-center align-items-center" style="background-image: url({{ post.image.url }});">
+    <div class="container position-relative aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+        <h1>{{ post.name }} <br> {{ post.name2 }}</h1>
+        <h2>{{ post.resume }}</h2>
+        <a href="courses.html" class="btn-get-started">Get Started</a>
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container aos-init aos-animate" data-aos="fade-up">
+
+            <div class="row">
+                <div class="col-lg-6 order-1 order-lg-2 aos-init aos-animate" data-aos="fade-left" data-aos-delay="100">
+                    <img src="{{ about.image.url }}" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+                    <h3>{{ about.title_resume}}</h3>
+                    <p class="fst-italic">
+                        {{ about.resume | safe }}
+                    </p>
+<!--                    <ul>-->
+<!--                        <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.-->
+<!--                        </li>-->
+<!--                        <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate-->
+<!--                            velit.-->
+<!--                        </li>-->
+<!--                        <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.-->
+<!--                            Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu-->
+<!--                            fugiat nulla pariatur.-->
+<!--                        </li>-->
+<!--                    </ul>-->
+
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts section-bg">
+        <div class="container">
+
+            <div class="row counters">
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="1232" data-purecounter-duration="0"
+                          class="purecounter">1232</span>
+                    <p>Estudiantes</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="64" data-purecounter-duration="0"
+                          class="purecounter">64</span>
+                    <p>Clases</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="0"
+                          class="purecounter">42</span>
+                    <p>Eventos</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="0"
+                          class="purecounter">15</span>
+                    <p>Instructores</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+        <div class="container aos-init aos-animate" data-aos="fade-up">
+
+            <div class="row">
+                <div class="col-lg-4 d-flex align-items-stretch">
+                    <div class="content">
+                        <h3>¿Por qué escoger El Palacio?</h3>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                            Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus
+                            optio ad corporis.
+                        </p>
+                        <div class="text-center">
+                            <a href="about.html" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 d-flex align-items-stretch aos-init aos-animate" data-aos="zoom-in"
+                     data-aos-delay="100">
+                    <div class="icon-boxes d-flex flex-column justify-content-center">
+                        <div class="row">
+                            <div class="col-xl-4 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0">
+                                    <i class="bx bx-receipt"></i>
+                                    <h4><a href="{{ link.test }}" target="_blank">{{ link.name_test }}</a></h4>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0">
+                                    <i class="bx bx-cube-alt"></i>
+                                    <h4><a href="{{ link.theoretical }}" target="_blank">{{ link.name_theoretical }}</a></h4>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 d-flex align-items-stretch">
+                                <div class="icon-box mt-4 mt-xl-0">
+                                    <i class="bx bx-calendar"></i>
+                                    <h4><a href="{{ link.reservation }}" target="_blank">{{ link.name_reservation }}</a> </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End .content-->
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= Popular Courses Section ======= -->
+    <section id="popular-courses" class="courses">
+        <div class="container aos-init aos-animate" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Clases</h2>
+                <p>Clases Populares</p>
+            </div>
+
+            <div class="row aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="course-item">
+                        <img src="{{ lesson1.image.url }}" class="img-fluid" alt="...">
+                        <div class="course-content">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4>{{ lesson1.name }}</h4>
+                                <p class="price">${{ lesson1.price }}</p>
+                            </div>
+
+                            <h3><a href="{% url 'web:detail_lesson' lesson1.slug %}">{{ lesson1.name }}</a></h3>
+                            <p>{{ lesson1.resume }}</p>
+                            <div class="trainer d-flex justify-content-between align-items-center">
+<!--                                <div class="trainer-profile d-flex align-items-center">-->
+<!--                                    <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">-->
+<!--                                    <span>Antonio</span>-->
+<!--                                </div>-->
+<!--                                <div class="trainer-rank d-flex align-items-center">-->
+<!--                                    <i class="bx bx-user"></i>&nbsp;50-->
+<!--                                    &nbsp;&nbsp;-->
+<!--                                    <i class="bx bx-heart"></i>&nbsp;65-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Course Item-->
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                    <div class="course-item">
+                        <img src="{{ lesson2.image.url }}" class="img-fluid" alt="...">
+                        <div class="course-content">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4>{{ lesson2.name }}</h4>
+                                <p class="price">${{ lesson2.price }}</p>
+                            </div>
+
+                            <h3><a href="{% url 'web:detail_lesson' lesson2.slug %}">{{ lesson2.name }}</a></h3>
+                            <p>{{ lesson2.resume }}</p>
+                            <div class="trainer d-flex justify-content-between align-items-center">
+<!--                                <div class="trainer-profile d-flex align-items-center">-->
+<!--                                    <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">-->
+<!--                                    <span>Lana</span>-->
+<!--                                </div>-->
+<!--                                <div class="trainer-rank d-flex align-items-center">-->
+<!--                                    <i class="bx bx-user"></i>&nbsp;35-->
+<!--                                    &nbsp;&nbsp;-->
+<!--                                    <i class="bx bx-heart"></i>&nbsp;42-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Course Item-->
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                    <div class="course-item">
+                        <img src="{{ lesson3.image.url }}" class="img-fluid" alt="...">
+                        <div class="course-content">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4>{{ lesson3.name }}</h4>
+                                <p class="price">${{ lesson3.price }}</p>
+                            </div>
+
+                            <h3><a href="{% url 'web:detail_lesson' lesson3.slug %}">{{ lesson3.name }}</a></h3>
+                            <p>{{ lesson3.resume }}</p>
+                            <div class="trainer d-flex justify-content-between align-items-center">
+<!--                                <div class="trainer-profile d-flex align-items-center">-->
+<!--                                    <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">-->
+<!--                                    <span>Brandon</span>-->
+<!--                                </div>-->
+<!--                                <div class="trainer-rank d-flex align-items-center">-->
+<!--                                    <i class="bx bx-user"></i>&nbsp;20-->
+<!--                                    &nbsp;&nbsp;-->
+<!--                                    <i class="bx bx-heart"></i>&nbsp;85-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Course Item-->
+
+            </div>
+
+        </div>
+    </section><!-- End Popular Courses Section -->
+
+    <!-- ======= Trainers Section ======= -->
+    <section id="trainers" class="trainers">
+        <div class="container aos-init aos-animate" data-aos="fade-up">
+
+            <div class="row aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="member">
+                        <img src="{{ teacher1.image.url }}" class="img-fluid" alt="" width="414" height="414">
+                        <div class="member-content">
+                            <h4>{{ teacher1.name }}</h4>
+                            <span>{{ teacher1.role }}</span>
+                            <p>
+                                {{ teacher1.description }}
+                            </p>
+                            <div class="social">
+                                <a href="{{teacher1.twitter }}"><i class="bi bi-twitter"></i></a>
+                                <a href="{{teacher1.facebook }}"><i class="bi bi-facebook"></i></a>
+                                <a href="{{teacher1.instagram }}"><i class="bi bi-instagram"></i></a>
+<!--                                <a href=""><i class="bi bi-linkedin"></i></a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="member">
+                        <img src="{{ teacher2.image.url }}" class="img-fluid" alt="" width="414" height="414">
+                        <div class="member-content">
+                            <h4>{{ teacher2.name }}</h4>
+                            <span>{{ teacher2.role }}</span>
+                            <p>
+                                {{ teacher2.description }}
+                            </p>
+                            <div class="social">
+                                <a href="{{teacher2.twitter }}"><i class="bi bi-twitter"></i></a>
+                                <a href="{{teacher2.facebook }}"><i class="bi bi-facebook"></i></a>
+                                <a href="{{teacher2.instagram }}"><i class="bi bi-instagram"></i></a>
+<!--                                <a href=""><i class="bi bi-linkedin"></i></a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="member">
+                        <img src="{{ teacher3.image.url }}" class="img-fluid" alt="" width="414" height="414">
+                        <div class="member-content">
+                            <h4>{{ teacher3.name }}</h4>
+                            <span>{{ teacher3.role }}</span>
+                            <p>
+                                {{ teacher3.description }}
+                            </p>
+                            <div class="social">
+                                <a href="{{teacher3.twitter }}"><i class="bi bi-twitter"></i></a>
+                                <a href="{{teacher3.facebook }}"><i class="bi bi-facebook"></i></a>
+                                <a href="{{teacher3.instagram }}"><i class="bi bi-instagram"></i></a>
+<!--                                <a href=""><i class="bi bi-linkedin"></i></a>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Trainers Section -->
+
+</main><!-- End #main -->
+{% endblock content %}
+<!-- ======= Footer ======= -->
+<footer id="footer">
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h3>{{ about.company }}</h3>
+                    <p>
+                        {{ about.address }} <br><br>
+                        <strong>Teléfono:</strong> {{ about.phone }}<br>
+                        <strong>Correo:</strong> {{ about.email }}<br>
+                    </p>
+                </div>
+
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h4>Enlaces útiles</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'web:index' %}">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'web:about' %}">Sobre nosotros</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'web:offer' %}">Ofertas</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Términos y condiciones</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Política de privacidad</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Nuestros servicios</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ link.test }}">{{ link.name_test }}</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ link.theoretical }}">{{ link.name_theoretical }}</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ link.reservation }}">{{ link.name_reservation }}</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'web:test_request' %}">Agendá tu exámen</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-newsletter">
+                    <h4>Suscríbase a nuestra web</h4>
+                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                    <form action="" method="post">
+                        <input type="email" name="email"><input type="submit" value="Subscribir">
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                © 2021 <strong><span>El Palacio</span></strong>.
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/ -->
+                Designed by <a href="https://alexisadrianc.gitlab.io/resume/" target="_blank">Alexis A.Cabrera Pereira</a>
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="{{ social.twitter }}" class="twitter" target="_blank"><i class="bx bxl-twitter"></i></a>
+            <a href="{{ social.facebook }}" class="facebook" target="_blank"><i class="bx bxl-facebook"></i></a>
+            <a href="{{ social.instagram }}" class="instagram" target="_blank"><i class="bx bxl-instagram"></i></a>
+        </div>
+    </div>
+</footer><!-- End Footer -->
+
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'web/vendor/aos/aos.js' %}"></script>
+<script src="{% static 'web/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'web/vendor/purecounter/purecounter.js' %}"></script>
+<script src="{% static 'web/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'web/js/main.js' %}"></script>
+
+<script>
+    if( window.self == window.top ) { (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-55234356-4', 'auto'); ga('send', 'pageview'); }
+</script>
+{% block extrajs %}
+{% endblock extrajs %}
+
+</body>
+</html>
