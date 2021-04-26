@@ -406,16 +406,16 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Nuestros servicios</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="{{ link.test }}">{{ link.name_test }}</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="{{ link.theoretical }}">{{ link.name_theoretical }}</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="{{ link.reservation }}">{{ link.name_reservation }}</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'web:test_request' %}">Agendá tu exámen</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ link.test }}" target="_blank">{{ link.name_test }}</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ link.theoretical }}" target="_blank" >{{ link.name_theoretical }}</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{ link.reservation }}" target="_blank">{{ link.name_reservation }}</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'web:test_request' %}" target="_blank">Agendá tu exámen</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-4 col-md-6 footer-newsletter">
-                    <h4>Suscríbase a nuestra web</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                    <h4>Suscribite a nuestro newsletter</h4>
+                    <p>Email (*)</p>
                     <form action="" method="post">
                         <input type="email" name="email"><input type="submit" value="Subscribir">
                     </form>
