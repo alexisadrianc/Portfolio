@@ -99,7 +99,6 @@ class Testimonial(Base):
     image = models.ImageField(upload_to='images/testimonial/')
     author = models.CharField(max_length=200)
     published = models.BooleanField(default=False)
-    published_date = models.DateField()
 
     class Meta:
         verbose_name = "Testimonial"

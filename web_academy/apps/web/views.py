@@ -1,6 +1,9 @@
 import random
+from django.template.loader import render_to_string
 from django.shortcuts import *
 from django.views.generic import *
+from django.core.mail import EmailMessage
+from django.conf import settings
 from .models import *
 from .forms import *
 
@@ -85,8 +88,15 @@ class Index(ListView):
 class About(ListView):
 
     def get(self, request, *args, **kwargs):
-        about = AboutUs.objects.filter(state=True)
-        testimonial = Testimonial.objects.filter(state=True, published=True)
+        try:
+            about = AboutUs.objects.filter(state=True)
+        except:
+            about = None
+        try:
+            testimonial = Testimonial.objects.filter(state=True, published=True)
+        except:
+            testimonial = None
+
         context = {
             'about_us': about,
             'testimonial': testimonial,
@@ -148,6 +158,14 @@ class ContactView(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
+            name = form.cleaned_data['name']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+            from_email = form.cleaned_data['email']
+            body = render_to_string('email-templates.html', {'name': name, 'email': from_email, 'subject': subject, 'message': message})
+            email = EmailMessage(subject, body, from_email, to=[settings.EMAIL_HOST_USER])
+            email.content_subtype = 'html'
+            email.send()
             return redirect('web:index')
         else:
             context = {
