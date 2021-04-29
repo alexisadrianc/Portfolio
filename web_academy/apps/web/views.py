@@ -93,13 +93,13 @@ class About(ListView):
         except:
             about = None
         try:
-            testimonial = Testimonial.objects.filter(state=True, published=True)
+            testimonio = Testimonial.objects.filter(state=True, published=True)
         except:
-            testimonial = None
+            testimonio = None
 
         context = {
             'about_us': about,
-            'testimonial': testimonial,
+            'testimonio': testimonio,
             'social': getSocial(),
             'about': getAbouts(),
             'link': getExternalLinks(),
