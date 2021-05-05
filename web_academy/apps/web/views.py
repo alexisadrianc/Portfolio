@@ -105,7 +105,7 @@ class About(ListView):
             'link': getExternalLinks(),
         }
 
-        return render(request, 'about.html', context)
+        return render(request, 'web/about.html', context)
 
 
 class Trainers(ListView):
@@ -122,10 +122,10 @@ class Trainers(ListView):
             'about': getAbouts(),
             'link': getExternalLinks(),
         }
-        return render(request, 'trainers.html', context)
+        return render(request, 'web/trainers.html', context)
 
 
-class Lessons(ListView):
+class LessonsForm(ListView):
 
     def get(self, request, *args, **kwargs):
         try:
@@ -139,7 +139,7 @@ class Lessons(ListView):
             'about': getAbouts(),
             'link': getExternalLinks(),
         }
-        return render(request, 'lessons.html', context)
+        return render(request, 'web/lessons.html', context)
 
 
 class ContactView(View):
@@ -152,7 +152,7 @@ class ContactView(View):
             'link': getExternalLinks(),
             'form': self.form_class,
         }
-        return render(request, 'contact.html', context)
+        return render(request, 'web/contact.html', context)
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -162,7 +162,8 @@ class ContactView(View):
             subject = form.cleaned_data['subject']
             message = form.cleaned_data['message']
             from_email = form.cleaned_data['email']
-            body = render_to_string('email-templates.html', {'name': name, 'email': from_email, 'subject': subject, 'message': message})
+            body = render_to_string('email-templates.html',
+                                    {'name': name, 'email': from_email, 'subject': subject, 'message': message})
             email = EmailMessage(subject, body, from_email, to=[settings.EMAIL_HOST_USER])
             email.content_subtype = 'html'
             email.send()
@@ -171,7 +172,7 @@ class ContactView(View):
             context = {
                 'form': form
             }
-            return render(request, 'contact.html', context)
+            return render(request, 'web/contact.html', context)
 
 
 class OffersView(ListView):
@@ -188,7 +189,7 @@ class OffersView(ListView):
             'about': getAbouts(),
             'link': getExternalLinks(),
         }
-        return render(request, 'offer.html', context)
+        return render(request, 'web/offer.html', context)
 
 
 class DetailLessonForm(DetailView):
@@ -218,7 +219,7 @@ class TestRequestView(View):
             'form': self.form_class,
         }
 
-        return render(request, 'test-form.html', context)
+        return render(request, 'web/test-form.html', context)
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
@@ -229,6 +230,8 @@ class TestRequestView(View):
             context = {
                 'form': form
             }
-            return redirect(request, 'test-form.html', context)
+            return redirect(request, 'web/test-form.html', context)
 
 
+def Login(request):
+    return render(request, template_name='login/login.html')
