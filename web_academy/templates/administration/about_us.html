@@ -1,0 +1,54 @@
+{% extends 'administration/home.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="canonical" href="https://appstack.bootlab.io/tables-datatables-responsive.html">
+{% endblock extra_css %}
+
+{% block content %}
+<h1 class="h3 mb-3">La Academia</h1>
+<div class="d-grid gap-2 d-md-block">
+    <a class="btn btn-primary" href="{% url 'administrator:create-academy' %}">
+        Crear
+    </a>
+</div>
+<br/>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <table id="academy_table" class="table table-striped dataTable no-footer dtr-inline" style="width: 100%;" role="grid" aria-describedby="datatables-reponsive_info">
+                    <thead>
+                    <tr>
+                        <th class="cell100 column3">Nombre</th>
+                        <th class="cell100 column1">Dirección</th>
+                        <th class="cell100 column4" style="text-align: center; vertical-align: middle;">Teléfono</th>
+                        <th class="cell100 column4">Correo
+                        </th>
+                        <th class="cell100 column3" width="3%">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Wizard for delete academy -->
+<div class="modal fade" id="academyModalDelete" tabindex="-1"
+     aria-labelledby="academyModalDeleteLabel" aria-hidden="true">
+
+</div>
+
+{% endblock content %}
+
+
+{% block extrajs %}
+<script src="{% static 'administration/js/datatables.js' %}"></script>
+<script src="{% static 'administration/js/datatables.min.js' %}"></script>
+{% endblock extrajs %}

@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include(('apps.web.url', 'web'))),
+    path('', include(('apps.web.urls', 'web'))),
+    path('login', include(('apps.login.urls', 'login'))),
+    path('web/', include(('apps.administration.urls', 'administrator'))),
+
 ]
 
 if settings.DEBUG:

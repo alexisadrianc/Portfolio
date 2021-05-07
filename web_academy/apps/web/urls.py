@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import *
 
 urlpatterns = [
@@ -10,6 +10,5 @@ urlpatterns = [
     path('test_request/', TestRequestView.as_view(), name="test_request"),
     path('offer/', OffersView.as_view(), name="offer"),
     path('<slug:slug>/', lesson_detail, name='detail_lesson'),
-    path('login', Login, name='login'),
 
 ]

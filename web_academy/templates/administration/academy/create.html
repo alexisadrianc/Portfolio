@@ -1,0 +1,141 @@
+{% extends 'administration/home.html' %}
+{% load static %}
+
+{% block content %}
+
+{% block extra_css %}
+<link rel="canonical" href="https://appstack.bootlab.io/ui-tabs.html">
+{% endblock extra_css %}
+
+<form id="form-create-academy" method="post" action="{% url 'administrator:create-academy' %}">
+    {% csrf_token %}
+    <div class="container-title">
+        <h1 class="h3 mb-3">La Academía</h1>
+    </div>
+    <div class="d-grid gap-2 d-md-block">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="{% url 'administrator:academy' %}" class="btn btn-outline-secondary">Cancelar</a>
+    </div>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{form.company.label}}</p>
+                        <div class="col-sm-10">
+                            {{form.company}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.address.label}}</p>
+                        <div class="col-sm-10">
+                            {{ form.address }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.phone.label}}</p>
+                        <div class="col-sm-10">
+                            {{ form.phone }}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.email.label}}</p>
+                        <div class="col-sm-10">
+                            {{ form.email }}
+                        </div>
+                    </div>
+
+                    <ul class="nav nav-tabs" id="BuildingTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="supplier-tab"
+                               data-bs-toggle="tab"
+                               href="#supplier" role="tab" aria-controls="supplier"
+                               aria-selected="false">Informacion de contacto</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="amenities-tab"
+                               data-bs-toggle="tab"
+                               href="#amenities" role="tab"
+                               aria-controls="amenities"
+                               aria-selected="false">Nosotros</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="supplier"
+                             role="tabpanel"
+                             aria-labelledby="supplier-tab">
+                            <br>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="card">
+                                        <div class="card-header">
+
+                                        </div>
+                                        <div class="card-body">
+                                            ...
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="amenities" role="tabpanel"
+                             aria-labelledby="amenities-tab">
+                            <br>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="card">
+                                        <div class="card-header">
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="form-group row">
+                                                <p class="col-form-label col-sm-2 text-sm-left">
+                                                    {{form.name.label}}
+                                                </p>
+                                                <div class="col-sm-10">
+                                                    {{form.name}}
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <p class="col-form-label col-sm-2 text-sm-left">
+                                                    {{form.about_us.label}}
+                                                </p>
+                                                <div class="col-sm-10">
+                                                    {{ form.about_us }}
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <p class="col-form-label col-sm-2 text-sm-left">
+                                                    {{form.name2.label}}</p>
+                                                <div class="col-sm-10">
+                                                    {{form.name2}}
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <p class="col-form-label col-sm-2 text-sm-left">
+                                                    {{form.detail.label}}
+                                                </p>
+                                                <div class="col-sm-10">
+                                                    {{ form.detail }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock content%}

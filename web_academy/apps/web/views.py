@@ -192,20 +192,37 @@ class OffersView(ListView):
         return render(request, 'web/offer.html', context)
 
 
-class DetailLessonForm(DetailView):
-    def get(self, request, slug, *args, **kwargs):
-        try:
-            lesson = Lesson.objects.get(slug=slug)
-        except:
-            lesson = None
+def lesson_detail(request, slug):
+    # try:
+    print(slug)
+    lesson = Lesson.objects.get(slug=slug)
+    # except:
+    #     lesson = None
+    context = {
+        'lesson': lesson,
+        'social': getSocial(),
+        'about': getAbouts(),
+        'link': getExternalLinks(),
+    }
+    return render(request, 'web/detail_lesson.html', context)
 
-        context = {
-            'lesson': lesson,
-            'social': getSocial(),
-            'about': getAbouts(),
-            'link': getExternalLinks(),
-        }
-        return render(request, 'detail_lesson.html', context)
+
+# class DetailLessonForm(DetailView):
+#
+#     def get(self, request, slug, *args, **kwargs):
+#         try:
+#             print(slug)
+#             lesson = Lesson.objects.get(slug=slug)
+#         except:
+#             lesson = None
+#
+#         context = {
+#             'lesson': lesson,
+#             'social': getSocial(),
+#             'about': getAbouts(),
+#             'link': getExternalLinks(),
+#         }
+#         return render(request, 'detail_lesson.html', context)
 
 
 class TestRequestView(View):
@@ -231,7 +248,3 @@ class TestRequestView(View):
                 'form': form
             }
             return redirect(request, 'web/test-form.html', context)
-
-
-def Login(request):
-    return render(request, template_name='login/login.html')

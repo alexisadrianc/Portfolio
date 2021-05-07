@@ -97,3 +97,80 @@ class TestRequestForm(forms.ModelForm):
                 }),
 
         }
+
+
+class AcademyForm(forms.ModelForm):
+
+    class Meta:
+        model = AboutUs
+        fields = ['company', 'name', 'name2', 'about_us', 'image', 'detail', 'phone', 'email', 'address',
+                  'title_resume', 'resume']
+        labels = {
+            'company': 'Academia',
+            'name': 'Titulo',
+            'about_us': 'Descripcion',
+            'name2': 'Titulo',
+            'detail': 'Descripcion',
+            'phone': 'Telefono',
+            'email': 'Correo',
+            'address': 'Direccion',
+            'title_resume': 'Titulo',
+            'resume': 'Descripcion',
+        }
+        widgets = {
+            'company': forms.TextInput(
+                attrs={
+                    'placeholder': 'Nombre de la academia ...',
+                    'id': 'company',
+                    'class': 'form-control mb-3',
+                }),
+            'name': forms.TextInput(
+                attrs={
+                    'placeholder': '¿Quiénes somos? ...',
+                    'id': 'name',
+                    'class': 'form-control mb-3',
+                }),
+            'name2': forms.TextInput(
+                attrs={
+                    'placeholder': 'Nuestro Compromiso ...',
+                    'id': 'name2',
+                    'class': 'form-control mb-3',
+                }),
+            'title_resume': forms.TextInput(
+                attrs={
+                    'placeholder': 'Titulo de bienvenida ...',
+                    'id': 'title_resume',
+                    'class': 'form-control mb-3',
+                }),
+            'phone': forms.TextInput(
+                attrs={
+                    'id': 'phone',
+                    'class': 'form-control mb-3',
+                }),
+            'address': forms.TextInput(
+                attrs={
+                    'placeholder': 'Av. Italia 2010, Montevideo ...',
+                    'id': 'address',
+                    'class': 'form-control mb-3',
+                }),
+            'detail': forms.Textarea(
+                attrs={
+                    'id': 'detail',
+                    'class': 'form-control mb-3',
+                }),
+            'about_us': forms.Textarea(
+                attrs={
+                    'id': 'about_us',
+                    'class': 'form-control mb-3',
+                }),
+            'resume': forms.Textarea(
+                attrs={
+                    'id': 'resume',
+                    'class': 'form-control mb-3',
+                }),
+            'email': forms.EmailInput(
+                attrs={
+                    'id': 'email',
+                    'class': 'form-control mb-3',
+                })
+        }
