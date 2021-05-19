@@ -13,11 +13,13 @@ function list_academy(){
                 row += '<td style="text-align: center; vertical-align: middle;">' + response[i]['fields']['phone'] + '</td>';
                 row += '<td>' + response[i]['fields']['email'] + '</td>';
                 row += '<td style="text-align: center; vertical-align: middle;"><a href="/web/edit_academy/'+response[i]['pk']+'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>';
-                row += '<a href="#" onclick=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a></td>';
+                row += '<a href="#" onclick="openModalAcademy(\'/web/delete_academy/'+response[i]['pk']+'\');"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a></td>';
                 row += '</tr>';
                 $('#academy_table tbody').append(row);
             }
-            $('#academy_table').DataTable();
+            $('#academy_table').DataTable({
+                responsive: true
+            });
        },
        error: function(error){
             console.log(error);
@@ -51,3 +53,53 @@ function update_academy(){
         }
     });
 }
+
+function delete_academy(pk){
+    $.ajax({
+        data: {
+            csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val()
+        },
+        url: $('#delete_academy_form').attr('action'),
+        type: $('#delete_academy_form').attr('method'),
+        success: function(response){
+            notificationSuccess(response.msj);
+            list_academy();
+            $('#academyModalDelete').modal('hide');
+        },
+        error: function(error){
+            notificationError(error.responseJSON.msj);
+        }
+    });
+}
+
+function list_lesson(){
+    $.ajax({
+       url: "/web/list_lesson/",
+       type: "get",
+       dataType: "json",
+       success: function(response){
+            $('#lesson_table tbody').html("")
+            for (let i = 0; i < response.length; i++){
+                let row = '<tr>';
+                row += '<td>' + response[i]['fields']['name'] + '</td>';
+                row += '<td style="text-align: center; vertical-align: middle;">' + response[i]['fields']['quantity_lesson'] + '</td>';
+                row += '<td style="text-align: center; vertical-align: middle;">' + response[i]['fields']['price'] + '</td>';
+                row += '<td style="text-align: center; vertical-align: middle;"><a href="/web/edit_academy/'+response[i]['pk']+'"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 align-middle"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>';
+                row += '<a href="#" onclick="openModalAcademy(\'/web/delete_academy/'+response[i]['pk']+'\');"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash align-middle"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></a></td>';
+                row += '</tr>';
+                $('#lesson_table tbody').append(row);
+            }
+            $('#lesson_table').DataTable({
+                responsive: true
+            });
+       },
+       error: function(error){
+            console.log(error);
+       }
+    });
+}
+
+$(document).ready(function(){
+    list_lesson();
+});
+

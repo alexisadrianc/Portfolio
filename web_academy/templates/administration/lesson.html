@@ -1,10 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'administration/home.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block extra_css %}
+<link rel="canonical" href="https://appstack.bootlab.io/tables-datatables-responsive.html">
+{% endblock extra_css %}
+
+{% block content %}
+<h1 class="h3 mb-3">Clases</h1>
+<div class="d-grid gap-2 d-md-block">
+    <a class="btn btn-primary" href="{% url 'administrator:create-lesson' %}">
+        Crear
+    </a>
+</div>
+<br/>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+
+            </div>
+            <div class="card-body">
+                <table id="lesson_table" class="table table-striped dataTable no-footer dtr-inline" style="width: 100%;">
+                    <thead>
+                    <tr>
+                        <th class="cell100 column3">Nombre</th>
+                        <th class="cell100 column1" style="text-align: center; vertical-align: middle;">Cantidad de clases</th>
+                        <th class="cell100 column4" style="text-align: center; vertical-align: middle;">Precio</th>
+                        <th class="cell100 column3" width="3%">Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Wizard for delete academy -->
+<div class="modal fade" id="lessonModalDelete" tabindex="-1"
+     aria-labelledby="lessonModalDeleteLabel" aria-hidden="true">
+
+</div>
+
+{% endblock content %}
+
+
+{% block extrajs %}
+{% endblock extrajs %}

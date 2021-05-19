@@ -31,67 +31,90 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.address.label}}</p>
+                        <p class="col-form-label col-sm-2 text-sm-left">
+                            {{form.address.label}}
+                        </p>
                         <div class="col-sm-10">
                             {{ form.address }}
                         </div>
                     </div>
                     <div class="form-group row">
-                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.phone.label}}</p>
+                        <p class="col-form-label col-sm-2 text-sm-left">
+                            {{form.phone.label}}
+                        </p>
                         <div class="col-sm-10">
                             {{ form.phone }}
                         </div>
                     </div>
                     <div class="form-group row">
-                        <p class="col-form-label col-sm-2 text-sm-left">{{ form.email.label}}</p>
+                        <p class="col-form-label col-sm-2 text-sm-left">
+                            {{form.email.label}}
+                        </p>
                         <div class="col-sm-10">
                             {{ form.email }}
                         </div>
                     </div>
 
+
                     <ul class="nav nav-tabs" id="BuildingTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="supplier-tab"
+                            <a class="nav-link active" id="resume-tab"
                                data-bs-toggle="tab"
-                               href="#supplier" role="tab" aria-controls="supplier"
-                               aria-selected="false">Informacion de contacto</a>
+                               href="#resume" role="tab"
+                               aria-controls="resume"
+                               aria-selected="false">Resumen</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="amenities-tab"
+                            <a class="nav-link" id="about-tab"
                                data-bs-toggle="tab"
-                               href="#amenities" role="tab"
-                               aria-controls="amenities"
+                               href="#about" role="tab"
+                               aria-controls="about"
                                aria-selected="false">Nosotros</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="supplier"
+                        <div class="tab-pane fade show active" id="resume"
                              role="tabpanel"
-                             aria-labelledby="supplier-tab">
+                             aria-labelledby="resume-tab">
                             <br>
                             <div class="container">
                                 <div class="row">
                                     <div class="card">
-                                        <div class="card-header">
+                                        <!--                                        <div class="card-header">-->
 
-                                        </div>
+                                        <!--                                        </div>-->
                                         <div class="card-body">
-                                            ...
+                                            <div class="form-group row">
+                                                <p class="col-form-label col-sm-2 text-sm-left">
+                                                    {{form.title_resume.label}}
+                                                </p>
+                                                <div class="col-sm-10">
+                                                    {{ form.title_resume }}
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <p class="col-form-label col-sm-2 text-sm-left">
+                                                    {{form.resume.label}}
+                                                </p>
+                                                <div class="col-sm-10">
+                                                    {{ form.resume }}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="amenities" role="tabpanel"
-                             aria-labelledby="amenities-tab">
+                        <div class="tab-pane fade" id="about" role="tabpanel"
+                             aria-labelledby="about-tab">
                             <br>
                             <div class="container">
                                 <div class="row">
                                     <div class="card">
-                                        <div class="card-header">
-                                        </div>
                                         <div class="card-body">
+                                            <h5 class="card-title mb-0">¿Quiénes somos?</h5>
+                                            <hr>
                                             <div class="form-group row">
                                                 <p class="col-form-label col-sm-2 text-sm-left">
                                                     {{form.name.label}}
@@ -110,6 +133,8 @@
                                                 </div>
                                             </div>
 
+                                            <h5 class="card-title mb-0">Compromiso</h5>
+                                            <hr>
                                             <div class="form-group row">
                                                 <p class="col-form-label col-sm-2 text-sm-left">
                                                     {{form.name2.label}}</p>

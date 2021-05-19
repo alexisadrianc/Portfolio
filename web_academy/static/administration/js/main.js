@@ -18,15 +18,6 @@
 
 })(jQuery);
 
-function activate_button(){
-    if($('#button_creation').prop('disabled')){
-        $('#button_creation').prop('disabled', false);
-
-    }else{
-        $('#button_creation').prop('disabled', true);
-    }
-
-}
 
 function notificationError(msj){
     Swal.fire({

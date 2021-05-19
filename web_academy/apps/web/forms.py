@@ -174,3 +174,35 @@ class AcademyForm(forms.ModelForm):
                     'class': 'form-control mb-3',
                 })
         }
+
+
+class LessonForm(forms.ModelForm):
+    class Meta:
+        model = Lesson
+        fields = ['name', 'price', 'image', 'quantity_lesson', 'description', 'resume']
+        labels = {
+            'name': 'Nombre',
+            'price': 'Precio',
+            'image': 'Imagen',
+            'quantity_lesson': 'Cantidad de clases',
+            'description': 'Descripcion',
+            'resume': 'Resumen'
+        }
+        widgets = {
+            'name': forms.TextInput(
+                attrs={
+                    'placeholder': '¿Quiénes somos? ...',
+                    'id': 'name',
+                    'class': 'form-control mb-3',
+                }),
+            'description': forms.Textarea(
+                attrs={
+                    'id': 'description',
+                    'class': 'form-control mb-3',
+                }),
+            'resume': forms.Textarea(
+                attrs={
+                    'id': 'resume',
+                    'class': 'form-control mb-3',
+                }),
+        }
