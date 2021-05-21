@@ -187,7 +187,7 @@ class LessonForm(forms.ModelForm):
             'quantity_lesson': 'Cantidad de clases',
             'description': 'Descripcion',
             'resume': 'Resumen',
-            'state': 'Activar'
+            'state': 'Habilitar'
         }
         widgets = {
             'name': forms.TextInput(

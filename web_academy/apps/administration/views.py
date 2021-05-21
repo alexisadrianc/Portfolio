@@ -79,7 +79,7 @@ class AcademyDelete(DeleteView):
 class LessonList(ListView):
     model = Lesson
     context_object_name = 'lesson'
-    queryset = model.objects.filter(state=True)
+    # queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
         if request.is_ajax():
