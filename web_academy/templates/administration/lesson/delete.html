@@ -1,20 +1,20 @@
 
-<form id="delete_academy_form" method="post" action="{% url 'administrator:delete-academy' object.pk %}">
+<form id="delete_lesson_form" method="post" action="{% url 'administrator:delete-lesson' object.pk %}">
     {% csrf_token %}
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Eliminar La Academía</h3>
+                <h3 class="modal-title">Eliminar clase</h3>
                 <button type="button" class="btn-close"
                     data-bs-dismiss="modal"
                     aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
-                <p class="delete-text">¿Estás seguro de que quieres eliminar la academia <strong>
-                    {{ object.company }}</strong>?</p>
+                <p class="delete-text">¿Estás seguro de que quieres eliminar la clase <strong>
+                    {{ object }}</strong>?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" onclick="delete_academy({{ object.pk }});">Eliminar</button>
+                <button type="button" class="btn btn-danger" onclick="delete_lesson({{ object.pk }});">Eliminar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>

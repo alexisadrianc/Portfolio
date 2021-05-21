@@ -95,3 +95,46 @@ class LessonCreate(CreateView):
     template_name = 'administration/lesson/create.html'
     success_message = 'Success: Lesson was created.'
     success_url = reverse_lazy('administration:admin-lesson')
+
+
+class LessonUpdate(UpdateView):
+    model = Lesson
+    form_class = LessonForm
+    template_name = 'administration/lesson/edit.html'
+
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            form = self.form_class(request.POST, instance=self.get_object())
+            if form.is_valid():
+                form.save()
+                msj = f'{self.model.__name__} fue editado satisfactoriamente !!!'
+                error = "Hubo un error, Corríjalo !!!"
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 201
+                return response
+            else:
+                msj = f'{self.model.__name__} no fue editado !'
+                error = form.errors
+                response = JsonResponse({'msj': msj, 'error': error})
+                response.status_code = 400
+                return response
+        else:
+            return redirect('administration:admin-lesson')
+
+
+class LessonDelete(DeleteView):
+    model = Lesson
+    template_name = 'administration/lesson/delete.html'
+
+    def delete(self, request, *args, **kwargs):
+        if request.is_ajax():
+            object = self.get_object()
+            object.state = False
+            object.save()
+            msj = f'{self.model.__name__} delete successful!'
+            error = "There isn't error"
+            response = JsonResponse({'msj': msj, 'error': error})
+            response.status_code = 201
+            return response
+        else:
+            return redirect('administration:admin-lesson')

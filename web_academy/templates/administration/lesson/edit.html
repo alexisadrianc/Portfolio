@@ -1,10 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'administration/home.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block content %}
+
+{% block extra_css %}
+<link rel="canonical" href="https://appstack.bootlab.io/ui-tabs.html">
+{% endblock extra_css %}
+
+<form id="form-edit-lesson" method="post" action="{% url 'administrator:edit-lesson' object.pk %}">
+    {% csrf_token %}
+    <div class="container-title">
+        <h1 class="h3 mb-3">Clase</h1>
+    </div>
+    <div class="d-grid gap-2 d-md-block">
+        <button type="button" class="btn btn-primary" onclick="update_lesson();">Guardar</button>
+        <a href="{% url 'administrator:admin-lesson' %}" class="btn btn-outline-secondary">Cancelar</a>
+    </div>
+    <br/>
+    <div class="container">
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-actions float-end">
+                        <div class="dropdown show">
+                            <a href="#" data-bs-toggle="dropdown" data-bs-display="static">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-more-horizontal align-middle">
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                    <circle cx="19" cy="12" r="1"></circle>
+                                    <circle cx="5" cy="12" r="1"></circle>
+                                </svg>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <div class="form-check form-switch">
+                                    <span>{{ form.state }} {{ form.state.label }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 col-xl-3">
+                            <div class="card-mb-3">
+                                <div class="card-body text-center">
+                                    <div class="form-group row">
+                                        <div class="col-sm-12">
+                                            <img class="img-fluid mb-2" alt="avatar" width="100%"
+                                                 src={% if form.instance.image %} "{{ lesson.image.url }}" {% else %}
+                                            "http://ssl.gstatic.com/accounts/ui/avatar_2x.png" {% endif %}/>
+                                        </div>
+                                    </div>
+                                    <hr class="my-0">
+                                    <div class="form-group row">
+                                        <div class="col-sm-12">
+                                            {{ form.image }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <hr class="my-0">
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-xl-9">
+                            <div class="card">
+                                <div class="card-header">
+
+                                </div>
+                                <div class="card-body h-100">
+                                    <div class="form-group row">
+                                        <p class="col-form-label col-sm-2 text-sm-left">
+                                            {{form.name.label}}
+                                        </p>
+                                        <div class="col-sm-10">
+                                            {{ form.name }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <p class="col-form-label col-sm-2 text-sm-left">
+                                            {{form.resume.label}}
+                                        </p>
+                                        <div class="col-sm-10">
+                                            {{ form.resume }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <p class="col-form-label col-sm-2 text-sm-left">
+                                            {{form.quantity_lesson.label}}
+                                        </p>
+                                        <div class="col-sm-10">
+                                            {{ form.quantity_lesson }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <p class="col-form-label col-sm-2 text-sm-left">
+                                            {{form.price.label}}
+                                        </p>
+                                        <div class="col-sm-10">
+                                            {{ form.price }}
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="form-group row">
+                                        <p class="col-form-label col-sm-2 text-sm-left">
+                                            {{form.description.label}}
+                                        </p>
+                                        <div class="col-sm-10">
+                                            {{ form.description }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+{% endblock content%}

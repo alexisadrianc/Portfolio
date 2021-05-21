@@ -179,30 +179,49 @@ class AcademyForm(forms.ModelForm):
 class LessonForm(forms.ModelForm):
     class Meta:
         model = Lesson
-        fields = ['name', 'price', 'image', 'quantity_lesson', 'description', 'resume']
+        fields = ['name', 'price', 'image', 'quantity_lesson', 'description', 'resume', 'state']
         labels = {
             'name': 'Nombre',
             'price': 'Precio',
             'image': 'Imagen',
             'quantity_lesson': 'Cantidad de clases',
             'description': 'Descripcion',
-            'resume': 'Resumen'
+            'resume': 'Resumen',
+            'state': 'Activar'
         }
         widgets = {
             'name': forms.TextInput(
                 attrs={
-                    'placeholder': '¿Quiénes somos? ...',
+                    'placeholder': 'Nombre de clase ...',
                     'id': 'name',
                     'class': 'form-control mb-3',
                 }),
             'description': forms.Textarea(
                 attrs={
+                    'placeholder': 'Descripción detallada de la clase ...',
                     'id': 'description',
                     'class': 'form-control mb-3',
                 }),
             'resume': forms.Textarea(
                 attrs={
+                    'placeholder': 'Resumen de la clase para mostrar en la página principal...',
                     'id': 'resume',
                     'class': 'form-control mb-3',
                 }),
+            'state': forms.CheckboxInput(
+                attrs={
+                    'id': 'state',
+                    'class': 'form-check-input',
+                }),
+            'quantity_lesson': forms.NumberInput(
+                attrs={
+                    'id': 'quantity_lesson',
+                    'class': 'form-control',
+                }),
+            'price': forms.NumberInput(
+                attrs={
+                    'id': 'price',
+                    'class': 'form-control',
+                }),
+
         }

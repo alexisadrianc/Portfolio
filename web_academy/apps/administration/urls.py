@@ -13,6 +13,8 @@ urlpatterns = [
 
     path('list_lesson/', login_required(LessonList.as_view()), name='list-lesson'),
     path('create_lesson/', login_required(LessonCreate.as_view()), name='create-lesson'),
+    path('edit_lesson/<int:pk>', login_required(LessonUpdate.as_view()), name='edit-lesson'),
+    path('delete_lesson/<int:pk>', login_required(LessonDelete.as_view()), name='delete-lesson'),
 
     # path('admin_teacher/', login_required(), name='teacher'),
     # path('admin_offer/', login_required(), name='offer'),

@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 
 
 # Create your models here.
@@ -39,7 +40,6 @@ class Lesson(Base):
     name = models.CharField(max_length=254, unique=True)
     price = models.PositiveIntegerField(default=0)
     image = models.ImageField(upload_to='images/lesson/')
-    slug = models.SlugField()
     quantity_lesson = models.PositiveIntegerField(default=0)
     description = models.TextField()
     resume = models.TextField()
@@ -51,12 +51,14 @@ class Lesson(Base):
     def __str__(self):
         return self.name
 
+    def slug(self):
+        return slugify(self.name)
+
 
 class Post(Base):
     name = models.CharField(max_length=50)
     name2 = models.CharField(max_length=50)
     resume = models.TextField()
-    slug = models.SlugField()
     description = models.TextField()
     image = models.ImageField(upload_to='images/post')
     published = models.BooleanField(default=False)
@@ -68,6 +70,9 @@ class Post(Base):
 
     def __str__(self):
         return '{0} {1}'.format(self.name, self.name2)
+
+    def slug(self):
+        return slugify(self.name, self.name2)
 
 
 class Offer(Base):
