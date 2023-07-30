@@ -27,7 +27,7 @@
 - **Documentación:** Si tu contribución afecta la funcionalidad existente o agrega nuevas características, asegúrate de actualizar la documentación correspondiente. La documentación clara y concisa es fundamental para que otros usuarios comprendan y utilicen el proyecto de manera efectiva.
 
 ## Agradecimientos
-Agradecemos sinceramente a todos los que han contribuido o contribuirán a este proyecto. Su apoyo y esfuerzo son invaluables para el éxito continuo de [Nombre del Repositorio].
+Agradecemos sinceramente a todos los que han contribuido o contribuirán a este proyecto. Su apoyo y esfuerzo son invaluables para el éxito continuo de nuesrtos repositorios.
 
 ¡Gracias por ser parte de nuestra comunidad!
 
