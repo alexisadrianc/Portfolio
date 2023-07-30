@@ -2,7 +2,7 @@
 ¡Bienvenido/a a mi portafolio de proyectos! Aquí encontrarás una recopilación de algunos de los proyectos en los que he trabajado. Cada proyecto tiene como objetivo demostrar mis habilidades y experiencia en diferentes áreas. Si tienes alguna pregunta o comentario sobre alguno de los proyectos, no dudes en contactarme.
 
 ## **Proyecto 1: Gestion inmobiliaria - Administracion de edifcio**
-    - Descripción: Una breve descripción del proyecto, resaltando su propósito y funcionalidades clave.
+- Descripción: Una breve descripción del proyecto, resaltando su propósito y funcionalidades clave.
 Tecnologías utilizadas: Lista de las tecnologías, lenguajes de programación y herramientas principales empleadas en el proyecto.
 Enlace al Repositorio: (Si el proyecto es de código abierto, agrega aquí el enlace al repositorio en GitHub o plataforma similar).
 Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
