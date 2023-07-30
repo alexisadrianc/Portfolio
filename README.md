@@ -32,6 +32,6 @@
 Si deseas obtener más información sobre alguno de estos proyectos o quieres contactarme para una colaboración o consulta, no dudes en hacerlo:
 
 - Email: alexis.adrianc@gmail.com
-- LinkedIn: [Perfil de LinkedIn](https://www.linkedin.com/in/alexis-adrian-cabrera-pereira/)
+- LinkedIn: [Alexis Cabrera](https://www.linkedin.com/in/alexis-adrian-cabrera-pereira/)
 
 ¡Gracias por visitar mi portafolio! Espero que encuentres interesantes mis proyectos y que puedan ser útiles para inspirarte en tus propios desarrollos.
