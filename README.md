@@ -19,30 +19,24 @@ Para configurar el sistema en su entorno local, siga estos pasos:
 
 1. Clonar el Repositorio: Utilice el siguiente comando para clonar el repositorio en su máquina local:
 
-bash
-Copy code
-git clone https://github.com/alexisadrianc/nombre-del-repositorio.git
-1. Requisitos: Asegúrese de tener instalado Python en su sistema. Se recomienda utilizar Python 3.x.
+>git clone https://github.com/alexisadrianc/nombre-del-repositorio.git
+2. Requisitos: Asegúrese de tener instalado Python en su sistema. Se recomienda utilizar Python 3.x.
 
-1. Entorno Virtual (opcional): Es recomendable crear un entorno virtual para este proyecto. Puede utilizar virtualenv para ello:
+3. Entorno Virtual (opcional): Es recomendable crear un entorno virtual para este proyecto. Puede utilizar virtualenv para ello:
 
-bash
-Copy code
-python -m venv venv
-source venv/bin/activate  # En Windows use "venv\Scripts\activate"
-1. Instalar Dependencias: Acceda al directorio del proyecto y ejecute el siguiente comando para instalar las dependencias necesarias:
+>python -m venv venv
+>source venv/bin/activate  # En Windows use "venv\Scripts\activate"
+4. Instalar Dependencias: Acceda al directorio del proyecto y ejecute el siguiente comando para instalar las dependencias necesarias:
 
-Copy code
-pip install -r requirements.txt
-1. Configuración: Revise el archivo de configuración config.py y ajuste los valores según sus necesidades (por ejemplo, configuración de la base de datos).
+>pip install -r requirements.txt
+5. Configuración: Revise el archivo de configuración config.py y ajuste los valores según sus necesidades (por ejemplo, configuración de la base de datos).
 
-1. Base de Datos: Configure la base de datos según las opciones elegidas en el paso anterior. Puede utilizar SQLite o cualquier otro motor de base de datos compatible con Python.
+6. Base de Datos: Configure la base de datos según las opciones elegidas en el paso anterior. Puede utilizar SQLite o cualquier otro motor de base de datos compatible con Python.
 
-1. Ejecutar la Aplicación: Una vez que todo esté configurado, inicie el servidor de desarrollo con el siguiente comando:
+7. Ejecutar la Aplicación: Una vez que todo esté configurado, inicie el servidor de desarrollo con el siguiente comando:
 
-Copy code
-python app.py
-1. Acceso a la Aplicación: Acceda a la aplicación a través de su navegador web en la siguiente dirección: ** http://localhost:8000 **.
+>python app.py
+8. Acceso a la Aplicación: Acceda a la aplicación a través de su navegador web en la siguiente dirección: **http://localhost:8000**.
 
 ## Contribuciones
 Si desea contribuir a este proyecto, ¡estamos encantados de recibir sus aportes! Siéntase libre de abrir un "issue" para informar errores o solicitar nuevas características. También puede enviar solicitudes de extracción ("pull requests") con sus mejoras.
