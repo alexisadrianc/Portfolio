@@ -1,13 +1,13 @@
 # Portafolio de Proyectos
 ¡Bienvenido/a a mi portafolio de proyectos! Aquí encontrarás una recopilación de algunos de los proyectos en los que he trabajado. Cada proyecto tiene como objetivo demostrar mis habilidades y experiencia en diferentes áreas. Si tienes alguna pregunta o comentario sobre alguno de los proyectos, no dudes en contactarme.
 
-## **Proyecto 1: Gestion inmobiliaria - Administracion de edifcio**
+## **Proyecto 1: Gestión Inmobiliaria - Administración de Edificios**
 - Descripción: Este proyecto tiene como objetivo proporcionar una solución completa y eficiente para la gestión de propiedades, inquilinos, pagos, mantenimiento y más.
 - Tecnologías utilizadas:
   - Frontend: [Bootstrap, HTML5, CCS3]
   - Backend: [Django, Python]
   - Base de Datos: [PostgreSQL]
-- Enlace al Repositorio: [(Gestion inmobiliaria, Administracion de edifcio)](https://github.com/alexisadrianc/Portafolio/tree/Inmobiliaria).
+- Enlace al Repositorio: [(Gestión Inmobiliaria - Administración de Edificios)](https://github.com/alexisadrianc/Portafolio/tree/Inmobiliaria).
 - Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
 
 ## **Proyecto 2: Academia de choferes**
