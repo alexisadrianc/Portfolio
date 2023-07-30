@@ -11,8 +11,11 @@
 - Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
 
 ## **Proyecto 2: Academia de choferes**
-- Descripción: Una breve descripción del proyecto, resaltando su propósito y funcionalidades clave.
-- Tecnologías utilizadas: Lista de las tecnologías, lenguajes de programación y herramientas principales empleadas en el proyecto.
+- Descripción: Este proyecto tiene como objetivo proporcionar una solución completa para administrar y gestionar los procesos de formación de conductores en una academia.
+- Tecnologías utilizadas: 
+  - Frontend: [Bootstrap, HTML5, CCS3]
+  - Backend: [Django, Python]
+  - Base de Datos: [PostgreSQL]
 - Enlace al Repositorio: (Si el proyecto es de código abierto, agrega aquí el enlace al repositorio en GitHub o plataforma similar).
 - Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
 
