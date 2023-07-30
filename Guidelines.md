@@ -1,4 +1,4 @@
-# Pautas de Contribución para el Repositorio de [Nombre del Repositorio]
+# Guidelines
 ¡Gracias por tu interés en contribuir al desarrollo de [Nombre del Repositorio]! Valoramos y apreciamos las contribuciones de la comunidad, ya que nos ayudan a mejorar y enriquecer este proyecto. Antes de que envíes tu contribución, te pedimos que leas y sigas estas pautas para asegurarnos de mantener un proceso de colaboración fluido y productivo.
 
 ## Cómo Contribuir
