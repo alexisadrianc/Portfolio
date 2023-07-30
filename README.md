@@ -19,7 +19,7 @@
 - Enlace al Repositorio: (Si el proyecto es de código abierto, agrega aquí el enlace al repositorio en GitHub o plataforma similar).
 - Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
 
-## **Proyecto 3: Tienda de eCommerce**
+## **Proyecto 3: Catalogo de eCommerce**
 - Descripción: Una breve descripción del proyecto, resaltando su propósito y funcionalidades clave.
 - Tecnologías utilizadas: 
   - Frontend: [Bootstrap, HTML5, CCS3]
