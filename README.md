@@ -4,15 +4,15 @@
 ## Descripción del Proyecto
 El propósito de este sistema es facilitar la administración de una academia de conductores, simplificando las tareas relacionadas con el registro de estudiantes, seguimiento de su progreso, programación de clases, evaluaciones y más. Algunas características clave del sistema incluyen:
 
-**Registro de Estudiantes:** Permite registrar a nuevos estudiantes proporcionando su información personal y de contacto.
+1. **Registro de Estudiantes:** Permite registrar a nuevos estudiantes proporcionando su información personal y de contacto.
 
-**Gestión de Clases: Facilita la programación y organización de clases para los diferentes niveles de formación.
+1. **Gestión de Clases:** Facilita la programación y organización de clases para los diferentes niveles de formación.
 
-**Seguimiento del Progreso:** Realiza un seguimiento del progreso de cada estudiante, registrando sus calificaciones y avances en la formación.
+1. **Seguimiento del Progreso:** Realiza un seguimiento del progreso de cada estudiante, registrando sus calificaciones y avances en la formación.
 
-**Exámenes y Evaluaciones:** Administra y califica exámenes y evaluaciones prácticas y teóricas.
+1. **Exámenes y Evaluaciones:** Administra y califica exámenes y evaluaciones prácticas y teóricas.
 
-**Gestión de Instructores:** Permite gestionar la información de los instructores y asignarlos a diferentes clases.
+1. **Gestión de Instructores:** Permite gestionar la información de los instructores y asignarlos a diferentes clases.
 
 ## Guía de Instalación
 Para configurar el sistema en su entorno local, siga estos pasos:
