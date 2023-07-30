@@ -38,11 +38,6 @@ Para configurar el sistema en su entorno local, siga estos pasos:
     >python app.py
 8. Acceso a la Aplicación: Acceda a la aplicación a través de su navegador web en la siguiente dirección: **http://localhost:8000**.
 
-## Contribuciones
-Si desea contribuir a este proyecto, ¡estamos encantados de recibir sus aportes! Siéntase libre de abrir un "issue" para informar errores o solicitar nuevas características. También puede enviar solicitudes de extracción ("pull requests") con sus mejoras.
-
-Antes de enviar sus cambios, asegúrese de realizar las pruebas necesarias y seguir las directrices de estilo del proyecto.
-
 ## Licencia
 Este proyecto se distribuye bajo la Licencia MIT. Para más detalles, consulte el archivo LICENSE.
 
