@@ -29,7 +29,7 @@ El sistema de gestión ha sido desarrollado utilizando las siguientes tecnologí
 1. Accede al sistema en tu navegador web: http://localhost:8000
 
 ## Licencia
-Este proyecto está bajo la Licencia [nombre de la licencia]. Puedes consultar el archivo LICENSE para más información.
+Este proyecto se distribuye bajo la Licencia MIT. Para más detalles, consulte el archivo LICENSE.
 
 ## Contacto
 Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto con el equipo de desarrollo en alexis.adrianc@gmail.com.
