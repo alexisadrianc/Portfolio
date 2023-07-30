@@ -34,6 +34,6 @@ Agradecemos sinceramente a todos los que han contribuido o contribuirán a este 
 ## Contacto
 Si tienes alguna pregunta o duda relacionada con las pautas de contribución o cualquier otro asunto relacionado con el proyecto, no dudes en ponerte en contacto con nosotros:
 
-- Email: contacto@nombre-del-repositorio.com
-- Sitio web: www.nombre-del-repositorio.com
-Nota: Estas pautas de contribución están sujetas a cambios y mejoras. Asegúrate de revisar esta página regularmente para mantenerte actualizado sobre cualquier modificación. Última actualización: [Fecha de última actualización].
+- Email: alexis.adrianc@gmail.com
+
+Nota: Estas pautas de contribución están sujetas a cambios y mejoras. Asegúrate de revisar esta página regularmente para mantenerte actualizado sobre cualquier modificación. Última actualización: 15 de abril del 2021.
