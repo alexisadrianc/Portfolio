@@ -41,6 +41,6 @@ Para configurar el sistema en su entorno local, siga estos pasos:
 ## Licencia
 Este proyecto se distribuye bajo la Licencia MIT. Para más detalles, consulte el archivo LICENSE.
 
-Esperamos que este sistema de gestión para una academia de conductores sea de gran utilidad para simplificar sus procesos y mejorar la experiencia de formación de los estudiantes. Si tiene alguna pregunta o necesita ayuda, no dude en abrir un "issue" o contactar al equipo de desarrollo.
+Espero que este sistema de gestión para una academia de conductores sea de gran utilidad para simplificar sus procesos y mejorar la experiencia de formación de los estudiantes. Si tiene alguna pregunta o necesita ayuda, no dude en abrir un "issue" o contactar conmigo por medio de email alexis.adrianc@gmail.com.
 
 ¡Gracias por utilizar nuestro sistema y contribuir al proyecto!
