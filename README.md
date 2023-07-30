@@ -21,7 +21,7 @@ El sistema de gestión ha sido desarrollado utilizando las siguientes tecnologí
 - Base de Datos: [Sistema de gestión de bases de datos utilizado, PostgreSQL]
 ## Instalación
 1. Asegúrate de tener instalado Python en tu sistema.
-1. Clona este repositorio: git clone https://github.com/tu-usuario/tu-repositorio.git
+1. Clona este repositorio: git clone -b Inmobiliaria --single-branch https://github.com/alexisadrianc/Portafolio.git 
 1. Ve al directorio del proyecto: cd tu-repositorio
 1. Instala las dependencias: pip install -r requirements.txt
 1. Ejecuta las migraciones de la base de datos: python manage.py migrate
