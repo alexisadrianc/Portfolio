@@ -7,7 +7,7 @@
   - Frontend: [Bootstrap, HTML5, CCS3]
   - Backend: [Django, Python]
   - Base de Datos: [PostgreSQL]
-- Enlace al Repositorio: (Si el proyecto es de código abierto, agrega aquí el enlace al repositorio en GitHub o plataforma similar).
+- Enlace al Repositorio: [(Gestion inmobiliaria, Administracion de edifcio)](https://github.com/alexisadrianc/Portafolio/tree/Inmobiliaria).
 - Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
 
 ## **Proyecto 2: Academia de choferes**
