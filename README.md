@@ -28,9 +28,6 @@ El sistema de gestión ha sido desarrollado utilizando las siguientes tecnologí
 1. Inicia el servidor de desarrollo: python manage.py runserver
 1. Accede al sistema en tu navegador web: http://localhost:8000
 
-## Contribuciones
-¡Agradecemos tus contribuciones para mejorar este sistema de gestión! Si deseas reportar problemas, sugerir nuevas características o enviar mejoras, por favor abre un "issue" o envía un "pull request". Asegúrate de seguir las pautas de contribución.
-
 ## Licencia
 Este proyecto está bajo la Licencia [nombre de la licencia]. Puedes consultar el archivo LICENSE para más información.
 
