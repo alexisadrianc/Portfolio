@@ -4,9 +4,9 @@
 ## **Proyecto 1: Gestion inmobiliaria - Administracion de edifcio**
 - Descripción: Este proyecto tiene como objetivo proporcionar una solución completa y eficiente para la gestión de propiedades, inquilinos, pagos, mantenimiento y más.
 - Tecnologías utilizadas:
-  - Frontend: [Tecnologías utilizadas en el frontend, por ejemplo: Bootstrap]
-  - Backend: [Tecnologías utilizadas en el backend: Django, Python]
-  - Base de Datos: [Sistema de gestión de bases de datos utilizado, PostgreSQL]
+  - Frontend: [Bootstrap, HTML5, CCS3]
+  - Backend: [Django, Python]
+  - Base de Datos: [PostgreSQL]
 - Enlace al Repositorio: (Si el proyecto es de código abierto, agrega aquí el enlace al repositorio en GitHub o plataforma similar).
 - Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
 
@@ -19,9 +19,9 @@
 ## **Proyecto 3: Tienda de eCommerce**
 - Descripción: Una breve descripción del proyecto, resaltando su propósito y funcionalidades clave.
 - Tecnologías utilizadas: 
-  - Frontend: [Tecnologías utilizadas en el frontend, por ejemplo: Bootstrap]
-  - Backend: [Tecnologías utilizadas en el backend: Django, Python]
-  - Base de Datos: [Sistema de gestión de bases de datos utilizado, PostgreSQL]
+  - Frontend: [Bootstrap, HTML5, CCS3]
+  - Backend: [Django, Python]
+  - Base de Datos: [PostgreSQL]
 - Enlace al Repositorio: (Si el proyecto es de código abierto, agrega aquí el enlace al repositorio en GitHub o plataforma similar).
 - Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
 
