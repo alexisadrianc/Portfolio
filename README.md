@@ -19,7 +19,7 @@ Para configurar el sistema en su entorno local, siga estos pasos:
 
 1. Clonar el Repositorio: Utilice el siguiente comando para clonar el repositorio en su máquina local:
 
-    >git clone https://github.com/alexisadrianc/nombre-del-repositorio.git
+    >git clone -b web_academy --single-branch https://github.com/alexisadrianc/Portafolio.git
 2. Requisitos: Asegúrese de tener instalado Python en su sistema. Se recomienda utilizar Python 3.x.
 
 3. Entorno Virtual (opcional): Es recomendable crear un entorno virtual para este proyecto. Puede utilizar virtualenv para ello:
