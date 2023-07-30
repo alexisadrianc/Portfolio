@@ -16,9 +16,9 @@ Bienvenido al repositorio público del Sistema de Gestión para una Empresa Inmo
 ## Tecnologías Utilizadas
 El sistema de gestión ha sido desarrollado utilizando las siguientes tecnologías:
 
-Frontend: [Tecnologías utilizadas en el frontend, por ejemplo: Bootstrap]
-Backend: [Tecnologías utilizadas en el backend: Django, Python]
-Base de Datos: [Sistema de gestión de bases de datos utilizado, PostgreSQL]
+- Frontend: [Tecnologías utilizadas en el frontend, por ejemplo: Bootstrap]
+- Backend: [Tecnologías utilizadas en el backend: Django, Python]
+- Base de Datos: [Sistema de gestión de bases de datos utilizado, PostgreSQL]
 ## Instalación
 1. Asegúrate de tener instalado Python en tu sistema.
 1. Clona este repositorio: git clone https://github.com/tu-usuario/tu-repositorio.git
