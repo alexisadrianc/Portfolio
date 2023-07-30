@@ -32,6 +32,6 @@ El sistema de gestión ha sido desarrollado utilizando las siguientes tecnologí
 Este proyecto se distribuye bajo la Licencia MIT. Para más detalles, consulte el archivo LICENSE.
 
 ## Contacto
-Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto con el equipo de desarrollo en alexis.adrianc@gmail.com.
+Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto conmigo mediante mi email alexis.adrianc@gmail.com.
 
 ¡Gracias por tu interés en nuestro Sistema de Gestión para Empresa Inmobiliaria - Administración de Edificios! Esperamos que sea útil para tus necesidades.
