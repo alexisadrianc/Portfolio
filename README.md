@@ -17,26 +17,13 @@ El propósito de este sistema es facilitar la administración de una academia de
 ## Guía de Instalación
 Para configurar el sistema en su entorno local, siga estos pasos:
 
-1. Clonar el Repositorio: Utilice el siguiente comando para clonar el repositorio en su máquina local:
-
-    >git clone -b web_academy --single-branch https://github.com/alexisadrianc/Portafolio.git
-2. Requisitos: Asegúrese de tener instalado Python en su sistema. Se recomienda utilizar Python 3.x.
-
-3. Entorno Virtual (opcional): Es recomendable crear un entorno virtual para este proyecto. Puede utilizar virtualenv para ello:
-
-    >python -m venv venv
-    >source venv/bin/activate  # En Windows use "venv\Scripts\activate"
-4. Instalar Dependencias: Acceda al directorio del proyecto y ejecute el siguiente comando para instalar las dependencias necesarias:
-
-    >pip install -r requirements.txt
-5. Configuración: Revise el archivo de configuración config.py y ajuste los valores según sus necesidades (por ejemplo, configuración de la base de datos).
-
-6. Base de Datos: Configure la base de datos según las opciones elegidas en el paso anterior. Puede utilizar SQLite o cualquier otro motor de base de datos compatible con Python.
-
-7. Ejecutar la Aplicación: Una vez que todo esté configurado, inicie el servidor de desarrollo con el siguiente comando:
-
-    >python app.py
-8. Acceso a la Aplicación: Acceda a la aplicación a través de su navegador web en la siguiente dirección: **http://localhost:8000**.
+1. Asegúrate de tener instalado Python en tu sistema.
+1. Clona este repositorio: git clone -b web_academy --single-branch https://github.com/alexisadrianc/Portafolio.git
+1. Ve al directorio del proyecto: cd tu-repositorio
+1. Instala las dependencias: pip install -r requirements.txt
+1. Ejecuta las migraciones de la base de datos: python manage.py migrate
+1. Inicia el servidor de desarrollo: python manage.py runserver
+1. Accede al sistema en tu navegador web: **http://localhost:8000**
 
 ## Licencia
 Este proyecto se distribuye bajo la Licencia MIT. Para más detalles, consulte el archivo LICENSE.
