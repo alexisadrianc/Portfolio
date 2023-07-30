@@ -5,7 +5,7 @@
 - Descripción: Este proyecto tiene como objetivo proporcionar una solución completa y eficiente para la gestión de propiedades, inquilinos, pagos, mantenimiento y más.
 - Tecnologías utilizadas:
   - Frontend: [Bootstrap, HTML5, CCS3]
-  - Backend: [Django, Python]
+  - Backend: [Python - Django]
   - Base de Datos: [PostgreSQL]
 - Enlace al Repositorio: [(Gestión Inmobiliaria - Administración de Edificios)](https://github.com/alexisadrianc/Portafolio/tree/Inmobiliaria).
 - Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
@@ -14,7 +14,7 @@
 - Descripción: Este proyecto tiene como objetivo proporcionar una solución completa para administrar y gestionar los procesos de formación de conductores en una academia.
 - Tecnologías utilizadas: 
   - Frontend: [Bootstrap, HTML5, CCS3]
-  - Backend: [Django, Python]
+  - Backend: [Python - Django]
   - Base de Datos: [PostgreSQL]
 - Enlace al Repositorio: [(Academia de Conductores).](https://github.com/alexisadrianc/Portafolio/tree/web_academy)
 - Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
@@ -23,7 +23,7 @@
 - Descripción: Una breve descripción del proyecto, resaltando su propósito y funcionalidades clave.
 - Tecnologías utilizadas: 
   - Frontend: [Bootstrap, HTML5, CCS3]
-  - Backend: [Django, Python]
+  - Backend: [Python - Django]
   - Base de Datos: [PostgreSQL]
 - Enlace al Repositorio: (Si el proyecto es de código abierto, agrega aquí el enlace al repositorio en GitHub o plataforma similar).
 - Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
