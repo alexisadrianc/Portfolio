@@ -12,6 +12,8 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from .forms import *
 from .models import *
 
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 # Create your views here.
 class Login(FormView):
@@ -59,7 +61,7 @@ class ListUsers(ListView):
             return self.model.objects.filter(is_active=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             """ cuando en vez de objects.filter uso objects.get uso el de abajo pq devuelve un solo elemento"""
             # data = serialize('json', [self.get_queryset(),])
             """Cuando no uso serialize"""
@@ -87,7 +89,7 @@ class CreateUsers(CreateView):
     success_url = reverse_lazy('base:users')
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(data=request.POST, files=request.FILES)
             if form.is_valid():
                 new_user = UserModel(
@@ -122,7 +124,7 @@ class UpdateUsers(UpdateView):
     template_name = 'base/user/edit.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(data=request.POST, files=request.FILES, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -147,7 +149,7 @@ class DeleteUsers(DeleteView):
     template_name = 'base/user/delete.html'
 
     def delete(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.is_active = False
             object.save()
@@ -166,7 +168,7 @@ class DetailUser(UpdateView):
     template_name = 'base/profile.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(data=request.POST, files=request.FILES, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -192,7 +194,7 @@ class ListCompany(ListView):
     queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
         else:
             return redirect('base:companies')
@@ -205,7 +207,7 @@ class CreateCompany(CreateView):
     success_url = reverse_lazy('base:companies')
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(data=request.POST, files=request.FILES)
             if form.is_valid():
                 company = Company(
@@ -242,7 +244,7 @@ class UpdateCompany(UpdateView):
     template_name = 'base/company/edit.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(data=request.POST, files=request.FILES, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -266,7 +268,7 @@ class DeleteCompany(DeleteView):
     template_name = 'base/company/delete.html'
 
     def delete(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.state = False
             object.save()
@@ -285,7 +287,7 @@ class ListRol(ListView):
     queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
         else:
             return redirect('base:roles')
@@ -304,7 +306,7 @@ class UpdateRol(UpdateView):
     template_name = 'base/rol/edit.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -328,7 +330,7 @@ class DeleteRol(DeleteView):
     template_name = 'base/rol/delete.html'
 
     def delete(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.state = False
             object.save()
