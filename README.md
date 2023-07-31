@@ -31,7 +31,7 @@ The management system has been developed using the following technologies:
 ## License
 This project is distributed under the MIT License. For more details, see the LICENSE file.
 
-## Contacto
-Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto conmigo mediante mi email alexis.adrianc@gmail.com.
+## Contact
+If you have any questions or comments, please feel free to contact me via email at alexis.adrianc@gmail.com.
 
-¡Gracias por tu interés en nuestro Sistema de Gestión para Empresa Inmobiliaria - Administración de Edificios! Esperamos que sea útil para tus necesidades.
+Thank you for your interest in our Real Estate Management System - Building Management! We hope it will be useful for your needs.
