@@ -5,13 +5,9 @@ Welcome to the repository of the management system for a driver academy! This pr
 The purpose of this system is to facilitate the management of a driver academy by simplifying tasks related to student registration, progress tracking, class scheduling, evaluations and more. Some key features of the system include:
 
 - **Student Registration:** Allows you to register new students by providing their personal and contact information.
-
 - **Class Management:** Facilitates the scheduling and organization of classes for different levels of training.
-
 - **Progress Tracking:** Keeps track of each student's progress, recording their grades and training progress.
-
 - **Exams and Evaluations:** Administers and grades practical and theoretical exams and evaluations.
-
 - **Instructor Management:** Allows you to manage instructor information and assign them to different classes.
 
 ## Installation Guide
