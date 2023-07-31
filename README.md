@@ -1,37 +1,37 @@
-# Portafolio de Proyectos
-¡Bienvenido/a a mi portafolio de proyectos! Aquí encontrarás una recopilación de algunos de los proyectos en los que he trabajado. Cada proyecto tiene como objetivo demostrar mis habilidades y experiencia en diferentes áreas. Si tienes alguna pregunta o comentario sobre alguno de los proyectos, no dudes en contactarme.
+# Project Portfolio
+Welcome to my project portfolio! Here you will find a compilation of some of the projects I have worked on. Each project aims to demonstrate my skills and experience in different areas. If you have any questions or comments about any of the projects, feel free to contact me.
 
-## **Proyecto 1: Gestión Inmobiliaria - Administración de Edificios**
-- Descripción: Este proyecto tiene como objetivo proporcionar una solución completa y eficiente para la gestión de propiedades, inquilinos, pagos, mantenimiento y más.
-- Tecnologías utilizadas:
+## **Project 1: Real Estate Management - Building Administration**
+- Description: This project aims to provide a complete and efficient solution for property management, tenants, payments, maintenance and more.
+- Technologies used:
   - Frontend: [Bootstrap, HTML5, CCS3]
-  - Backend: [Python - Django]
-  - Base de Datos: [PostgreSQL]
-- Enlace al Repositorio: [(Gestión Inmobiliaria - Administración de Edificios)](https://github.com/alexisadrianc/Portafolio/tree/Inmobiliaria).
-- Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
+  - Backend: [Python - Django].
+  - Database: [PostgreSQL].
+- Link to Repository: [(Real Estate Management - Building Administration)](https://github.com/alexisadrianc/Portafolio/tree/Inmobiliaria).
+- Screenshots: (If possible, include some screenshots of the project to show its appearance).
 
-## **Proyecto 2: Academia de Conductores**
-- Descripción: Este proyecto tiene como objetivo proporcionar una solución completa para administrar y gestionar los procesos de formación de conductores en una academia.
-- Tecnologías utilizadas: 
+## **Project 2: Driver Academy**
+- Description: This project aims to provide a complete solution to administer and manage the driver training processes in an academy.
+- Technologies used:
   - Frontend: [Bootstrap, HTML5, CCS3]
-  - Backend: [Python - Django]
-  - Base de Datos: [PostgreSQL]
-- Enlace al Repositorio: [(Academia de Conductores).](https://github.com/alexisadrianc/Portafolio/tree/web_academy)
-- Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
+  - Backend: [Python - Django].
+  - Database: [PostgreSQL].
+- Link to Repository: [(Driver Academy).](https://github.com/alexisadrianc/Portafolio/tree/web_academy)
+- Screenshots: (If possible, include some screenshots of the project to show its appearance).
 
-## **Proyecto 3: Catalogo de eCommerce**
-- Descripción: Una breve descripción del proyecto, resaltando su propósito y funcionalidades clave.
-- Tecnologías utilizadas: 
+## **Project 3: eCommerce Catalog**
+- Description: Una breve descripción del proyecto, resaltando su propósito y funcionalidades clave.
+-- Technologies used:
   - Frontend: [Bootstrap, HTML5, CCS3]
-  - Backend: [Python - Django]
-  - Base de Datos: [PostgreSQL]
-- Enlace al Repositorio: (Si el proyecto es de código abierto, agrega aquí el enlace al repositorio en GitHub o plataforma similar).
-- Capturas de Pantalla: (Si es posible, incluye algunas capturas de pantalla del proyecto para mostrar su apariencia).
+  - Backend: [Python - Django].
+  - Database: [PostgreSQL].
+- Link to Repository: (Si el proyecto es de código abierto, agrega aquí el enlace al repositorio en GitHub o plataforma similar).
+- Screenshots: (If possible, include some screenshots of the project to show its appearance).
 
-## Contacto
-Si deseas obtener más información sobre alguno de estos proyectos o quieres contactarme para una colaboración o consulta, no dudes en hacerlo:
+## Contact
+If you would like more information about any of these projects or would like to contact me for a collaboration or consultation, please do not hesitate to do so:
 
 - Email: alexis.adrianc@gmail.com
 - LinkedIn: [Alexis Cabrera](https://www.linkedin.com/in/alexis-adrian-cabrera-pereira/)
 
-¡Gracias por visitar mi portafolio! Espero que encuentres interesantes mis proyectos y que puedan ser útiles para inspirarte en tus propios desarrollos.
+Thanks for visiting my portfolio! I hope you find my projects interesting and that they can be useful to inspire you in your own developments.
