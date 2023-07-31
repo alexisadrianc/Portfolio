@@ -3,7 +3,7 @@
 Welcome to the public repository of the Management System for a Real Estate Company specialized in Building Management. This project aims to provide a complete and efficient solution for the management of properties, tenants, payments, maintenance and more.
 
 ## Features
-- **Property Management:** Effectively manages all properties and units under the care of the real estate company. Records detailed information about each property, including address, features, photos and occupancy status.
+- **Property Management:** Effectively manages all properties and units under the care of the real estate company. Records detailed information about each property, including address, features and occupancy status.
 
 - **Tenant Administration:** Keeps a complete record of tenants, their personal data, contact information and lease details. Facilitates the management of changes, renewals and lease terms.
 
