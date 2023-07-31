@@ -1,33 +1,33 @@
-# Gestión para Academia de Conductores
-¡Bienvenido al repositorio del sistema de gestión para una academia de conductores! Este proyecto tiene como objetivo proporcionar una solución completa para administrar y gestionar los procesos de formación de conductores en una academia.
+# Management for Driver Academy
+Welcome to the repository of the management system for a driver academy! This project aims to provide a complete solution to administer and manage the driver training processes in an academy.
 
-## Descripción del Proyecto
-El propósito de este sistema es facilitar la administración de una academia de conductores, simplificando las tareas relacionadas con el registro de estudiantes, seguimiento de su progreso, programación de clases, evaluaciones y más. Algunas características clave del sistema incluyen:
+## Project Description
+The purpose of this system is to facilitate the management of a driver academy by simplifying tasks related to student registration, progress tracking, class scheduling, evaluations and more. Some key features of the system include:
 
-- **Registro de Estudiantes:** Permite registrar a nuevos estudiantes proporcionando su información personal y de contacto.
+- **Student Registration:** Allows you to register new students by providing their personal and contact information.
 
-- **Gestión de Clases:** Facilita la programación y organización de clases para los diferentes niveles de formación.
+- **Class Management:** Facilitates the scheduling and organization of classes for different levels of training.
 
-- **Seguimiento del Progreso:** Realiza un seguimiento del progreso de cada estudiante, registrando sus calificaciones y avances en la formación.
+- **Progress Tracking:** Keeps track of each student's progress, recording their grades and training progress.
 
-- **Exámenes y Evaluaciones:** Administra y califica exámenes y evaluaciones prácticas y teóricas.
+- **Exams and Evaluations:** Administers and grades practical and theoretical exams and evaluations.
 
-- **Gestión de Instructores:** Permite gestionar la información de los instructores y asignarlos a diferentes clases.
+- **Instructor Management:** Allows you to manage instructor information and assign them to different classes.
 
-## Guía de Instalación
-Para configurar el sistema en su entorno local, siga estos pasos:
+## Installation Guide
+To set up the system in your local environment, follow these steps:
 
-1. Asegúrate de tener instalado Python en tu sistema.
-1. Clona este repositorio: git clone -b web_academy --single-branch https://github.com/alexisadrianc/Portafolio.git
-1. Ve al directorio del proyecto: cd tu-repositorio
-1. Instala las dependencias: pip install -r requirements.txt
-1. Ejecuta las migraciones de la base de datos: python manage.py migrate
-1. Inicia el servidor de desarrollo: python manage.py runserver
-1. Accede al sistema en tu navegador web: **http://localhost:8000**
+1. Make sure you have Python installed on your system.
+1. Clone this repository: git clone -b web_academy --single-branch https://github.com/alexisadrianc/Portafolio.git
+1. Go to the project directory: cd your-repository
+1. Install the dependencies: pip install -r requirements.txt
+1. Execute the database migrations: python manage.py migrate
+1. Start the development server: python manage.py runserver
+1. Log in to the system in your web browser: **http://localhost:8000**
 
-## Licencia
-Este proyecto se distribuye bajo la Licencia MIT. Para más detalles, consulte el archivo LICENSE.
+## License
+This project is distributed under the MIT License. For more details, please refer to the LICENSE file.
 
-Espero que este sistema de gestión para una academia de conductores sea de gran utilidad para simplificar sus procesos y mejorar la experiencia de formación de los estudiantes. Si tiene alguna pregunta o necesita ayuda, no dude en abrir un "issue" o contactar conmigo por medio de email alexis.adrianc@gmail.com.
+I hope this management system for a driver academy will be of great use to simplify your processes and improve the training experience for students. If you have any questions or need help, please feel free to open an issue or contact me via email alexis.adrianc@gmail.com.
 
-¡Gracias por utilizar nuestro sistema y contribuir al proyecto!
+Thank you for using our system and contributing to the project!
