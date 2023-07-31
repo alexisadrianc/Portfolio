@@ -7,6 +7,8 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from .models import *
 from .forms import *
 
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 def Home(request):
     if request.user.user_type == '2':
@@ -32,7 +34,7 @@ class ListBuilding(ListView):
     paginate_by = 5
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True),
                                 'application/json')
         else:
@@ -53,7 +55,7 @@ class UpdateBuilding(UpdateView):
     template_name = 'buildings/building/edit.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -77,7 +79,7 @@ class DeleteBuilding(DeleteView):
     template_name = 'buildings/building/delete.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.state = False
             object.save()
@@ -98,7 +100,7 @@ class ListSupplier(ListView):
     paginate_by = 10
 
     # def get(self, request, *args, **kwargs):
-    #     if request.is_ajax():
+    #     if is_ajax(request=request):
     #         return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
     #     else:
     #         return redirect('nerlax:create-building')
@@ -110,7 +112,7 @@ class ListUnit(ListView):
     queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True),
                                 'application/json')
         else:
@@ -131,7 +133,7 @@ class UpdateUnit(UpdateView):
     template_name = 'buildings/units/edit.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -155,7 +157,7 @@ class DeleteUnit(DeleteView):
     template_name = 'buildings/units/delete.html'
 
     def delete(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.state = False
             object.save()
@@ -174,7 +176,7 @@ class ListCommonExpenses(ListView):
     queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True),
                                 'application/json')
         else:
@@ -202,7 +204,7 @@ class UpdateCommonExpenses(UpdateView):
         return super(UpdateCommonExpenses, self).get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -226,7 +228,7 @@ class DeleteCommonExpenses(DeleteView):
     template_name = 'buildings/common_expenses/delete.html'
 
     def delete(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.state = False
             object.save()
@@ -249,7 +251,7 @@ class ListCommonExpensesLines(ListView):
         common_expenses = list(CommonExpenses.objects.filter(state=True).values_list('id', 'total_amount'))
         print(lines)
         print(common_expenses)
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True),
                                 'application/json')
         else:
@@ -262,7 +264,7 @@ class CreateCommonExpensesLines(CreateView):
     template_name = 'buildings/common_expenses/lines/create_lines.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST)
             if form.is_valid():
                 line = CommonExpensesLines(
@@ -292,7 +294,7 @@ class UpdateCommonExpensesLines(UpdateView):
     template_name = 'buildings/common_expenses/lines/edit_lines.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -316,7 +318,7 @@ class DeleteCommonExpensesLines(DeleteView):
     template_name = 'buildings/common_expenses/lines/delete_lines.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.state = False
             object.save()
@@ -335,7 +337,7 @@ class ListGarage(ListView):
     queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(
                 serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
         else:
@@ -364,7 +366,7 @@ class UpdateGarage(UpdateView):
         return super(UpdateGarage, self).get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -388,7 +390,7 @@ class DeleteGarage(DeleteView):
     template_name = 'buildings/garage/delete.html'
 
     def delete(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.state = False
             object.save()
@@ -407,7 +409,7 @@ class ListGarageLines(ListView):
     queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(
                 serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
         else:
@@ -420,7 +422,7 @@ class ListGarageLinesSm(ListView):
     queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(
                 serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
         else:
@@ -433,7 +435,7 @@ class CreateGarageLines(CreateView):
     template_name = 'buildings/garage/lines/create_lines.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST, request.FILES)
             if form.is_valid():
                 line = GarageLines(
@@ -465,7 +467,7 @@ class UpdateGarageLines(UpdateView):
     template_name = 'buildings/garage/lines/edit_lines.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST, request.FILES, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -489,7 +491,7 @@ class DeleteGarageLines(DeleteView):
     template_name = 'buildings/garage/lines/delete_lines.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.state = False
             object.save()
