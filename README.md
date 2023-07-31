@@ -1,35 +1,35 @@
-# Sistema de Gestión para Empresa Inmobiliaria - Administración de Edificios
+# Management System for a Real Estate Company - Building Management
 
-Bienvenido al repositorio público del Sistema de Gestión para una Empresa Inmobiliaria especializada en la Administración de Edificios. Este proyecto tiene como objetivo proporcionar una solución completa y eficiente para la gestión de propiedades, inquilinos, pagos, mantenimiento y más.
+Welcome to the public repository of the Management System for a Real Estate Company specialized in Building Management. This project aims to provide a complete and efficient solution for the management of properties, tenants, payments, maintenance and more.
 
-## Características
-- **Gestión de Propiedades:** Administra de manera efectiva todas las propiedades y unidades bajo el cuidado de la empresa inmobiliaria. Registra información detallada sobre cada propiedad, incluyendo dirección, características, fotos y estado de ocupación.
+## Features
+- **Property Management:** Effectively manages all properties and units under the care of the real estate company. Records detailed information about each property, including address, features, photos and occupancy status.
 
-- **Administración de Inquilinos:** Lleva un registro completo de los inquilinos, sus datos personales, información de contacto y detalles del contrato de alquiler. Facilita la gestión de cambios, renovaciones y términos de arrendamiento.
+- **Tenant Administration:** Keeps a complete record of tenants, their personal data, contact information and lease details. Facilitates the management of changes, renewals and lease terms.
 
-- **Control de Pagos:** Automatiza el proceso de cobro de alquileres y cuotas de mantenimiento. Envía notificaciones y recordatorios de pago a los inquilinos y brinda a los administradores una visión clara de los pagos pendientes y realizados.
+- **Payment Control:** Automates the process of collecting rent and maintenance fees. Sends notifications and payment reminders to tenants and provides managers with a clear view of payments due and made.
 
-- **Mantenimiento y Solicitudes:** Permite a los inquilinos enviar solicitudes de mantenimiento y seguimiento del progreso de las mismas. Facilita la asignación de tareas al equipo de mantenimiento y garantiza una resolución oportuna.
+- **Maintenance and Requests:** Allows tenants to submit maintenance requests and track their progress. Facilitates the assignment of tasks to the maintenance team and ensures timely resolution.
 
-- **Informes y Estadísticas:** Genera informes detallados y estadísticas sobre la ocupación, el estado financiero y el mantenimiento de las propiedades. Facilita la toma de decisiones y el análisis del rendimiento de la empresa.
+- **Reports and Statistics:** Generates detailed reports and statistics on occupancy, financial status and property maintenance. Facilitates decision making and analysis of company performance.
 
-## Tecnologías Utilizadas
-El sistema de gestión ha sido desarrollado utilizando las siguientes tecnologías:
+## Technologies Used
+The management system has been developed using the following technologies:
 
-- Frontend: [Bootstrap, HTML5, CCS3]
-- Backend: [Python - Django]
-- Base de Datos: [PostgreSQL]
-## Instalación
-1. Asegúrate de tener instalado Python en tu sistema.
-1. Clona este repositorio: git clone -b Inmobiliaria --single-branch https://github.com/alexisadrianc/Portafolio.git 
-1. Ve al directorio del proyecto: cd tu-repositorio
-1. Instala las dependencias: pip install -r requirements.txt
-1. Ejecuta las migraciones de la base de datos: python manage.py migrate
-1. Inicia el servidor de desarrollo: python manage.py runserver
-1. Accede al sistema en tu navegador web: http://localhost:8000
+- Frontend: [Bootstrap, HTML5, CCS3].
+- Backend: [Python - Django].
+- Database: [PostgreSQL]
+## Installation
+1. Make sure you have Python installed on your system.
+1. Clone this repository: git clone -b Real-estate --single-branch https://github.com/alexisadrianc/Portafolio.git 
+1. Go to the project directory: cd your-repository
+1. Install the dependencies: pip install -r requirements.txt
+1. Execute the database migrations: python manage.py migrate
+1. Start the development server: python manage.py runserver
+1. Log in to the system in your web browser: **http://localhost:8000**
 
-## Licencia
-Este proyecto se distribuye bajo la Licencia MIT. Para más detalles, consulte el archivo LICENSE.
+## License
+This project is distributed under the MIT License. For more details, see the LICENSE file.
 
 ## Contacto
 Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto conmigo mediante mi email alexis.adrianc@gmail.com.
