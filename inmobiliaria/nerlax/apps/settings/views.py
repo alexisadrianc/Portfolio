@@ -7,6 +7,8 @@ from django.views.generic import *
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from .forms import *
 
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
 
 # Activity Types
 class ListActivityType(ListView):
@@ -15,7 +17,7 @@ class ListActivityType(ListView):
     queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
         else:
             return redirect('settings:activity-type')
@@ -35,7 +37,7 @@ class UpdateActivityType(UpdateView):
     template_name = 'settings/activity/edit.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -59,7 +61,7 @@ class DeleteActivityType(DeleteView):
     template_name = 'settings/activity/delete.html'
 
     def delete(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.state = False
             object.save()
@@ -106,7 +108,7 @@ class ListClassification(ListView):
     queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
         else:
             return redirect('settings:classification')
@@ -126,7 +128,7 @@ class UpdateClassifications(UpdateView):
     template_name = 'settings/classification/edit.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -150,7 +152,7 @@ class DeleteClassifications(DeleteView):
     template_name = 'settings/classification/delete.html'
 
     def delete(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.state = False
             object.save()
@@ -197,7 +199,7 @@ class ListServices(ListView):
     queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
         else:
             return redirect('settings:services')
@@ -218,7 +220,7 @@ class UpdateServices(UpdateView):
     template_name = 'settings/services/edit.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -242,7 +244,7 @@ class DeleteServices(DeleteView):
     template_name = 'settings/services/delete.html'
 
     def delete(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.state = False
             object.save()
@@ -298,7 +300,7 @@ class ListSupplier(ListView):
     queryset = model.objects.filter(state=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
         else:
             return redirect('settings:supplier')
@@ -312,7 +314,7 @@ class CreateSupplier(CreateView):
     success_url = reverse_lazy('settings:kanban-supplier')
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(data=request.POST, files=request.FILES)
             if form.is_valid():
                 new_supplier = Supplier(
@@ -349,7 +351,7 @@ class UpdateSupplier(UpdateView):
     template_name = 'settings/supplier/edit.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(data=request.POST, files=request.FILES, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -373,7 +375,7 @@ class DeleteSupplier(DeleteView):
     template_name = 'settings/supplier/delete.html'
 
     def delete(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.state = False
             object.save()
@@ -393,7 +395,7 @@ class ListState(ListView):
     queryset = model.objects.filter(active=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(serialize('json', self.get_queryset()), 'application/json')
         else:
             return redirect('settings:state')
@@ -414,7 +416,7 @@ class UpdateState(UpdateView):
     template_name = 'settings/state/edit.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -438,7 +440,7 @@ class DeleteState(DeleteView):
     template_name = 'settings/state/delete.html'
 
     def delete(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.active = False
             object.save()
@@ -486,7 +488,7 @@ class ListCity(ListView):
     queryset = model.objects.filter(active=True)
 
     def get(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             return HttpResponse(serialize('json', self.get_queryset(), use_natural_foreign_keys=True), 'application/json')
         else:
             return redirect('settings:city')
@@ -507,7 +509,7 @@ class UpdateCity(UpdateView):
     template_name = 'settings/city/edit.html'
 
     def post(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             form = self.form_class(request.POST, instance=self.get_object())
             if form.is_valid():
                 form.save()
@@ -531,7 +533,7 @@ class DeleteCity(DeleteView):
     template_name = 'settings/city/delete.html'
 
     def delete(self, request, *args, **kwargs):
-        if request.is_ajax():
+        if is_ajax(request=request):
             object = self.get_object()
             object.active = False
             object.save()
