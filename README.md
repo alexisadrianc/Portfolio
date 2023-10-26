@@ -20,8 +20,8 @@ Welcome to my project portfolio! Here you will find a compilation of some of the
 - Screenshots: (If possible, include some screenshots of the project to show its appearance).
 
 ## **Project 3: eCommerce Catalog**
-- Description: Una breve descripción del proyecto, resaltando su propósito y funcionalidades clave.
--- Technologies used:
+- Description: -.
+- Technologies used:
   - Frontend: [Bootstrap, HTML5, CCS3]
   - Backend: [Python - Django].
   - Database: [PostgreSQL].
