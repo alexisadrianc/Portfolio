@@ -25,7 +25,7 @@ Welcome to my project portfolio! Here you will find a compilation of some of the
   - Frontend: [Bootstrap, HTML5, CCS3]
   - Backend: [Python - Django].
   - Database: [PostgreSQL].
-- Link to Repository: (Si el proyecto es de código abierto, agrega aquí el enlace al repositorio en GitHub o plataforma similar).
+- Link to Repository: ( - ).
 - Screenshots: (If possible, include some screenshots of the project to show its appearance).
 
 ## Contact
